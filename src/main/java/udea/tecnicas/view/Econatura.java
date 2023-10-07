@@ -17,8 +17,9 @@ public class Econatura extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("Login"), 1200, 600);
+        scene = new Scene(loadFXML("Login"), 800, 400);
         stage.setTitle("CorAntioquia!");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
