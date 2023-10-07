@@ -8,6 +8,5 @@ public class LoginCtrl {
     @FXML
     private void switchToSecondary() throws IOException {
         Econatura.setRoot("login");
-        System.out.println("null");
     }
 }
