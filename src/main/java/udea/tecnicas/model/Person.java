@@ -1,6 +1,7 @@
 package udea.tecnicas.model;
 
 public class Person {
+    private static int id = 0;
     private String fullName;
     private int CC;
 
