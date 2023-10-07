@@ -1,4 +1,4 @@
 package udea.tecnicas.controller;
 
-public class Controller {
+public class git sController {
 }

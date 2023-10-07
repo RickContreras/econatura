@@ -1,0 +1,19 @@
+.Menu1{
+-fx-background-color:#fff;
+-fx-text-fill: #545F71;
+-fx-font-family: "Roboto";
+-fx-font-size: 16px;
+}
+.Menu2{
+-fx-background-color:#E2E2E2;
+-fx-text-fill: #545F71;
+-fx-font-family: "Robotoi";
+-fx-font-size: 16px;
+}
+.MenuItem:hover{
+-fx-background-color:#FF0000;
+}
+.MenuItem
+{
+  -fx-background-color:#fe0;
+}
