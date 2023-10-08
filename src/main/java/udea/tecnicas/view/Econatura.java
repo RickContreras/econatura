@@ -12,13 +12,19 @@ import java.io.IOException;
  * JavaFX App
  */
 public class Econatura extends Application {
-
+    private static Stage stage;
     private static Scene scene;
+
+    public static Stage getStage() {
+        return stage;
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("Login"), 1200, 600);
+        this.stage=stage;
+        scene = new Scene(loadFXML("login"), 800, 400);
         stage.setTitle("CorAntioquia!");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
