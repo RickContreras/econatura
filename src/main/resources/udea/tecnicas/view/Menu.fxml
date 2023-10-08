@@ -53,7 +53,7 @@
             <Group fx:id="GCash_Cash" layoutX="17.0" layoutY="148.0" onMouseClicked="#GRequest_Click">
                <children>
                   <Rectangle fx:id="RCash_Cash" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
-                  <Label layoutX="41.0" layoutY="13.0" text="Cash" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Cash"  />
                </children>
             </Group>
             <Group fx:id="GSettings_Type" layoutX="17.0" layoutY="190.0" onMouseClicked="#GRequest_Click">
