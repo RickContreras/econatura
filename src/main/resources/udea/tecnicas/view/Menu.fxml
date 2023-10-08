@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MenuController">
    <children>
-      <Group layoutX="23.0" layoutY="26.0">
+      <Group fx:id="GRequest" layoutX="23.0" layoutY="26.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="111.0" />
+            <Rectangle fx:id="RRequest" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="111.0" />
             <Label layoutX="41.0" layoutY="13.0" text="Label" />
          </children>
       </Group>
