@@ -31,6 +31,7 @@ public class MenuController {
         Request,Request_Request,Request_License,Inform,Inform_Inform_1,Cash,Cash_Cash,Settings,Settings_Type,Settings_Resource,Settings_Person
     }
 
+
     //<editor-fold desd="Inicializacion de objetos fxml">
     @FXML
     private Pane Panel1;
@@ -97,6 +98,11 @@ public class MenuController {
     }
 
     //</editor-fold >
+
+    public MenuController(){
+
+
+    }
 
     protected void Update_Menu(Menu_Option option){
         switch(option){

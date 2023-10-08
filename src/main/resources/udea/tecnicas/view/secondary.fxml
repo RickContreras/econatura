@@ -9,7 +9,7 @@
 <VBox alignment="CENTER" prefHeight="574.0" prefWidth="825.0" spacing="20.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.SecondaryController">
     <AnchorPane layoutX="395.0" layoutY="30.0" prefHeight="534.0" prefWidth="402.0">
         <children>
-            <fx:include source="Menu.fxml" />
+            <fx:include fx:id="Menu"  source="Menu.fxml"/>
         </children>
     </AnchorPane>
     <padding>
