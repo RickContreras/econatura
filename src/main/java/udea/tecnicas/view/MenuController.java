@@ -7,6 +7,7 @@ import javafx.scene.Group;
 
 public class MenuController {
 
+    //region Definiciones
     @FXML
     private Rectangle RRequest;
     @FXML
@@ -40,5 +41,6 @@ public class MenuController {
     protected void GSettings_Click(MouseEvent e){
 
     }
+    //endregio
 
 }
