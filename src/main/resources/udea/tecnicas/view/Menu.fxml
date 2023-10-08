@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane prefHeight="400.0" prefWidth="377.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MenuController">
    <children>
@@ -14,6 +15,7 @@
                <children>
                   <Rectangle fx:id="RInform" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
                   <Label layoutX="41.0" layoutY="13.0" text="Inform" />
+                  <FontIcon iconLiteral="bi-alarm" layoutX="25.0" layoutY="29.0" />
                </children>
             </Group>
             <Group fx:id="GRequest" layoutX="6.0" layoutY="8.0" onMouseClicked="#GRequest_Click">
@@ -53,7 +55,7 @@
             <Group fx:id="GCash_Cash" layoutX="17.0" layoutY="148.0" onMouseClicked="#GRequest_Click">
                <children>
                   <Rectangle fx:id="RCash_Cash" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
-                  <Label layoutX="41.0" layoutY="13.0" text="Cash"  />
+                  <Label layoutX="41.0" layoutY="13.0" text="Cash" />
                </children>
             </Group>
             <Group fx:id="GSettings_Type" layoutX="17.0" layoutY="190.0" onMouseClicked="#GRequest_Click">
