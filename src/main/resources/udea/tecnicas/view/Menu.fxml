@@ -7,26 +7,67 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MenuController">
    <children>
-      <Group fx:id="GRequest" layoutX="23.0" layoutY="26.0" onMouseClicked="#GRequest_Click">
+      <Group fx:id="GRequest_License" layoutX="191.0" layoutY="56.0" onMouseClicked="#GRequest_Click">
          <children>
-            <Rectangle fx:id="RRequest" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
-            <Label layoutX="41.0" layoutY="13.0" text="Request" />
-
+            <Rectangle fx:id="RRequest11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="License" />
          </children>
       </Group>
-      <Group fx:id="GInform" layoutX="23.0" layoutY="68.0" onMouseClicked="#GInform_Click">
+      <Group fx:id="GInform_Inform_1" layoutX="191.0" layoutY="98.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest111" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Inform1" />
+         </children>
+      </Group>
+      <Group fx:id="GCash_Cash" layoutX="191.0" layoutY="140.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest112" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Cash" />
+         </children>
+      </Group>
+      <Group fx:id="GSettings_Type" layoutX="191.0" layoutY="182.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest113" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Type" />
+         </children>
+      </Group>
+      <Group fx:id="GSettings_Resurce" layoutX="191.0" layoutY="224.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest114" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Resource" />
+         </children>
+      </Group>
+      <Group fx:id="GSettings_Person" layoutX="191.0" layoutY="266.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest115" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Person" />
+         </children>
+      </Group>
+      <Group fx:id="GRequest_Request" layoutX="191.0" layoutY="14.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Request" />
+         </children>
+      </Group>
+      <Group fx:id="GInform" layoutX="14.0" layoutY="56.0" onMouseClicked="#GRequest_Click">
          <children>
             <Rectangle fx:id="RInform" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
             <Label layoutX="41.0" layoutY="13.0" text="Inform" />
          </children>
       </Group>
-      <Group fx:id="GCash" layoutX="23.0" layoutY="110.0" onMouseClicked="#GCash_Click">
+      <Group fx:id="GRequest" layoutX="14.0" layoutY="14.0" onMouseClicked="#GRequest_Click">
+         <children>
+            <Rectangle fx:id="RRequest" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Request" />
+         </children>
+      </Group>
+      <Group fx:id="GCash" layoutX="14.0" layoutY="98.0" onMouseClicked="#GRequest_Click">
          <children>
             <Rectangle fx:id="RCash" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
             <Label layoutX="41.0" layoutY="13.0" text="Cash" />
          </children>
       </Group>
-      <Group fx:id="GSettings" layoutX="23.0" layoutY="152.0" onMouseClicked="#GSettings_Click">
+      <Group fx:id="GSettings" layoutX="14.0" layoutY="140.0" onMouseClicked="#GRequest_Click">
          <children>
             <Rectangle fx:id="RSettings" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
             <Label layoutX="41.0" layoutY="13.0" text="Settings" />

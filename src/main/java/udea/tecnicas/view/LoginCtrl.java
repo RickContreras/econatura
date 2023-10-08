@@ -12,5 +12,6 @@ public class LoginCtrl {
     @FXML
     private void TestMenu() throws IOException {
         Econatura.setRoot("Menu");
+
     }
 }

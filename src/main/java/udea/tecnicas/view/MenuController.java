@@ -1,10 +1,12 @@
 package udea.tecnicas.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.Group;
+import javafx.stage.Stage;
 
 import java.lang.runtime.SwitchBootstraps;
 import java.security.spec.RSAKeyGenParameterSpec;
@@ -63,50 +65,25 @@ public class MenuController {
     //<editor-fold desd="Inicializacion de funciones fxml">
     @FXML
     protected void GRequest_Click(MouseEvent e){
-        Update_Menu(Menu_Option.Request);
-    }
-    @FXML
-    protected void GRequest_Request_Click(MouseEvent e){
+        try
+        {
+            Group GroupClicked = (Group)e.getSource();
 
+            System.out.println(GroupClicked.getId());
+            Update_Menu(Menu_Option.Request);
+        }
+        catch (Exception Ex){
+            System.out.println(Ex.getMessage());
+        }
     }
-    protected void GRequest_License_Click(MouseEvent e){
 
-    }
-    @FXML
-    protected void GInform_Click(MouseEvent e){
-
-    }
-    @FXML
-    protected void GInform_Inform_Click(MouseEvent e){
-
-    }
-    @FXML
-    protected void GCash_Click(MouseEvent e){
-
-    }
-    @FXML
-    protected void GCash_Cash_Click(MouseEvent e){
-
-    }
-    @FXML
-    protected void GSettings_Click(MouseEvent e){
-
-    }
-    protected void GSettings_Type_Click(MouseEvent e){
-
-    }
-    protected void GSettings_Resource_Click(MouseEvent e){
-
-    }
-    protected void GSettings_Person_Click(MouseEvent e){
-
-    }
     //</editor-fold >
 
     protected void Update_Menu(Menu_Option option){
         switch(option){
             case Request: case Request_Request :
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
+
         }
 
     }
