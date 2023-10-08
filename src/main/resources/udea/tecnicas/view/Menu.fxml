@@ -7,10 +7,29 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MenuController">
    <children>
-      <Group fx:id="GRequest" layoutX="23.0" layoutY="26.0">
+      <Group fx:id="GRequest" layoutX="23.0" layoutY="26.0" onMouseClicked="#GRequest_Click">
          <children>
-            <Rectangle fx:id="RRequest" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="111.0" />
-            <Label layoutX="41.0" layoutY="13.0" text="Label" />
+            <Rectangle fx:id="RRequest" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Request" />
+
+         </children>
+      </Group>
+      <Group fx:id="GInform" layoutX="23.0" layoutY="68.0" onMouseClicked="#GInform_Click">
+         <children>
+            <Rectangle fx:id="RInform" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Inform" />
+         </children>
+      </Group>
+      <Group fx:id="GCash" layoutX="23.0" layoutY="110.0" onMouseClicked="#GCash_Click">
+         <children>
+            <Rectangle fx:id="RCash" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Cash" />
+         </children>
+      </Group>
+      <Group fx:id="GSettings" layoutX="23.0" layoutY="152.0" onMouseClicked="#GSettings_Click">
+         <children>
+            <Rectangle fx:id="RSettings" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
+            <Label layoutX="41.0" layoutY="13.0" text="Settings" />
          </children>
       </Group>
    </children>

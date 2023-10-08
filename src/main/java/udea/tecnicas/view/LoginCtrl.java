@@ -9,4 +9,8 @@ public class LoginCtrl {
     private void switchToSecondary() throws IOException {
         Econatura.setRoot("login");
     }
+    @FXML
+    private void TestMenu() throws IOException {
+        Econatura.setRoot("Menu");
+    }
 }
