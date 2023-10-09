@@ -1,38 +1,23 @@
 package udea.tecnicas.view;
 
+import javafx.beans.NamedArg;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.Group;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
-import java.lang.runtime.SwitchBootstraps;
-import java.security.spec.RSAKeyGenParameterSpec;
-import java.security.spec.RSAOtherPrimeInfo;
+import java.io.IOException;
 
-public class MenuController {
-
-    /*
-    private int [] activeOption;
-    private int [] olderOption;
-
-    public void MenuController(){
-        activeOption = new int[2];
-        activeOption[0]=1;
-        activeOption[1]=1;
-        olderOption = new int[2];
-        olderOption[0]=1;
-        olderOption[1]=1;
-    }*/
+public class Menu extends AnchorPane {
     protected enum Menu_Option{
         Request,Request_Request,Request_License,Inform,Inform_Inform_1,Cash,Cash_Cash,Settings,Settings_Type,Settings_Resource,Settings_Person
     }
+    private final Menu_Option Inicial_option;
 
-
-    //<editor-fold desd="Inicializacion de objetos fxml">
     @FXML
     private Pane Panel1;
     @FXML
@@ -81,10 +66,36 @@ public class MenuController {
     private Rectangle RSettings_Person;
     @FXML
     private Group GSettings_Person;
-    //</editor-fold">
-    //<editor-fold desd="Inicializacion de funciones fxml">
-    @FXML
-    protected void GRequest_Click(MouseEvent e){
+    public Menu(@NamedArg("Inicial_option") String Inicial_option_){
+        this.Inicial_option = Menu_Option.valueOf(Inicial_option_);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        fxmlLoader.setRoot(this);
+        fxmlLoader.setController(this);
+        try {
+            fxmlLoader.load();
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        configurar_eventos();
+        Update_Menu(this.Inicial_option);
+
+    }
+    public void configurar_eventos(){
+        GRequest.onMouseClickedProperty().set(event -> G_Click(event));
+        GRequest_Request.onMouseClickedProperty().set(event -> G_Click(event));
+        GRequest_License.onMouseClickedProperty().set(event -> G_Click(event));
+        GInform.onMouseClickedProperty().set(event -> G_Click(event));
+        GInform_Inform_1.onMouseClickedProperty().set(event -> G_Click(event));
+        GCash.onMouseClickedProperty().set(event -> G_Click(event));
+        GCash_Cash.onMouseClickedProperty().set(event -> G_Click(event));
+        GSettings.onMouseClickedProperty().set(event -> G_Click(event));
+        GSettings_Type.onMouseClickedProperty().set(event -> G_Click(event));
+        GSettings_Resource.onMouseClickedProperty().set(event -> G_Click(event));
+        GSettings_Person.onMouseClickedProperty().set(event -> G_Click(event));
+
+    }
+    protected void G_Click(MouseEvent e){
         try
         {
             Group GroupClicked = (Group)e.getSource();
@@ -96,14 +107,6 @@ public class MenuController {
             System.out.println(Ex.getMessage());
         }
     }
-
-    //</editor-fold >
-
-    public MenuController(){
-
-
-    }
-
     protected void Update_Menu(Menu_Option option){
         switch(option){
             case Request: case Request_Request :
@@ -190,8 +193,4 @@ public class MenuController {
         }
 
     }
-    protected void Fill_Active_Option(){
-
-    }
-
 }
