@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="800.0" prefWidth="377.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+   <children>
+      <Pane id="Panel1" fx:id="Panel1" prefHeight="600.0" prefWidth="182.0" styleClass="Panel1" stylesheets="@../../../asset/css/Menu.css">
+         <children>
+            <Group fx:id="GInform" layoutX="6.0" layoutY="50.0" >
+               <children>
+                  <Rectangle fx:id="RInform" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Inform" />
+                  <FontIcon iconLiteral="bi-file-bar-graph" layoutX="14.0" layoutY="29.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="145.0" layoutY="29.0" />
+               </children>
+            </Group>
+            <Group fx:id="GRequest" layoutX="6.0" layoutY="8.0" >
+               <children>
+                  <Rectangle fx:id="RRequest" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Request" />
+                  <FontIcon iconLiteral="bi-folder" layoutX="12.0" layoutY="29.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="29.0" />
+               </children>
+            </Group>
+            <Group fx:id="GCash" layoutX="6.0" layoutY="92.0" >
+               <children>
+                  <Rectangle fx:id="RCash" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Cash" />
+                  <FontIcon iconLiteral="bi-file-spreadsheet-fill" layoutX="14.0" layoutY="29.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="145.0" layoutY="29.0" />
+               </children>
+            </Group>
+            <Group fx:id="GSettings" layoutX="6.0" layoutY="134.0" >
+               <children>
+                  <Rectangle fx:id="RSettings" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Settings" />
+                  <FontIcon iconLiteral="bi-cone-striped" layoutX="12.0" layoutY="29.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="29.0" />
+               </children>
+            </Group>
+         </children>
+      </Pane>
+      <Pane id="Panel2" fx:id="Panel2" layoutX="179.0" prefHeight="600.0" prefWidth="200.0" styleClass="Panel2">
+         <children>
+            <Group fx:id="GRequest_License" layoutX="17.0" layoutY="50.0" >
+               <children>
+                  <Rectangle fx:id="RRequest_License" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="License" />
+                  <FontIcon iconLiteral="bi-card-checklist" layoutX="12.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="28.0" />
+               </children>
+            </Group>
+            <Group fx:id="GInform_Inform_1" layoutX="17.0" layoutY="8" >
+               <children>
+                  <Rectangle fx:id="RInform_Inform_1" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Inform1" />
+                  <FontIcon iconLiteral="bi-clipboard-data" layoutX="12.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="28.0" />
+               </children>
+            </Group>
+            <Group fx:id="GCash_Cash" layoutX="17.0" layoutY="8" >
+               <children>
+                  <Rectangle fx:id="RCash_Cash" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Cash" />
+                  <FontIcon iconLiteral="bi-cash-stack" layoutX="14.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="145.0" layoutY="28.0" />
+               </children>
+            </Group>
+            <Group fx:id="GSettings_Type" layoutX="17.0" layoutY="8" >
+               <children>
+                  <Rectangle fx:id="RSettings_Type" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Type" />
+                  <FontIcon iconLiteral="bi-alarm" layoutX="12.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="28.0" />
+               </children>
+            </Group>
+            <Group fx:id="GSettings_Resource" layoutX="17.0" layoutY="50" >
+               <children>
+                  <Rectangle fx:id="RSettings_Resource" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Resource" />
+                  <FontIcon iconLiteral="bi-droplet-half" layoutX="12.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="28.0" />
+               </children>
+            </Group>
+            <Group fx:id="GSettings_Person" layoutX="17.0" layoutY="92" >
+               <children>
+                  <Rectangle fx:id="RSettings_Person" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Person" />
+                  <FontIcon iconLiteral="bi-file-person" layoutX="12.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="143.0" layoutY="28.0" />
+               </children>
+            </Group>
+            <Group fx:id="GRequest_Request" layoutX="17.0" layoutY="8.0" >
+               <children>
+                  <Rectangle fx:id="RRequest_Request" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="42.0" stroke="BLACK" strokeLineCap="ROUND" strokeType="INSIDE" strokeWidth="0.0" width="167.0" />
+                  <Label layoutX="41.0" layoutY="13.0" text="Request" />
+                  <FontIcon iconLiteral="bi-card-list" layoutX="14.0" layoutY="28.0" />
+                  <FontIcon iconLiteral="bi-chevron-right" layoutX="145.0" layoutY="28.0" />
+               </children>
+            </Group>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
+</fx:root>

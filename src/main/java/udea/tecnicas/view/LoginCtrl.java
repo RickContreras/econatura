@@ -10,4 +10,9 @@ public class LoginCtrl {
         Econatura.setRoot("secondary");
         Econatura.getStage().setHeight(900);
     }
+    @FXML
+    private void TestMenu() throws IOException {
+        Econatura.setRoot("Menu");
+
+    }
 }
