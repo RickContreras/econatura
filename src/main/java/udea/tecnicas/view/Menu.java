@@ -66,7 +66,7 @@ public class Menu extends AnchorPane {
     private Rectangle RSettings_Person;
     @FXML
     private Group GSettings_Person;
-    public Menu(@NamedArg("Inicial_option") String Inicial_option_){
+    public Menu(@NamedArg("Inicial_option") String Inicial_option_) throws IOException {
         this.Inicial_option = Menu_Option.valueOf(Inicial_option_);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         fxmlLoader.setRoot(this);
@@ -107,9 +107,17 @@ public class Menu extends AnchorPane {
             System.out.println(Ex.getMessage());
         }
     }
-    protected void Update_Menu(Menu_Option option){
+    protected void Update_Menu(Menu_Option option) throws IOException {
+        Econatura.getStage().setResizable(false);
+        Econatura.getStage().setHeight(600);
+        Econatura.getStage().setWidth(1200);
         switch(option){
             case Request: case Request_Request :
+                try {
+                    Econatura.setRoot("Funcionario_Solicitudes");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
                 RRequest_Request.setFill(Color.web("#EEF1F4",1.0));
                 GRequest_Request.setVisible(true);

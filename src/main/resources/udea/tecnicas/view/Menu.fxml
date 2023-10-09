@@ -8,9 +8,9 @@
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
-<AnchorPane prefHeight="400.0" prefWidth="377.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane prefHeight="800.0" prefWidth="377.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
-      <Pane id="Panel1" fx:id="Panel1" prefHeight="530.0" prefWidth="182.0" styleClass="Panel1" stylesheets="@../../../asset/css/Menu.css">
+      <Pane id="Panel1" fx:id="Panel1" prefHeight="600.0" prefWidth="182.0" styleClass="Panel1" stylesheets="@../../../asset/css/Menu.css">
          <children>
             <Group fx:id="GInform" layoutX="6.0" layoutY="50.0" >
                <children>
@@ -46,7 +46,7 @@
             </Group>
          </children>
       </Pane>
-      <Pane id="Panel2" fx:id="Panel2" layoutX="179.0" prefHeight="533.0" prefWidth="200.0" styleClass="Panel2">
+      <Pane id="Panel2" fx:id="Panel2" layoutX="179.0" prefHeight="600.0" prefWidth="200.0" styleClass="Panel2">
          <children>
             <Group fx:id="GRequest_License" layoutX="17.0" layoutY="50.0" >
                <children>
