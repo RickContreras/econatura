@@ -99,25 +99,52 @@ public class Menu extends AnchorPane {
         try
         {
             Group GroupClicked = (Group)e.getSource();
-
             System.out.println(GroupClicked.getId());
-            Update_Menu(Menu_Option.valueOf(GroupClicked.getId().substring(1)));
+            go_to_fxml(Menu_Option.valueOf(GroupClicked.getId().substring(1)));
         }
         catch (Exception Ex){
             System.out.println(Ex.getMessage());
         }
     }
-    protected void Update_Menu(Menu_Option option) throws IOException {
+    protected void go_to_fxml(Menu_Option option) throws IOException {
         Econatura.getStage().setResizable(false);
         Econatura.getStage().setHeight(600);
         Econatura.getStage().setWidth(1200);
         switch(option){
-            case Request: case Request_Request :
+            case Request: case Request_Request:
                 try {
                     Econatura.setRoot("Funcionario_Solicitudes");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                break;
+            case Request_License:
+                try {
+                    Econatura.setRoot("Funcionario_Solicitudes");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case Inform: case Inform_Inform_1:
+                try {
+                    Econatura.setRoot("Funcionario_Solicitudes");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                break;
+            case Cash: case Cash_Cash:
+                break;
+            case Settings: case Settings_Type:
+                break;
+            case Settings_Resource:
+            case Settings_Person:
+
+
+        }
+    }
+    protected void Update_Menu(Menu_Option option) throws IOException {
+        switch(option){
+            case Request: case Request_Request:
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
                 RRequest_Request.setFill(Color.web("#EEF1F4",1.0));
                 GRequest_Request.setVisible(true);
@@ -138,6 +165,7 @@ public class Menu extends AnchorPane {
                 GSettings_Type.setVisible(false);
                 break;
             case Request_License:
+
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
                 RRequest_Request.setFill(Color.web("#FFFFFF",0));
                 RRequest_License.setFill(Color.web("#EEF1F4",1));
