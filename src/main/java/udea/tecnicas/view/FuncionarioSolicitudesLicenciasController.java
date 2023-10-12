@@ -5,30 +5,36 @@ import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 
 import java.net.URL;
+import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class FuncionarioSolicitudesLicenciasController {
     @FXML
     public WebView ViewMap;
-    public WebEngine MapEngine = null;
+    public WebEngine MapEngine;
 
     @FXML
     public Button boton_gargar;
 
     @FXML
     public void cargar_pagina(){
-        URL url = this.getClass().getResource("map.html");
+        MapEngine = ViewMap.getEngine();
+        //String url = getClass().getResource("map.html").toString();
 
-        System.out.println(url.toString());
-        String content = "<html>\n" +
-                "    <body>\n" +
-                "        <h1>Mapa de los factores</h1>\n" +
-                "    </body>\n" +
-                "</html>";
-        MapEngine.loadContent(content);
+
+        String url =  "https://www.google.com/maps/@6.2502784,-75.5764463,16z?entry=ttu";
+        MapEngine.setJavaScriptEnabled(true);
+        try{
+            MapEngine.load(url);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        System.out.println("Cargar Pagina");
     }
 
-    public FuncionarioSolicitudesLicenciasController(){
-        MapEngine = ViewMap.getEngine();
+    @FXML
+    public void CargarMapa(){
+        cargar_pagina();
     }
 
 
