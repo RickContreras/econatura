@@ -199,7 +199,12 @@ public class Menu extends AnchorPane {
                 GSettings_Type.setVisible(false);
                 break;
             case Request_License:
-
+                GCash_Cash.setVisible(false);
+                GInform_Inform_1.setVisible(false);
+                GCash_Cash.setVisible(false);
+                GSettings_Resource.setVisible(false);
+                GSettings_Person.setVisible(false);
+                GSettings_Type.setVisible(false);
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
                 RRequest_Request.setFill(Color.web("#FFFFFF",0));
                 RRequest_License.setFill(Color.web("#EEF1F4",1));
