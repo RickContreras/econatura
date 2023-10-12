@@ -94,6 +94,12 @@
             <artifactId>javafx-web</artifactId>
             <version>17.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.lynden</groupId>
+            <artifactId>GMapsFX</artifactId>
+            <version>2.12.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

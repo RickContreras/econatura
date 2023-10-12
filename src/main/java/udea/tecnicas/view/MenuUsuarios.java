@@ -12,7 +12,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
-public class Menu extends AnchorPane {
+public class MenuUsuarios extends AnchorPane {
     protected enum Menu_Option{
         Request,Request_Request,Request_License,Inform,Inform_Inform_1,Cash,Cash_Cash,Settings,Settings_Type,Settings_Resource,Settings_Person
     }
@@ -68,7 +68,7 @@ public class Menu extends AnchorPane {
     private Group GSettings_Person;
     @FXML
     private Group GLogout;
-    public Menu(@NamedArg("Inicial_option") String Inicial_option_) throws IOException {
+    public MenuUsuarios(@NamedArg("Inicial_option") String Inicial_option_) throws IOException {
         this.Inicial_option = Menu_Option.valueOf(Inicial_option_);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
         fxmlLoader.setRoot(this);
@@ -139,39 +139,17 @@ public class Menu extends AnchorPane {
                 break;
             case Inform: case Inform_Inform_1:
                 try {
-                    Econatura.setRoot("FuncionarioInformes");
+                    Econatura.setRoot("FuncionarioSolicitudes");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 break;
             case Cash: case Cash_Cash:
-                try {
-                    Econatura.setRoot("FuncionarioCaja");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 break;
             case Settings: case Settings_Type:
-                try {
-                    Econatura.setRoot("FuncionarioSettingsType");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
                 break;
             case Settings_Resource:
-                try {
-                    Econatura.setRoot("FuncionarioSettingsResource");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
             case Settings_Person:
-                try {
-                    Econatura.setRoot("FuncionarioSettingsPerson");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
 
 
         }
@@ -199,12 +177,7 @@ public class Menu extends AnchorPane {
                 GSettings_Type.setVisible(false);
                 break;
             case Request_License:
-                GCash_Cash.setVisible(false);
-                GInform_Inform_1.setVisible(false);
-                GCash_Cash.setVisible(false);
-                GSettings_Resource.setVisible(false);
-                GSettings_Person.setVisible(false);
-                GSettings_Type.setVisible(false);
+
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
                 RRequest_Request.setFill(Color.web("#FFFFFF",0));
                 RRequest_License.setFill(Color.web("#EEF1F4",1));
@@ -254,19 +227,11 @@ public class Menu extends AnchorPane {
                 GSettings_Type.setVisible(true);
                 break;
             case Settings_Resource:
-                GInform_Inform_1.setVisible(false);
-                GCash_Cash.setVisible(false);
-                GRequest_Request.setVisible(false);
-                GRequest_License.setVisible(false);
                 RSettings_Person.setFill(Color.web("#FFFFFF",0));
                 RSettings_Resource.setFill(Color.web("#EEF1F4",1));
                 RSettings_Type.setFill(Color.web("#FFFFFF",0));
                 break;
             case Settings_Person:
-                GCash_Cash.setVisible(false);
-                GInform_Inform_1.setVisible(false);
-                GRequest_Request.setVisible(false);
-                GRequest_License.setVisible(false);
                 RSettings_Person.setFill(Color.web("#EEF1F4",1));
                 RSettings_Resource.setFill(Color.web("#FFFFFF",0));
                 RSettings_Type.setFill(Color.web("#FFFFFF",0));
