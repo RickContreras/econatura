@@ -6,7 +6,7 @@ import javafx.scene.web.WebEngine;
 
 import java.net.URL;
 
-public class Funcionario_Solicitudes_LicenciasController {
+public class FuncionarioSolicitudesLicenciasController {
     @FXML
     public WebView ViewMap;
     public WebEngine MapEngine = null;
@@ -27,7 +27,7 @@ public class Funcionario_Solicitudes_LicenciasController {
         MapEngine.loadContent(content);
     }
 
-    public Funcionario_Solicitudes_LicenciasController(){
+    public FuncionarioSolicitudesLicenciasController(){
         MapEngine = ViewMap.getEngine();
     }
 
