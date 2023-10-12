@@ -7,7 +7,7 @@ public class LoginCtrl {
 
     @FXML
     private void switchToSecondary() throws IOException {
-        Econatura.setRoot("Funcionario_Solicitudes");
+        Econatura.setRoot("FuncionarioSolicitudes");
         Econatura.getStage().setHeight(600);
         Econatura.getStage().setWidth(1200);
     }

@@ -113,21 +113,21 @@ public class Menu extends AnchorPane {
         switch(option){
             case Request: case Request_Request:
                 try {
-                    Econatura.setRoot("Funcionario_Solicitudes");
+                    Econatura.setRoot("FuncionarioSolicitudes");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 break;
             case Request_License:
                 try {
-                    Econatura.setRoot("Funcionario_Solicitudes_licencias");
+                    Econatura.setRoot("FuncionarioSolicitudeslicencias");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 break;
             case Inform: case Inform_Inform_1:
                 try {
-                    Econatura.setRoot("Funcionario_Solicitudes");
+                    Econatura.setRoot("FuncionarioSolicitudes");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
