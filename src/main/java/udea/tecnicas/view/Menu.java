@@ -120,7 +120,7 @@ public class Menu extends AnchorPane {
                 break;
             case Request_License:
                 try {
-                    Econatura.setRoot("Funcionario_Solicitudes");
+                    Econatura.setRoot("Funcionario_Solicitudes_licencias");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
