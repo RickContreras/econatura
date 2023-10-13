@@ -1,6 +1,6 @@
 package udea.tecnicas.model;
 
-public class state {
+public class State {
     public enum stateRequest{
         RECEIVED,IN_REVIEW,APROVED,REFUSED
     }

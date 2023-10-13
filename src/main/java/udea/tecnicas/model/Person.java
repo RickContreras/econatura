@@ -1,13 +1,15 @@
 package udea.tecnicas.model;
 
 public class Person {
-    private static int id = 0;
+    private String id;
     private String fullName;
     private int CC;
+    private Type.PersonType type;
 
-    public Person(String fullName, int CC) {
+    public Person(String id,String fullName, int CC) {
         this.fullName = fullName;
         this.CC = CC;
+        this.id = id;
     }
 
     public String getFullName() {
