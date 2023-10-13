@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import udea.tecnicas.controller.Database;
 
 import java.io.IOException;
 
@@ -27,6 +28,7 @@ public class Econatura extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
+        Database.createTablesIfNotExist();
     }
 
     static void setRoot(String fxml) throws IOException {

@@ -3,7 +3,7 @@ package udea.tecnicas.model;
 import java.util.HashMap;
 
 public class Client extends Person{
-    public Client(String id, String fullName, int CC) {
+    public Client(String id, String fullName, String CC) {
         super(id, fullName, CC);
     }
 

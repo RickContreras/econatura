@@ -35,7 +35,23 @@ public class Database {
         }
     }
     public static HashMap<String,Client> GetClients(){
-        return new HashMap<String,Client>();
+        Connection connection = null;
+        HashMap<String,Client> Client_list = new HashMap<>();
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Client");
+
+            while(rs.next())
+            {
+                Client_list.put(rs.getString("id"),new Client(rs.getString("id"),rs.getString("fullname"),rs.getString("documento")));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.toString());
+        }
+        return Client_list;
     }
     public static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
@@ -58,16 +74,16 @@ public class Database {
     public static HashMap<String,PenaltyFee> GetPenaltyFeesbyId(){
         return new HashMap<String,PenaltyFee>();
     }
-    public static HashMap<String,Person> GetPersonbyId(){
+    protected static HashMap<String,Person> GetPersonbyId(){
         return new HashMap<String,Person>();
     }
-    public static HashMap<String,Person> GetRequestbyId(){
+    protected static HashMap<String,Person> GetRequestbyId(){
         return new HashMap<String,Person>();
     }
-    public static HashMap<String,Resource> GetResourcebyId(){
+    protected static HashMap<String,Resource> GetResourcebyId(){
         return new HashMap<String,Resource>();
     }
-    protected static void createTablesIfNotExist()
+    public static void createTablesIfNotExist()
     {
         Connection connection = null;
         try
@@ -76,13 +92,11 @@ public class Database {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
-
             statement.executeUpdate("create table IF NOT EXISTS Client (id string,fullname string, document string, type string )");
             statement.executeUpdate("create table IF NOT EXISTS License (id string, id_client string, id_auditor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
-            statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value float , state integer");
+            statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value real , state string)");
             statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource string , date string, state string,estimated_impact string,necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
-
 
         }
         catch(SQLException e)
