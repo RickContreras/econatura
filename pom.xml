@@ -95,9 +95,9 @@
             <version>17.0.1</version>
         </dependency>
         <dependency>
-            <groupId>com.lynden</groupId>
-            <artifactId>GMapsFX</artifactId>
-            <version>2.12.0</version>
+            <groupId>org.xerial</groupId>
+            <artifactId>sqlite-jdbc</artifactId>
+            <version>3.43.0.0</version>
         </dependency>
 
     </dependencies>
