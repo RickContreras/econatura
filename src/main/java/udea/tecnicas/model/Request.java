@@ -1,2 +1,4 @@
-package udea.tecnicas.model;public class Request {
+package udea.tecnicas.model;
+
+public class Request {
 }

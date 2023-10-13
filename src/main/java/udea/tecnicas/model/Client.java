@@ -1,2 +1,4 @@
-package udea.tecnicas.model;public class Client {
+package udea.tecnicas.model;
+
+public class Client {
 }

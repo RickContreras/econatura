@@ -1,2 +1,4 @@
-package udea.tecnicas.model;public class License {
+package udea.tecnicas.model;
+
+public class License {
 }

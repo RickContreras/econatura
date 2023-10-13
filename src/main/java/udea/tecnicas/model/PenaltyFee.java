@@ -1,2 +1,4 @@
-package udea.tecnicas.model;public class PenaltyFee {
+package udea.tecnicas.model;
+
+public class PenaltyFee {
 }

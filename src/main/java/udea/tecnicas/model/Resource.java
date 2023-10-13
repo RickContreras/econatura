@@ -1,2 +1,4 @@
-package udea.tecnicas.model;public class Resource {
+package udea.tecnicas.model;
+
+public class Resource {
 }
