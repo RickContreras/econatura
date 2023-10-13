@@ -11,11 +11,9 @@
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.UsuarioSolicitudesCtrl">
     <MenuUsuarios Inicial_option="Request_Request" layoutX="0" layoutY="0" minHeight="800"/>
     <children>
-        <TableView layoutX="389.0" layoutY="93.0" prefHeight="400.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
+        <TableView fx:id="RequestTable" layoutX="389.0" layoutY="93.0" prefHeight="400.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
             <columns>
-                <TableColumn prefWidth="200.0" style="-fx-border-radius: 20px;" text="Fecha" />
-                <TableColumn prefWidth="200.0" style="-fx-border-radius: 20;" text="Estado" />
-                <TableColumn prefWidth="200.0" text="Recurso" />
+
             </columns>
         </TableView>
       <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToGenerarSolicitud" text="Generar Solicitud">

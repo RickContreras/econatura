@@ -20,6 +20,10 @@ public class Econatura extends Application {
     private static Stage stage;
     private static Scene scene;
 
+    private static String DocumentoCliente;
+    public static String getDocumentoCliente(){return DocumentoCliente;}
+    public static void SetDocumentoCliente(String documento){ DocumentoCliente = documento;}
+
     public static Stage getStage() {
         return stage;
     }
