@@ -12,11 +12,14 @@ public class Request {
     }
 
     public String getId_Cliente() {
-        return id_Cliente;
+        return client.getCC();
+    }
+    public Client getCliente() {
+        return client;
     }
 
-    public void setId_Cliente(String id_Cliente) {
-        this.id_Cliente = id_Cliente;
+    public void setId_Cliente(Client client) {
+        this.client = client;
     }
 
     public Resource getResource() {
@@ -60,14 +63,14 @@ public class Request {
     }
 
     private String id;
-    private String id_Cliente;
+    private Client client;
 
     public Request() {
     }
 
-    public Request(String id, String id_Cliente, Resource resource, LocalDateTime date, State.stateRequest state, float estimated_impact, float necessary_recovery) {
+    public Request(String id, Client client, Resource resource, LocalDateTime date, State.stateRequest state, float estimated_impact, float necessary_recovery) {
         this.id = id;
-        this.id_Cliente = id_Cliente;
+        this.client = client;
         this.resource = resource;
         this.date = date;
         this.state = state;

@@ -7,10 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 import udea.tecnicas.controller.Database;
-import udea.tecnicas.model.Client;
-import udea.tecnicas.model.Type;
+import udea.tecnicas.model.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 
 /**
@@ -37,6 +37,7 @@ public class Econatura extends Application {
         stage.setScene(scene);
         stage.show();
         Database.createTablesIfNotExist();
+        Database.add_Request(new Request("009",Database.GetClientsByDocument("1128457944"),new Resource(), LocalDateTime.now(), State.stateRequest.IN_REVIEW,200,200));
 
 
     }

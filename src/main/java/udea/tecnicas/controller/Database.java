@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import udea.tecnicas.model.*;
 
@@ -53,14 +54,46 @@ public class Database {
         }
         return Client_list;
     }
+    public static Client GetClientsByDocument(String Id){
+        Connection connection = null;
+        Client c = new Client();
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Client where Document='"+Id+"'");
+
+            while(rs.next())
+            {
+                c = new Client(rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type")));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+    public static void add_Request(Request r){
+        Connection connection = null;
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getId_Cliente()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimated_impact()+"','"+r.getNecessary_recovery()+"')");
+        }
+        catch(SQLException e){
+            System.out.println(e.toString());
+        }
+    }
+    protected static HashMap<String,Request> GetRequests(){
+
+        return new HashMap<String,Request>();
+    }
     protected static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
     }
     protected static HashMap<String,PenaltyFee> GetPenaltyFees(){
         return new HashMap<String,PenaltyFee>();
-    }
-    protected static HashMap<String,Person> GetRequest(){
-        return new HashMap<String,Person>();
     }
     protected static HashMap<String,Resource> GetResource(){
         return new HashMap<String,Resource>();
@@ -108,7 +141,7 @@ public class Database {
             statement.executeUpdate("create table IF NOT EXISTS Client (fullname string, document string, type string )");
             statement.executeUpdate("create table IF NOT EXISTS License (id string, id_client string, id_auditor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value real , state string)");
-            statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource string , date string, state string,estimated_impact string,necessary_recovery string)");
+            statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource_id string , date string, state string,estimated_impact string,necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
 
         }

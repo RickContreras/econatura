@@ -6,6 +6,7 @@ public class Resource {
     private String la;
     private Type.ResourceType type;
     private float capacity;
+    private String id;
 
     public Resource() {
     }
@@ -14,7 +15,8 @@ public class Resource {
         return name;
     }
 
-    public Resource(String name, String lo, String la, Type.ResourceType type, float capacity) {
+    public Resource(String id,String name, String lo, String la, Type.ResourceType type, float capacity) {
+        this.id = id;
         this.name = name;
         this.lo = lo;
         this.la = la;
@@ -24,6 +26,14 @@ public class Resource {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getLo() {

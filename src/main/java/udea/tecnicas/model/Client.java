@@ -9,7 +9,9 @@ public class Client extends Person{
     public Client(String doc,String name){
         super(name,doc);
     }
-
+    public Client(){
+        super();
+    }
 
     public HashMap<String, License> getLicenses() {
         return Licenses;
