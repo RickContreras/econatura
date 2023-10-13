@@ -15,7 +15,7 @@ public class Database {
         {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Client (person_id) values('"+c.getPerson().getId()+"')");
+            statement.executeUpdate("insert into Client (person_id) values('"+c.getId()+"')");
         }
         catch(SQLException e){
             System.out.println(e.toString());
@@ -77,10 +77,9 @@ public class Database {
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            statement.executeUpdate("create table IF NOT EXISTS Client (person_id string )");
+            statement.executeUpdate("create table IF NOT EXISTS Client (id string,fullname string, document string, type string )");
             statement.executeUpdate("create table IF NOT EXISTS License (id string, id_client string, id_auditor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value float , state integer");
-            statement.executeUpdate("create table IF NOT EXISTS Person (id string, fullname string, document string , person_type string)");
             statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource string , date string, state string,estimated_impact string,necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
 
