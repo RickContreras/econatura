@@ -1,45 +1,83 @@
 package udea.tecnicas.view;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import udea.tecnicas.model.Request;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.time.LocalDateTime;
 
 public class UsuarioSolicitudesCtrl {
     @FXML
     private void switchToGenerarSolicitud() throws IOException {
-        Econatura.setRoot("usuarioGenerarSolicitud");
-        Econatura.getStage().setHeight(600);
-        Econatura.getStage().setWidth(1200);
+        //Econatura.setRoot("usuarioGenerarSolicitud");
+        //Econatura.getStage().setHeight(600);
+        //Econatura.getStage().setWidth(1200);
+
+    }
+    @FXML
+    public void initialize() {
+        ColId= new TableColumn<>("id");
+        ColId.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        ColId_cliente= new TableColumn<>("id_Cliente");
+        ColId_cliente.setCellValueFactory(new PropertyValueFactory<>("id_Cliente"));
+
+        ColResource= new TableColumn<>("resource");
+        ColResource.setCellValueFactory(new PropertyValueFactory<>("resource"));
+
+        ColDate= new TableColumn<>("date");
+        ColDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+
+        ColEstimated= new TableColumn<>("state");
+        ColEstimated.setCellValueFactory(new PropertyValueFactory<>("state"));
+
+        ColRecovery = new TableColumn<>("estimated_impact");
+        ColRecovery.setCellValueFactory(new PropertyValueFactory<>("estimated_impact"));
+
+        ColState = new TableColumn<>("necessary_recovery");
+        ColState.setCellValueFactory(new PropertyValueFactory<>("necessary_recovery"));
+
+        RequestTable.getColumns().add(ColId);
+        RequestTable.getColumns().add(ColId_cliente);
+        RequestTable.getColumns().add(ColResource);
+        RequestTable.getColumns().add(ColDate);
+        RequestTable.getColumns().add(ColEstimated);
+        RequestTable.getColumns().add(ColRecovery);
+        RequestTable.getColumns().add(ColState);
+
+
+        RequestTable.getItems().add(new RequestString("2032d","1128457944","Arbol xys",LocalDateTime.now(),"Activo",200234.0f,2343212.0f));
+        RequestTable.getItems().add(new RequestString("2032d","1128457944","Arbol xys",LocalDateTime.now(),"Activo",200234.0f,2343212.0f));
+        RequestTable.getItems().add(new RequestString("2032d","1128457944","Arbol xys",LocalDateTime.now(),"Activo",200234.0f,2343212.0f));
+
+        //tableView.getItems().addAll(getDataFromSource()); // Perfectly Ok here, as FXMLLoader already populated all @FXML annotated members.
     }
     @FXML
     private TableView RequestTable;
-    @FXML
-    private TableColumn<Request,String> ColId;
-    @FXML
-    private TableColumn<Request,String> ColId_cliente;
-    @FXML
-    private TableColumn<Request,String> ColResource;
-    @FXML
-    private TableColumn<Request,String> ColDate;
-    @FXML
-    private TableColumn<Request,String> ColEstimated;
-    @FXML
-    private TableColumn<Request,String> ColRecovery;
-    @FXML
-    private TableColumn<Request,String> ColState;
+
+    private TableColumn<RequestString,String> ColId;
+
+    private TableColumn<RequestString,String> ColId_cliente;
+
+    private TableColumn<RequestString,String> ColResource;
+
+    private TableColumn<RequestString, LocalDateTime> ColDate;
+
+    private TableColumn<RequestString,String> ColEstimated;
+
+    private TableColumn<RequestString,Float> ColRecovery;
+
+    private TableColumn<RequestString, Float> ColState;
 
 
 
     public UsuarioSolicitudesCtrl(){
-        //ColId.setCellValueFactory(new PropertyValueFactory("ID"));
 
-        ObservableList<Request> requests = null;
-        //RequestTable.setItems(requests);
+
+
+
     }
+
 }

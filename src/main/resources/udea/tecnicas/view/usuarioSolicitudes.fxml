@@ -13,13 +13,7 @@
     <children>
         <TableView fx:id="RequestTable" layoutX="389.0" layoutY="93.0" prefHeight="400.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
             <columns>
-                <TableColumn fx:id="ColId" prefWidth="100.0" style="-fx-border-radius: 20px;" text="id" />
-                <TableColumn fx:id="ColId_cliente" prefWidth="100.0" style="-fx-border-radius: 20px;" text="Cliente" />
-                <TableColumn fx:id="ColResource" prefWidth="100.0" style="-fx-border-radius: 20px;" text="Recurso" />
-                <TableColumn fx:id="ColState" prefWidth="100.0" style="-fx-border-radius: 20px;" text="Estado" />
-                <TableColumn fx:id="ColDate" prefWidth="100.0" style="-fx-border-radius: 20px;" text="Fecha" />
-                <TableColumn fx:id="ColEstimated" prefWidth="100.0" style="-fx-border-radius: 20px;" text="Impacto_estimado" />
-                <TableColumn fx:id="ColRecovery" prefWidth="100.0" style="-fx-border-radius: 20px;" text="recuperacion_necesaria" />
+
             </columns>
         </TableView>
       <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToGenerarSolicitud" text="Generar Solicitud">
