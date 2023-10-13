@@ -24,6 +24,9 @@ public class Person {
 
     }
 
+    public Person() {
+    }
+
     public Person(String fullName, String document) {
         this.fullName = fullName;
         this.document = document;
