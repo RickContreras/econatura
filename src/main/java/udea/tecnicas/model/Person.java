@@ -1,12 +1,10 @@
 package udea.tecnicas.model;
 
 public class Person {
-    private String id;
+
     private String fullName;
 
-    public String getId() {
-        return id;
-    }
+
 
     private String document;
     private Type.PersonType type;
@@ -19,21 +17,22 @@ public class Person {
         this.type = type;
     }
 
-    public Person(String id, String fullName, String CC) {
+    public Person( String fullName, String CC,String type) {
         this.fullName = fullName;
         this.document = CC;
-        this.id = id;
+        this.type = Type.PersonType.valueOf(type);
+
     }
 
     public Person(String fullName, String document) {
         this.fullName = fullName;
         this.document = document;
+        this.type = Type.PersonType.UNDEFINED;
     }
 
-    public Person(String id, String fullName, String CC, Type.PersonType type) {
+    public Person( String fullName, String CC, Type.PersonType type) {
         this.fullName = fullName;
         this.document = CC;
-        this.id = id;
         this.type = type;
     }
 
