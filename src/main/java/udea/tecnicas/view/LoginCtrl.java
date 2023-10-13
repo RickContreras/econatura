@@ -1,6 +1,8 @@
 package udea.tecnicas.view;
 
 import java.io.IOException;
+import java.lang.runtime.SwitchBootstraps;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,7 +29,16 @@ public class LoginCtrl {
     private void login(){
         LabelErrorLogin.setVisible(false);
         if(PersonAndClientProcess.PersonExist(TextFieldUsuariosRegistrado.getText())){
-            System.out.println("Usuario Registrado");
+            try{
+                switchToUsuario();
+            }
+            catch(IOException e){
+                LabelErrorLogin.setVisible(true);
+                LabelErrorLogin.setText(e.getMessage());
+                System.out.println(e.getMessage()+e.getCause());
+
+            }
+
         }
         else {
 
@@ -42,6 +53,14 @@ public class LoginCtrl {
             System.out.println("Usuario no Registrado");
             if(PersonAndClientProcess.Sign(TextFieldUsuariosNuevoDocumento.getText(),TextFieldUsuariosNuevoNombre.getText())){
                 System.out.println("Usuario Registrado Correctamente");
+                try{
+                    switchToUsuario();
+                }
+                catch(IOException e){
+                    LabelErrorSignin.setVisible(true);
+                    LabelErrorSignin.setText(e.getMessage());
+
+                }
             }
         }
         else {

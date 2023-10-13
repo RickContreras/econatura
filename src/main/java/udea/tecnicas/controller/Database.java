@@ -49,7 +49,7 @@ public class Database {
             }
         }
         catch(SQLException e){
-            System.out.println(e.toString());
+            System.out.println(e.getMessage());
         }
         return Client_list;
     }
