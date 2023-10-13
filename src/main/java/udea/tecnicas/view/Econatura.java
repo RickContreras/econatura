@@ -4,8 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
 import udea.tecnicas.controller.Database;
+import udea.tecnicas.model.Client;
+import udea.tecnicas.model.Type;
 
 import java.io.IOException;
 
@@ -29,6 +32,8 @@ public class Econatura extends Application {
         stage.setScene(scene);
         stage.show();
         Database.createTablesIfNotExist();
+        //Database.add_Client(new Client("123","Juan","11282342344", Type.PersonType.NATURAL));//prueba
+       // System.out.println(Database.GetClients());
     }
 
     static void setRoot(String fxml) throws IOException {

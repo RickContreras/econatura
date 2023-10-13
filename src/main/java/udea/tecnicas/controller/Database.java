@@ -15,7 +15,7 @@ public class Database {
         {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Client (person_id) values('"+c.getId()+"')");
+            statement.executeUpdate("insert into Client (id,fullname,document,type) values('"+c.getId()+"','"+c.getFullName()+"','"+c.getCC()+"','"+c.getType()+"')");
         }
         catch(SQLException e){
             System.out.println(e.toString());
@@ -45,7 +45,7 @@ public class Database {
 
             while(rs.next())
             {
-                Client_list.put(rs.getString("id"),new Client(rs.getString("id"),rs.getString("fullname"),rs.getString("documento")));
+                Client_list.put(rs.getString("id"),new Client(rs.getString("id"),rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
             }
         }
         catch(SQLException e){

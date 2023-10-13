@@ -11,10 +11,24 @@ public class Person {
     private String document;
     private Type.PersonType type;
 
-    public Person(String id,String fullName, String CC) {
+    public Type.PersonType getType() {
+        return type;
+    }
+
+    public void setType(Type.PersonType type) {
+        this.type = type;
+    }
+
+    public Person(String id, String fullName, String CC) {
         this.fullName = fullName;
         this.document = CC;
         this.id = id;
+    }
+    public Person(String id, String fullName, String CC, Type.PersonType type) {
+        this.fullName = fullName;
+        this.document = CC;
+        this.id = id;
+        this.type = type;
     }
 
     public String getFullName() {
