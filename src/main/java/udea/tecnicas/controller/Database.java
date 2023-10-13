@@ -51,14 +51,16 @@ public class Database {
         try
         {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:data_bank.db");
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
-            statement.executeUpdate("create table IF NOT EXISTS Employee (id string, password string, username string, first_name string , last_name string,EmployeeType string)");
-            statement.executeUpdate("create table IF NOT EXISTS Client (id string, ClientType string, first_name string , last_name string)");
-            statement.executeUpdate("create table IF NOT EXISTS Account (id string, client_id string, limit_per_day integer , limit_per_amount integer, overdraft integer)");
-            statement.executeUpdate("create table IF NOT EXISTS Transactions (uuid string, typet string, amount integer , account_id string, datetime string)");
+            statement.executeUpdate("create table IF NOT EXISTS Client (person_id string )");
+            statement.executeUpdate("create table IF NOT EXISTS License (id string, id_cliente string, id_autor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
+            statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value float , state integer");
+            statement.executeUpdate("create table IF NOT EXISTS Person (id string, fullname string, document string , person_type string)");
+            statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource string , date string, state string,estimated_impact string,necessary_recovery string)");
+            statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
 
 
         }
