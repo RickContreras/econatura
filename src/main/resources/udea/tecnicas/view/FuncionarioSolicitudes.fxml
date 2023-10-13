@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import udea.tecnicas.view.Menu?>
+<!--<?import udea.tecnicas.view.Menu?>-->
+<!--<Menu Inicial_option="" layoutX="0" layoutY="0" minHeight="800"/>-->
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.FuncionarioSolicitudesController">
+    <Menu Inicial_option="Request_Request" layoutX="0" layoutY="0" minHeight="800"/>
+   <children>
+      <TableView layoutX="400.0" layoutY="150.0" prefHeight="400.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
+        <columns>
+          <TableColumn prefWidth="200.0" style="-fx-border-radius: 20px;" text="Fecha" />
+          <TableColumn prefWidth="200.0" style="-fx-border-radius: 20;" text="Estado" />
+            <TableColumn prefWidth="200.0" text="Recurso" />
+        </columns>
+      </TableView>
+      <TextField layoutX="447.0" layoutY="78.0" />
+      <Label layoutX="456.0" layoutY="50.0" text="Busqueda por documentp" />
+   </children>
+</AnchorPane>

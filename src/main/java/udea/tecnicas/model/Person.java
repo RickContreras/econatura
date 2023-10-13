@@ -1,13 +1,20 @@
 package udea.tecnicas.model;
 
 public class Person {
-    private static int id = 0;
+    private String id;
     private String fullName;
-    private int CC;
 
-    public Person(String fullName, int CC) {
+    public String getId() {
+        return id;
+    }
+
+    private int document;
+    private Type.PersonType type;
+
+    public Person(String id,String fullName, int CC) {
         this.fullName = fullName;
-        this.CC = CC;
+        this.document = CC;
+        this.id = id;
     }
 
     public String getFullName() {
@@ -15,7 +22,7 @@ public class Person {
     }
 
     public int getCC() {
-        return CC;
+        return document;
     }
 
     public void setFullName(String fullName) {
@@ -23,6 +30,6 @@ public class Person {
     }
 
     protected void setCC(int CC) {
-        this.CC = CC;
+        this.document = CC;
     }
 }
