@@ -8,20 +8,34 @@ public class Person {
         return id;
     }
 
-    private int document;
+    private String document;
     private Type.PersonType type;
 
-    public Person(String id,String fullName, int CC) {
+    public Type.PersonType getType() {
+        return type;
+    }
+
+    public void setType(Type.PersonType type) {
+        this.type = type;
+    }
+
+    public Person(String id, String fullName, String CC) {
         this.fullName = fullName;
         this.document = CC;
         this.id = id;
+    }
+    public Person(String id, String fullName, String CC, Type.PersonType type) {
+        this.fullName = fullName;
+        this.document = CC;
+        this.id = id;
+        this.type = type;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public int getCC() {
+    public String getCC() {
         return document;
     }
 
@@ -29,7 +43,7 @@ public class Person {
         this.fullName = fullName;
     }
 
-    protected void setCC(int CC) {
+    protected void setCC(String CC) {
         this.document = CC;
     }
 }
