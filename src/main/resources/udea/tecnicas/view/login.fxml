@@ -19,7 +19,7 @@
         </ImageView>
         <Pane layoutX="248.0" prefHeight="400.0" prefWidth="553.0" style="-fx-background-color: white;" stylesheets="@../../../asset/css/Login.css">
             <children>
-                <TextField layoutX="78.0" layoutY="184.0" />
+                <TextField fx:id="TextFieldUsuariosRegistrado" layoutX="78.0" layoutY="184.0" />
                 <ImageView fitHeight="44.0" fitWidth="97.0" layoutX="14.0" layoutY="347.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../asset/images/logo_corantioquia.png" />
@@ -31,18 +31,20 @@
                     </image>
                 </ImageView>
                 <Label layoutX="104.0" layoutY="92.0" text="Usuarios registrados" textFill="#545f71" />
-                <Button layoutX="128.0" layoutY="258.0" mnemonicParsing="false" onAction="#switchToUsuario" style="-fx-background-color: #545F71;" text="Ingresar" textFill="WHITE" />
+                <Button layoutX="128.0" layoutY="258.0" mnemonicParsing="false" onAction="#login" style="-fx-background-color: #545F71;" text="Ingresar" textFill="WHITE" />
                 <Button layoutX="449.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToFuncionario" style="-fx-background-color: #545F71;" text="Funcionario" textFill="WHITE" />
-            <TextField layoutX="292.0" layoutY="131.0" />
-            <TextField layoutX="293.0" layoutY="183.0" />
+            <TextField fx:id="TextFieldUsuariosNuevoNombre" layoutX="292.0" layoutY="131.0" />
+            <TextField fx:id="TextFieldUsuariosNuevoDocumento" layoutX="293.0" layoutY="183.0" />
             <Label layoutX="333.0" layoutY="91.0" text="Usuarios nuevos" textFill="#545f71" />
-            <Button layoutX="342.0" layoutY="258.0" mnemonicParsing="false" onAction="#switchToUsuario" style="-fx-background-color: #545F71;" text="Inscribirse" textFill="WHITE" />
+            <Button layoutX="342.0" layoutY="258.0" mnemonicParsing="false" onAction="#signin" style="-fx-background-color: #545F71;" text="Inscribirse" textFill="WHITE" />
             <Label layoutX="187.0" layoutY="33.0" text="Econatura" textFill="#545f71">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
             <Line endX="-11.88360595703125" endY="104.739501953125" layoutX="275.0" layoutY="157.0" startX="-11.88360595703125" startY="-67.3419418334961" stroke="#545f71" />
+            <Label fx:id="LabelErrorLogin" layoutX="100.0" layoutY="219.0" text="Label" textFill="RED" visible="false" />
+            <Label fx:id="LabelErrorSignin" layoutX="323.0" layoutY="228.0" text="Label" textFill="RED" visible="false"/>
             </children>
         </Pane>
     </children>

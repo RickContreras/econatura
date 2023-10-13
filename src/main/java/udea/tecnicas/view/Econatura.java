@@ -11,6 +11,7 @@ import udea.tecnicas.model.Client;
 import udea.tecnicas.model.Type;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * JavaFX App
@@ -32,8 +33,8 @@ public class Econatura extends Application {
         stage.setScene(scene);
         stage.show();
         Database.createTablesIfNotExist();
-        //Database.add_Client(new Client("123","Juan","11282342344", Type.PersonType.NATURAL));//prueba
-       // System.out.println(Database.GetClients());
+
+
     }
 
     static void setRoot(String fxml) throws IOException {

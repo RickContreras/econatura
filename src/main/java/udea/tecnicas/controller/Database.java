@@ -9,7 +9,7 @@ import udea.tecnicas.model.*;
 
 public class Database {
 
-    public static void add_Client(Client c){
+    protected static void add_Client(Client c){
         Connection connection = null;
         try
         {
@@ -21,7 +21,7 @@ public class Database {
             System.out.println(e.toString());
         }
     }
-    public static void add_License(License l,Client c){
+    protected static void add_License(License l,Client c){
         Connection connection = null;
         try
         {
@@ -34,7 +34,7 @@ public class Database {
             System.out.println(e.toString());
         }
     }
-    public static HashMap<String,Client> GetClients(){
+    protected static HashMap<String,Client> GetClients(){
         Connection connection = null;
         HashMap<String,Client> Client_list = new HashMap<>();
         try
@@ -45,7 +45,7 @@ public class Database {
 
             while(rs.next())
             {
-                Client_list.put(rs.getString("id"),new Client(rs.getString("id"),rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
+                Client_list.put(rs.getString("document"),new Client(rs.getString("id"),rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
             }
         }
         catch(SQLException e){
@@ -53,25 +53,25 @@ public class Database {
         }
         return Client_list;
     }
-    public static HashMap<String,License> GetLicences(){
+    protected static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
     }
-    public static HashMap<String,PenaltyFee> GetPenaltyFees(){
+    protected static HashMap<String,PenaltyFee> GetPenaltyFees(){
         return new HashMap<String,PenaltyFee>();
     }
-    public static HashMap<String,Person> GetRequest(){
+    protected static HashMap<String,Person> GetRequest(){
         return new HashMap<String,Person>();
     }
-    public static HashMap<String,Resource> GetResource(){
+    protected static HashMap<String,Resource> GetResource(){
         return new HashMap<String,Resource>();
     }
-    public static HashMap<String,Client> GetClientsbyId(){
+    protected static HashMap<String,Client> GetClientsbyId(){
         return new HashMap<String,Client>();
     }
-    public static HashMap<String,License> GetLicencesbyId(){
+    protected static HashMap<String,License> GetLicencesbyId(){
         return new HashMap<String,License>();
     }
-    public static HashMap<String,PenaltyFee> GetPenaltyFeesbyId(){
+    protected static HashMap<String,PenaltyFee> GetPenaltyFeesbyId(){
         return new HashMap<String,PenaltyFee>();
     }
     protected static HashMap<String,Person> GetPersonbyId(){
@@ -82,6 +82,19 @@ public class Database {
     }
     protected static HashMap<String,Resource> GetResourcebyId(){
         return new HashMap<String,Resource>();
+    }
+
+    protected static void updateClient(Client nc){
+        Connection connection = null;
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update Client set id='"+nc.getId()+"',fullname='"+nc.getFullName()+"',type='"+nc.getType()+"' where document="+nc.getCC());
+        }
+        catch(SQLException e) {
+            System.out.println(e.toString());
+        }
     }
     public static void createTablesIfNotExist()
     {
