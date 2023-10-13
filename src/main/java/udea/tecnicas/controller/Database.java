@@ -43,9 +43,6 @@ public class Database {
     public static HashMap<String,PenaltyFee> GetPenaltyFees(){
         return new HashMap<String,PenaltyFee>();
     }
-    public static HashMap<String,Person> GetPerson(){
-        return new HashMap<String,Person>();
-    }
     public static HashMap<String,Person> GetRequest(){
         return new HashMap<String,Person>();
     }
