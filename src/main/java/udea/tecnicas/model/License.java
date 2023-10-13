@@ -52,11 +52,11 @@ public class License {
         PenaltyFees = penaltyFees;
     }
 
-    public udea.tecnicas.model.state.stateLicense getState() {
+    public State.stateLicense getState() {
         return state;
     }
 
-    public void setState(udea.tecnicas.model.state.stateLicense state) {
+    public void setState(State.stateLicense state) {
         this.state = state;
     }
 
@@ -82,7 +82,7 @@ public class License {
     private LocalDateTime start;
     private LocalDateTime end;
     private HashMap<String,PenaltyFee> PenaltyFees;
-    private state.stateLicense state;
+    private State.stateLicense state;
     private float estimated_impact;
     private float necessary_recovery;
 }
