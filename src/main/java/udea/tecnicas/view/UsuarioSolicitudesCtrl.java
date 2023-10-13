@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 public class UsuarioSolicitudesCtrl {
     @FXML
     private void switchToGenerarSolicitud() throws IOException {
-        //Econatura.setRoot("usuarioGenerarSolicitud");
-        //Econatura.getStage().setHeight(600);
-        //Econatura.getStage().setWidth(1200);
+        Econatura.setRoot("usuarioGenerarSolicitud");
+        Econatura.getStage().setHeight(600);
+        Econatura.getStage().setWidth(1200);
 
     }
     @FXML
@@ -54,6 +54,10 @@ public class UsuarioSolicitudesCtrl {
 
         //tableView.getItems().addAll(getDataFromSource()); // Perfectly Ok here, as FXMLLoader already populated all @FXML annotated members.
     }
+    private void loadtable(){
+
+    }
+
     @FXML
     private TableView RequestTable;
 

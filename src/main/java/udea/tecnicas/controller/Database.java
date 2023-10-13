@@ -54,7 +54,7 @@ public class Database {
         }
         return Client_list;
     }
-    public static Client GetClientsByDocument(String Id){
+    protected static Client GetClientByDocument(String Id){
         Connection connection = null;
         Client c = new Client();
         try
@@ -73,7 +73,10 @@ public class Database {
         }
         return c;
     }
-    public static void add_Request(Request r){
+    protected static Resource GetResourceById(String Id){
+        return new Resource();
+    }
+    protected static void add_Request(Request r){
         Connection connection = null;
         try
         {
