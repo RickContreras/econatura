@@ -30,18 +30,16 @@ public class LoginCtrl {
         LabelErrorLogin.setVisible(false);
         if(PersonAndClientProcess.PersonExist(TextFieldUsuariosRegistrado.getText())){
             try{
+                Econatura.SetDocumentoCliente(TextFieldUsuariosRegistrado.getText());
                 switchToUsuario();
             }
             catch(IOException e){
                 LabelErrorLogin.setVisible(true);
                 LabelErrorLogin.setText(e.getMessage());
                 System.out.println(e.getMessage()+e.getCause());
-
             }
-
         }
         else {
-
             LabelErrorLogin.setText("Usuario no registrado");
             LabelErrorLogin.setVisible(true);
         }
@@ -55,6 +53,7 @@ public class LoginCtrl {
                 System.out.println("Usuario Registrado Correctamente");
                 try{
                     switchToUsuario();
+                    Econatura.SetDocumentoCliente(TextFieldUsuariosNuevoDocumento.getText());
                 }
                 catch(IOException e){
                     LabelErrorSignin.setVisible(true);
