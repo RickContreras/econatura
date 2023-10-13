@@ -15,7 +15,7 @@ public class Database {
         {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Client (id,fullname,document,type) values('"+c.getId()+"','"+c.getFullName()+"','"+c.getCC()+"','"+c.getType()+"')");
+            statement.executeUpdate("insert into Client (fullname,document,type) values('"+c.getFullName()+"','"+c.getCC()+"','"+c.getType()+"')");
         }
         catch(SQLException e){
             System.out.println(e.toString());
@@ -45,7 +45,7 @@ public class Database {
 
             while(rs.next())
             {
-                Client_list.put(rs.getString("document"),new Client(rs.getString("id"),rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
+                Client_list.put(rs.getString("document"),new Client(rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
             }
         }
         catch(SQLException e){
@@ -90,7 +90,7 @@ public class Database {
         {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("update Client set id='"+nc.getId()+"',fullname='"+nc.getFullName()+"',type='"+nc.getType()+"' where document="+nc.getCC());
+            statement.executeUpdate("update Client set fullname='"+nc.getFullName()+"',type='"+nc.getType()+"' where document="+nc.getCC());
         }
         catch(SQLException e) {
             System.out.println(e.toString());
@@ -105,7 +105,7 @@ public class Database {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
-            statement.executeUpdate("create table IF NOT EXISTS Client (id string,fullname string, document string, type string )");
+            statement.executeUpdate("create table IF NOT EXISTS Client (fullname string, document string, type string )");
             statement.executeUpdate("create table IF NOT EXISTS License (id string, id_client string, id_auditor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value real , state string)");
             statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource string , date string, state string,estimated_impact string,necessary_recovery string)");
