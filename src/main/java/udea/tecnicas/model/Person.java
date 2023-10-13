@@ -24,6 +24,12 @@ public class Person {
         this.document = CC;
         this.id = id;
     }
+
+    public Person(String fullName, String document) {
+        this.fullName = fullName;
+        this.document = document;
+    }
+
     public Person(String id, String fullName, String CC, Type.PersonType type) {
         this.fullName = fullName;
         this.document = CC;

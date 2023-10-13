@@ -10,4 +10,14 @@ public class PersonAndClientProcess {
         HashMap<String, Client> clients = Database.GetClients();
         return(clients.containsKey(n));
     }
+    public static Boolean Sign(String Document,String Name){
+        try{
+            Client c = new Client(Document,Name);
+            Database.add_Client(c);
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return true;
+    }
 }
