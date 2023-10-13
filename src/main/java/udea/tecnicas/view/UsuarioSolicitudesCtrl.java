@@ -4,11 +4,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import udea.tecnicas.controller.LicenceProcess;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class UsuarioSolicitudesCtrl {
+    @FXML
+    ImageView arrowImage;
     @FXML
     private void switchToGenerarSolicitud() throws IOException {
         Econatura.setRoot("usuarioGenerarSolicitud");
@@ -47,14 +52,28 @@ public class UsuarioSolicitudesCtrl {
         RequestTable.getColumns().add(ColRecovery);
         RequestTable.getColumns().add(ColState);
 
-
-        RequestTable.getItems().add(new RequestString("2032d","1128457944","Arbol xys",LocalDateTime.now(),"Activo",200234.0f,2343212.0f));
-        RequestTable.getItems().add(new RequestString("2032d","1128457944","Arbol xys",LocalDateTime.now(),"Activo",200234.0f,2343212.0f));
-        RequestTable.getItems().add(new RequestString("2032d","1128457944","Arbol xys",LocalDateTime.now(),"Activo",200234.0f,2343212.0f));
-
+        loadtable();
         //tableView.getItems().addAll(getDataFromSource()); // Perfectly Ok here, as FXMLLoader already populated all @FXML annotated members.
     }
     private void loadtable(){
+        try {
+            ArrayList<RequestString> data = Util.convertRequestToRequestString(LicenceProcess.ListRequestbyDocumentClient(Econatura.getDocumentoCliente()));
+            data.forEach((n)->{
+                System.out.println("test");
+                RequestTable.getItems().add(n);
+            });
+            if(data.stream().count()==0){
+                arrowImage.setVisible(true);
+                RequestTable.setVisible(false);
+            }
+            else{
+                arrowImage.setVisible(false);
+                RequestTable.setVisible(true);
+            }
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
 
     }
 

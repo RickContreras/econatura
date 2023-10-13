@@ -89,8 +89,23 @@ public class Database {
         }
     }
     protected static HashMap<String,Request> GetRequests(){
+        Connection connection = null;
+        HashMap<String,Request> r = new HashMap<>();
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Request");
 
-        return new HashMap<String,Request>();
+            while(rs.next())
+            {
+                r.put(rs.getString("id"),new Request(rs.getString("id"),Database.GetClientByDocument(rs.getString("id_cliente")), Database.GetResourceById(rs.getString("id")),LocalDateTime.parse(rs.getString("date")), State.stateRequest.valueOf(rs.getString("state")),Float.parseFloat(rs.getString("estimated_impact")),Float.parseFloat(rs.getString("necessary_recovery"))));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return r;
     }
     protected static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
