@@ -4,6 +4,9 @@ import java.util.HashMap;
 import udea.tecnicas.model.*;
 
 public class Database {
+    public static Boolean DeleteClient(){
+        return true;
+    }
     public static HashMap<String,Client> GetClients(){
         return new HashMap<String,Client>();
     }
