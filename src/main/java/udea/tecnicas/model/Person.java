@@ -3,6 +3,11 @@ package udea.tecnicas.model;
 public class Person {
     private String id;
     private String fullName;
+
+    public String getId() {
+        return id;
+    }
+
     private int document;
     private Type.PersonType type;
 

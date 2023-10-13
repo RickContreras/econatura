@@ -20,12 +20,12 @@ public class License {
         this.id_client = id_client;
     }
 
-    public String getId_Autor() {
-        return id_Autor;
+    public String getId_Auditor() {
+        return id_Auditor;
     }
 
-    public void setId_Autor(String id_Autor) {
-        this.id_Autor = id_Autor;
+    public void setId_Auditor(String id_Auditor) {
+        this.id_Auditor = id_Auditor;
     }
 
     public LocalDateTime getStart() {
@@ -78,7 +78,7 @@ public class License {
 
     private String id;
     private String id_client;
-    private String id_Autor;
+    private String id_Auditor;
     private LocalDateTime start;
     private LocalDateTime end;
     private HashMap<String,PenaltyFee> PenaltyFees;
