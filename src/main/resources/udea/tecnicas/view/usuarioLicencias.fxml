@@ -8,7 +8,7 @@
 <?import udea.tecnicas.view.MenuUsuarios?>
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.UsuarioLicenciasCtrl">
-    <MenuUsuarios Inicial_option="Request" layoutX="0" layoutY="0" minHeight="800"/>
+    <MenuUsuarios Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>
     <children>
         <TableView layoutX="389.0" layoutY="73.0" prefHeight="191.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
             <columns>
@@ -17,7 +17,7 @@
                 <TableColumn prefWidth="200.0" text="Recurso" />
             </columns>
         </TableView>
-      <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToGenerarSolicitud" text="Generar Solicitud">
+      <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false"  text="Generar Solicitud">
          <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
