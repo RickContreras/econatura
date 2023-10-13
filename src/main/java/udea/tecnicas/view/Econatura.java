@@ -37,7 +37,6 @@ public class Econatura extends Application {
         stage.setScene(scene);
         stage.show();
         Database.createTablesIfNotExist();
-        Database.add_Request(new Request("009",Database.GetClientsByDocument("1128457944"),new Resource(), LocalDateTime.now(), State.stateRequest.IN_REVIEW,200,200));
 
 
     }
