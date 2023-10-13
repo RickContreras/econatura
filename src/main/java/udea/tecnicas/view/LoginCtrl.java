@@ -40,6 +40,9 @@ public class LoginCtrl {
         LabelErrorSignin.setVisible(false);
         if(!PersonAndClientProcess.PersonExist(TextFieldUsuariosNuevoDocumento.getText())){
             System.out.println("Usuario no Registrado");
+            if(PersonAndClientProcess.Sign(TextFieldUsuariosNuevoDocumento.getText(),TextFieldUsuariosNuevoNombre.getText())){
+                System.out.println("Usuario Registrado Correctamente");
+            }
         }
         else {
 
@@ -47,6 +50,7 @@ public class LoginCtrl {
             LabelErrorSignin.setVisible(true);
         }
     }
+
 
     @FXML
     private void switchToUsuario() throws IOException {

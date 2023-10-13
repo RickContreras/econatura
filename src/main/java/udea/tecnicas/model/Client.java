@@ -6,7 +6,9 @@ public class Client extends Person{
     public Client(String id, String fullName, String CC, Type.PersonType type) {
         super(id, fullName, CC, type);
     }
-
+    public Client(String doc,String name){
+        super(name,doc);
+    }
 
 
     public HashMap<String, License> getLicenses() {
