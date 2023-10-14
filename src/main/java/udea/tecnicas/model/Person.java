@@ -3,9 +3,6 @@ package udea.tecnicas.model;
 public class Person {
 
     private String fullName;
-
-
-
     private String document;
     private Type.PersonType type;
 
@@ -51,7 +48,7 @@ public class Person {
         this.fullName = fullName;
     }
 
-    protected void setCC(String CC) {
+    public void setCC(String CC) {
         this.document = CC;
     }
 }
