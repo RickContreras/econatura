@@ -1,6 +1,7 @@
 package udea.tecnicas.view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -14,6 +15,8 @@ import java.util.ArrayList;
 public class UsuarioSolicitudesCtrl {
     @FXML
     ImageView arrowImage;
+    @FXML
+    Label LabelMessage;
     @FXML
     private void switchToGenerarSolicitud() throws IOException {
         Econatura.setRoot("usuarioGenerarSolicitud");
@@ -65,10 +68,12 @@ public class UsuarioSolicitudesCtrl {
             if(data.stream().count()==0){
                 arrowImage.setVisible(true);
                 RequestTable.setVisible(false);
+                LabelMessage.setVisible(true);
             }
             else{
                 arrowImage.setVisible(false);
                 RequestTable.setVisible(true);
+                LabelMessage.setVisible(false);
             }
         }
         catch (Exception e){
