@@ -19,8 +19,12 @@ public class ClientDAO {
             statement.setString(2, client.getCC());
             statement.setString(3, client.getType().name());
             statement.executeUpdate();
+            statement.close();
         } catch(SQLException e) {
-            throw new DatabaseException("Failed inserting client", e);
+            if(e.getErrorCode() == 19){
+                throw new DatabaseException("El usuario ya existe", e);
+            }
+            throw new DatabaseException("Fallo al intentar registrar usuario", e);
         }
     }
 
@@ -31,7 +35,9 @@ public class ClientDAO {
                     "select * from Client"
             );
             ResultSet rs = statement.executeQuery();
-            return serialize(rs);
+            List<Client> clients = serialize(rs);
+            statement.close();
+            return clients;
         } catch(SQLException e){
             throw new DatabaseException("Failed getting information about clients", e);
         }
@@ -45,7 +51,9 @@ public class ClientDAO {
             );
             statement.setString(1, document);
             ResultSet rs = statement.executeQuery();
-            return serialize(rs);
+            List<Client> clients = serialize(rs);
+            statement.close();
+            return clients;
         } catch(SQLException e){
             throw new DatabaseException("Failed getting information about clients", e);
         }
@@ -59,6 +67,7 @@ public class ClientDAO {
             client.setFullName(rs.getString("fullname"));
             client.setCC(rs.getString("document"));
             client.setType(Type.PersonType.valueOf(rs.getString("type")));
+            clients.add(client);
         }
         return clients;
     }
