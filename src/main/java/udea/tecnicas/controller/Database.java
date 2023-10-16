@@ -27,6 +27,7 @@ public class Database {
         {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
+            Prepare
             String query = "INSERT INTO License (id,id_client ,id_auditor,start,end,state,estimated_impact,necessary_recovery) values ('"+l.getId()+"','"+l.getId_Auditor()+"','"+l.getStart()+"','"+l.getEnd()+"','"+l.getState()+"','"+l.getEstimated_impact()+"','"+l.getNecessary_recovery()+"')";
 
         }
