@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+
+import udea.tecnicas.Constants;
 import udea.tecnicas.model.*;
 
 public class Database {
@@ -14,7 +16,7 @@ public class Database {
         Connection connection = null;
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into Client (fullname,document,type) values('"+c.getFullName()+"','"+c.getCC()+"','"+c.getType()+"')");
         }
@@ -26,7 +28,7 @@ public class Database {
         Connection connection = null;
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             String query = "INSERT INTO License (id,id_client ,id_auditor,start,end,state,estimated_impact,necessary_recovery) values ('"+l.getId()+"','"+l.getId_Auditor()+"','"+l.getStart()+"','"+l.getEnd()+"','"+l.getState()+"','"+l.getEstimated_impact()+"','"+l.getNecessary_recovery()+"')";
 
@@ -40,7 +42,7 @@ public class Database {
         HashMap<String,Client> Client_list = new HashMap<>();
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from Client");
 
@@ -59,7 +61,7 @@ public class Database {
         Client c = new Client();
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from Client where Document='"+Id+"'");
 
@@ -80,7 +82,7 @@ public class Database {
         Connection connection = null;
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getId_Cliente()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimated_impact()+"','"+r.getNecessary_recovery()+"')");
         }
@@ -93,7 +95,7 @@ public class Database {
         HashMap<String,Request> r = new HashMap<>();
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from Request");
 
@@ -139,7 +141,7 @@ public class Database {
         Connection connection = null;
         try
         {
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             statement.executeUpdate("update Client set fullname='"+nc.getFullName()+"',type='"+nc.getType()+"' where document="+nc.getCC());
         }
@@ -153,7 +155,7 @@ public class Database {
         try
         {
             // create a database connection
-            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
             statement.executeUpdate("create table IF NOT EXISTS Client (fullname string, document string, type string )");
