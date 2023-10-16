@@ -136,41 +136,4 @@ public class Database {
             System.out.println(e.toString());
         }
     }
-    public static void createTablesIfNotExist()
-    {
-        Connection connection = null;
-        try
-        {
-            // create a database connection
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            statement.setQueryTimeout(30);  // set timeout to 30 sec.
-            statement.executeUpdate("create table IF NOT EXISTS Client (fullname string, document string, type string )");
-            statement.executeUpdate("create table IF NOT EXISTS License (id string, id_client string, id_auditor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
-            statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value real , state string)");
-            statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource_id string , date string, state string,estimated_impact string,necessary_recovery string)");
-            statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
-            statement.executeUpdate("CREATE UNIQUE INDEX IF NOT EXISTS Client_document_IDX ON Client (document);");
-        }
-        catch(SQLException e)
-        {
-            // if the error message is "out of memory",
-            // it probably means no database file is found
-            System.err.println(e.getMessage());
-
-        }
-        finally
-        {
-            try
-            {
-                if(connection != null)
-                    connection.close();
-            }
-            catch(SQLException e)
-            {
-                // connection close failed.
-                System.err.println(e.getMessage());
-            }
-        }
-    }
 }
