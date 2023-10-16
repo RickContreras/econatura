@@ -34,50 +34,26 @@ public class MenuUsuarios extends AnchorPane {
     private Rectangle RRequest_License;
     @FXML
     private Group GRequest_License;
-    @FXML
-    private Rectangle RInform;
-    @FXML
-    private Group GInform;
-    @FXML
-    private Group GInform_Inform_1;
-    @FXML
-    private Rectangle RInform_Inform_1;
-    @FXML
-    private Rectangle RCash;
-    @FXML
-    private Group GCash;
-    @FXML
-    private Rectangle RCash_Cash;
-    @FXML
-    private Group GCash_Cash;
-    @FXML
-    private Rectangle RSettings;
-    @FXML
-    private Group GSettings;
-    @FXML
-    private Rectangle RSettings_Type;
-    @FXML
-    private Group GSettings_Type;
-    @FXML
-    private Rectangle RSettings_Resource;
-    @FXML
-    private Group GSettings_Resource;
-    @FXML
-    private Rectangle RSettings_Person;
-    @FXML
-    private Group GSettings_Person;
+
+
     @FXML
     private Group GLogout;
     public MenuUsuarios(@NamedArg("Inicial_option") String Inicial_option_) throws IOException {
+
         this.Inicial_option = Menu_Option.valueOf(Inicial_option_);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Menu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MenuUsuarios.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
         }
         catch (IOException e) {
+            System.out.println("Error Cargar Menu "+e.getCause()+e.getMessage());
             throw new RuntimeException(e);
+
+        }
+        catch (RuntimeException re){
+            System.out.println(re.getMessage());
         }
         configurar_eventos();
         Update_Menu(this.Inicial_option);
@@ -87,14 +63,6 @@ public class MenuUsuarios extends AnchorPane {
         GRequest.onMouseClickedProperty().set(event -> G_Click(event));
         GRequest_Request.onMouseClickedProperty().set(event -> G_Click(event));
         GRequest_License.onMouseClickedProperty().set(event -> G_Click(event));
-        GInform.onMouseClickedProperty().set(event -> G_Click(event));
-        GInform_Inform_1.onMouseClickedProperty().set(event -> G_Click(event));
-        GCash.onMouseClickedProperty().set(event -> G_Click(event));
-        GCash_Cash.onMouseClickedProperty().set(event -> G_Click(event));
-        GSettings.onMouseClickedProperty().set(event -> G_Click(event));
-        GSettings_Type.onMouseClickedProperty().set(event -> G_Click(event));
-        GSettings_Resource.onMouseClickedProperty().set(event -> G_Click(event));
-        GSettings_Person.onMouseClickedProperty().set(event -> G_Click(event));
         GLogout.onMouseClickedProperty().set(mouseEvent -> logout(mouseEvent));
     }
     protected void logout(MouseEvent ev){
@@ -125,33 +93,18 @@ public class MenuUsuarios extends AnchorPane {
         switch(option){
             case Request: case Request_Request:
                 try {
-                    Econatura.setRoot("FuncionarioSolicitudes");
+                    Econatura.setRoot("usuarioSolicitudes");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 break;
             case Request_License:
                 try {
-                    Econatura.setRoot("FuncionarioSolicitudeslicencias");
+                    Econatura.setRoot("usuarioLicencias");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 break;
-            case Inform: case Inform_Inform_1:
-                try {
-                    Econatura.setRoot("FuncionarioSolicitudes");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                break;
-            case Cash: case Cash_Cash:
-                break;
-            case Settings: case Settings_Type:
-                break;
-            case Settings_Resource:
-            case Settings_Person:
-
-
         }
     }
     protected void Update_Menu(Menu_Option option) throws IOException {
@@ -162,81 +115,12 @@ public class MenuUsuarios extends AnchorPane {
                 GRequest_Request.setVisible(true);
                 RRequest_License.setFill(Color.web("#FFFFFF",0.0));
                 GRequest_License.setVisible(true);
-                RInform.setFill(Color.web("#FFFFFF",0));
-                RInform_Inform_1.setFill(Color.web("#FFFFFF",0));
-                GInform_Inform_1.setVisible(false);
-                RCash.setFill(Color.web("#FFFFFF",0));
-                RCash_Cash.setFill(Color.web("#FFFFFF",0));
-                GCash_Cash.setVisible(false);
-                RSettings.setFill(Color.web("#FFFFFF",0));
-                RSettings_Person.setFill(Color.web("#FFFFFF",0));
-                GSettings_Person.setVisible(false);
-                RSettings_Resource.setFill(Color.web("#FFFFFF",0));
-                GSettings_Resource.setVisible(false);
-                RSettings_Type.setFill(Color.web("#FFFFFF",0));
-                GSettings_Type.setVisible(false);
                 break;
             case Request_License:
-
                 RRequest.setFill(Color.web("#EEF1F4",1.0));
                 RRequest_Request.setFill(Color.web("#FFFFFF",0));
                 RRequest_License.setFill(Color.web("#EEF1F4",1));
                 break;
-            case Inform: case Inform_Inform_1:
-                RRequest.setFill(Color.web("#FFFFFF",0));
-                GRequest_Request.setVisible(false);
-                GRequest_License.setVisible(false);
-                RInform.setFill(Color.web("#EEF1F4",1));
-                RInform_Inform_1.setFill(Color.web("#EEF1F4",1));
-                GInform_Inform_1.setVisible(true);
-                RCash.setFill(Color.web("#FFFFFF",0));
-                GCash_Cash.setVisible(false);
-                RSettings.setFill(Color.web("#FFFFFF",0));
-                GSettings_Person.setVisible(false);
-                GSettings_Resource.setVisible(false);
-                GSettings_Type.setVisible(false);
-                break;
-            case Cash: case Cash_Cash:
-                RRequest.setFill(Color.web("#FFFFFF",0));
-                GRequest_Request.setVisible(false);
-                GRequest_License.setVisible(false);
-                RInform.setFill(Color.web("#FFFFFF",0));
-                GInform_Inform_1.setVisible(false);
-                RCash.setFill(Color.web("#EEF1F4",1));
-                RCash_Cash.setFill(Color.web("#EEF1F4",1));
-                GCash_Cash.setVisible(true);
-                RSettings.setFill(Color.web("#FFFFFF",0));
-                GSettings_Person.setVisible(false);
-                GSettings_Resource.setVisible(false);
-                GSettings_Type.setVisible(false);
-                break;
-            case Settings: case Settings_Type:
-                RRequest.setFill(Color.web("#FFFFFF",0));
-                GRequest_Request.setVisible(false);
-                GRequest_License.setVisible(false);
-                RInform.setFill(Color.web("#FFFFFF",0));
-                GInform_Inform_1.setVisible(false);
-                RCash.setFill(Color.web("#FFFFFF",0));
-                GCash_Cash.setVisible(false);
-                RSettings.setFill(Color.web("#EEF1F4",1));
-                RSettings_Person.setFill(Color.web("#FFFFFF",0));
-                GSettings_Person.setVisible(true);
-                RSettings_Resource.setFill(Color.web("#FFFFFF",0));
-                GSettings_Resource.setVisible(true);
-                RSettings_Type.setFill(Color.web("#EEF1F4",1));
-                GSettings_Type.setVisible(true);
-                break;
-            case Settings_Resource:
-                RSettings_Person.setFill(Color.web("#FFFFFF",0));
-                RSettings_Resource.setFill(Color.web("#EEF1F4",1));
-                RSettings_Type.setFill(Color.web("#FFFFFF",0));
-                break;
-            case Settings_Person:
-                RSettings_Person.setFill(Color.web("#EEF1F4",1));
-                RSettings_Resource.setFill(Color.web("#FFFFFF",0));
-                RSettings_Type.setFill(Color.web("#FFFFFF",0));
-                break;
-
 
         }
 

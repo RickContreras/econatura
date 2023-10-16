@@ -4,24 +4,25 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import udea.tecnicas.model.*;
 
 public class Database {
 
-    public static void add_Client(Client c){
+    protected static void add_Client(Client c){
         Connection connection = null;
         try
         {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Client (person_id) values('"+c.getPerson().getId()+"')");
+            statement.executeUpdate("insert into Client (fullname,document,type) values('"+c.getFullName()+"','"+c.getCC()+"','"+c.getType()+"')");
         }
         catch(SQLException e){
             System.out.println(e.toString());
         }
     }
-    public static void add_License(License l,Client c){
+    protected static void add_License(License l,Client c){
         Connection connection = null;
         try
         {
@@ -35,43 +36,119 @@ public class Database {
             System.out.println(e.toString());
         }
     }
-    public static HashMap<String,Client> GetClients(){
-        return new HashMap<String,Client>();
+    protected static HashMap<String,Client> GetClients(){
+        Connection connection = null;
+        HashMap<String,Client> Client_list = new HashMap<>();
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Client");
+
+            while(rs.next())
+            {
+                Client_list.put(rs.getString("document"),new Client(rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return Client_list;
     }
-    public static HashMap<String,License> GetLicences(){
+    protected static Client GetClientByDocument(String Id){
+        Connection connection = null;
+        Client c = new Client();
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Client where Document='"+Id+"'");
+
+            while(rs.next())
+            {
+                c = new Client(rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type")));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return c;
+    }
+    protected static Resource GetResourceById(String Id){
+        return new Resource();
+    }
+    protected static void add_Request(Request r){
+        Connection connection = null;
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getId_Cliente()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimated_impact()+"','"+r.getNecessary_recovery()+"')");
+        }
+        catch(SQLException e){
+            System.out.println(e.toString());
+        }
+    }
+    protected static HashMap<String,Request> GetRequests(){
+        Connection connection = null;
+        HashMap<String,Request> r = new HashMap<>();
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from Request");
+
+            while(rs.next())
+            {
+                r.put(rs.getString("id"),new Request(rs.getString("id"),Database.GetClientByDocument(rs.getString("id_cliente")), Database.GetResourceById(rs.getString("id")),LocalDateTime.parse(rs.getString("date")), State.stateRequest.valueOf(rs.getString("state")),Float.parseFloat(rs.getString("estimated_impact")),Float.parseFloat(rs.getString("necessary_recovery"))));
+            }
+        }
+        catch(SQLException e){
+            System.out.println(e.getMessage());
+        }
+        return r;
+    }
+    protected static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
     }
-    public static HashMap<String,PenaltyFee> GetPenaltyFees(){
+    protected static HashMap<String,PenaltyFee> GetPenaltyFees(){
         return new HashMap<String,PenaltyFee>();
     }
-    public static HashMap<String,Person> GetPerson(){
-        return new HashMap<String,Person>();
-    }
-    public static HashMap<String,Person> GetRequest(){
-        return new HashMap<String,Person>();
-    }
-    public static HashMap<String,Resource> GetResource(){
+    protected static HashMap<String,Resource> GetResource(){
         return new HashMap<String,Resource>();
     }
-    public static HashMap<String,Client> GetClientsbyId(){
+    protected static HashMap<String,Client> GetClientsbyId(){
         return new HashMap<String,Client>();
     }
-    public static HashMap<String,License> GetLicencesbyId(){
+    protected static HashMap<String,License> GetLicencesbyId(){
         return new HashMap<String,License>();
     }
-    public static HashMap<String,PenaltyFee> GetPenaltyFeesbyId(){
+    protected static HashMap<String,PenaltyFee> GetPenaltyFeesbyId(){
         return new HashMap<String,PenaltyFee>();
     }
-    public static HashMap<String,Person> GetPersonbyId(){
+    protected static HashMap<String,Person> GetPersonbyId(){
         return new HashMap<String,Person>();
     }
-    public static HashMap<String,Person> GetRequestbyId(){
+    protected static HashMap<String,Person> GetRequestbyId(){
         return new HashMap<String,Person>();
     }
-    public static HashMap<String,Resource> GetResourcebyId(){
+    protected static HashMap<String,Resource> GetResourcebyId(){
         return new HashMap<String,Resource>();
     }
-    protected static void createTablesIfNotExist()
+
+    protected static void updateClient(Client nc){
+        Connection connection = null;
+        try
+        {
+            connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update Client set fullname='"+nc.getFullName()+"',type='"+nc.getType()+"' where document="+nc.getCC());
+        }
+        catch(SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+    public static void createTablesIfNotExist()
     {
         Connection connection = null;
         try
@@ -80,14 +157,11 @@ public class Database {
             connection = DriverManager.getConnection("jdbc:sqlite:Hecatombe.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(30);  // set timeout to 30 sec.
-
-            statement.executeUpdate("create table IF NOT EXISTS Client (person_id string )");
+            statement.executeUpdate("create table IF NOT EXISTS Client (fullname string, document string, type string )");
             statement.executeUpdate("create table IF NOT EXISTS License (id string, id_client string, id_auditor string , start string,end string, state string, estimated_impact string , necessary_recovery string)");
-            statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value float , state integer");
-            statement.executeUpdate("create table IF NOT EXISTS Person (id string, fullname string, document string , person_type string)");
-            statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource string , date string, state string,estimated_impact string,necessary_recovery string)");
+            statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value real , state string)");
+            statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource_id string , date string, state string,estimated_impact string,necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
-
 
         }
         catch(SQLException e)

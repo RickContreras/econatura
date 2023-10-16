@@ -2,16 +2,16 @@ package udea.tecnicas.model;
 
 import java.util.HashMap;
 
-public class Client {
-    public Person getPerson() {
-        return person;
+public class Client extends Person{
+    public Client( String fullName, String CC, Type.PersonType type) {
+        super( fullName, CC, type);
     }
-
-    public void setPerson(Person person) {
-        this.person = person;
+    public Client(String doc,String name){
+        super(name,doc);
     }
-
-    private Person person;
+    public Client(){
+        super();
+    }
 
     public HashMap<String, License> getLicenses() {
         return Licenses;
