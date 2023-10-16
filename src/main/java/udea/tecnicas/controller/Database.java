@@ -11,19 +11,6 @@ import udea.tecnicas.Constants;
 import udea.tecnicas.model.*;
 
 public class Database {
-
-    protected static void add_Client(Client c){
-        Connection connection = null;
-        try
-        {
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Client (fullname,document,type) values('"+c.getFullName()+"','"+c.getCC()+"','"+c.getType()+"')");
-        }
-        catch(SQLException e){
-            System.out.println(e.toString());
-        }
-    }
     protected static void add_License(License l,Client c){
         Connection connection = null;
         try
@@ -163,7 +150,7 @@ public class Database {
             statement.executeUpdate("create table IF NOT EXISTS PenaltyFee (id string, reason string, value real , state string)");
             statement.executeUpdate("create table IF NOT EXISTS Request (id string, id_cliente string, resource_id string , date string, state string,estimated_impact string,necessary_recovery string)");
             statement.executeUpdate("create table IF NOT EXISTS Resource (name string, lo string, la string , type string, capacity string)");
-
+            statement.executeUpdate("CREATE UNIQUE INDEX IF NOT EXISTS Client_document_IDX ON Client (document);");
         }
         catch(SQLException e)
         {

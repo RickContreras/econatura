@@ -1,12 +1,14 @@
 package udea.tecnicas.view;
 
-import java.io.IOException;
-import java.lang.runtime.SwitchBootstraps;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import udea.tecnicas.controller.PersonAndClientProcess;
+import udea.tecnicas.database.ClientDAO;
+import udea.tecnicas.database.DatabaseException;
+import udea.tecnicas.model.Client;
+import udea.tecnicas.model.Type;
+
+import java.io.IOException;
 
 public class LoginCtrl {
     @FXML
@@ -19,6 +21,13 @@ public class LoginCtrl {
     Label LabelErrorLogin;
     @FXML
     Label LabelErrorSignin;
+
+    ClientDAO clientDAO;
+
+    public void initialize() {
+        clientDAO = new ClientDAO();
+    }
+
     @FXML
     private void switchToFuncionario() throws IOException {
         Econatura.setRoot("FuncionarioSolicitudes");
@@ -28,44 +37,34 @@ public class LoginCtrl {
     @FXML
     private void login(){
         LabelErrorLogin.setVisible(false);
-        if(PersonAndClientProcess.PersonExist(TextFieldUsuariosRegistrado.getText())){
-            try{
+        if(clientDAO.findByDocument(TextFieldUsuariosRegistrado.getText()).isEmpty()) {
+            LabelErrorLogin.setText("Usuario no registrado");
+            LabelErrorLogin.setVisible(true);
+        } else {
+            try {
                 Econatura.SetDocumentoCliente(TextFieldUsuariosRegistrado.getText());
                 switchToUsuario();
-            }
-            catch(IOException e){
+            } catch(IOException e){
                 LabelErrorLogin.setVisible(true);
                 LabelErrorLogin.setText(e.getMessage());
                 System.out.println(e.getMessage()+e.getCause());
             }
         }
-        else {
-            LabelErrorLogin.setText("Usuario no registrado");
-            LabelErrorLogin.setVisible(true);
-        }
     }
     @FXML
     private void signin(){
         LabelErrorSignin.setVisible(false);
-        if(!PersonAndClientProcess.PersonExist(TextFieldUsuariosNuevoDocumento.getText())){
-            System.out.println("Usuario no Registrado");
-            if(PersonAndClientProcess.Sign(TextFieldUsuariosNuevoDocumento.getText(),TextFieldUsuariosNuevoNombre.getText())){
-                System.out.println("Usuario Registrado Correctamente");
-                try{
-                    switchToUsuario();
-                    Econatura.SetDocumentoCliente(TextFieldUsuariosNuevoDocumento.getText());
-                }
-                catch(IOException e){
-                    LabelErrorSignin.setVisible(true);
-                    LabelErrorSignin.setText(e.getMessage());
-
-                }
-            }
-        }
-        else {
-
-            LabelErrorSignin.setText("Usuario ya registrado");
+        try {
+            Client client = new Client();
+            client.setType(Type.PersonType.UNDEFINED);
+            client.setCC(TextFieldUsuariosNuevoDocumento.getText());
+            client.setFullName(TextFieldUsuariosNuevoNombre.getText());
+            clientDAO.insert(client);
+            switchToUsuario();
+            Econatura.SetDocumentoCliente(TextFieldUsuariosNuevoDocumento.getText());
+        } catch (DatabaseException | IOException ex) {
             LabelErrorSignin.setVisible(true);
+            LabelErrorSignin.setText(ex.getMessage());
         }
     }
 
