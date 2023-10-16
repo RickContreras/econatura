@@ -21,4 +21,26 @@ Este proyecto ha sido realizado empleando JAVA ☕ en su versión 21 así JAVAFX
 ### WORKFLOW
 A continuación se presenta una imagen con el esquema del proyecto
 
-![alt text](image.jpg)
+```mermaid
+---
+title: Estrategia de ramas
+---
+%%{init: { 'gitGraph': {'mainBranchName': 'master'} } }%%
+gitGraph:
+   commit
+   commit
+   branch development
+   checkout development
+   commit
+   commit
+   branch development_member
+   checkout development_member
+   commit
+   commit
+   checkout development
+   merge development_member
+   checkout master
+   merge development
+   commit
+   commit
+```
