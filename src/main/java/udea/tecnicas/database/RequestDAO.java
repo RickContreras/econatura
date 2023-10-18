@@ -7,21 +7,34 @@ import udea.tecnicas.model.Resource;
 import udea.tecnicas.model.Type;
 
 import java.sql.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RequestDAO {
     public void insert(Request request){
+        if(request.getClient()==null){
+            throw new DatabaseException("Cliente no puede ser nulo");
+        }
+        if(request.getDate()==null){
+            throw new DatabaseException("Fecha no puede ser nula");
+        }
+        if(request.getState()==null){
+            throw new DatabaseException("State no puede ser nula");
+        }
         try{
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
             PreparedStatement statement = connection.prepareStatement(
-                    "insert into Request (id_cliente, date, state, estimated_impact, necessary_recovery) values (?, ?, ?, ?, ?, ?)"
+                    "insert into Request (id_cliente, date, state, estimated_impact, necessary_recovery, nombre_recurso, municipio, departamento) values (?, ?, ?, ?, ?, ?, ?, ?)"
             );
             statement.setString(1, request.getClient().getCC());
-            //statement.setTimestamp(3, java.sql.Timestamp.valueOf(request.getDate()));
-            //statement.setString(4, request.getState().toString());
-            statement.setFloat(5, request.getEstimatedImpact());
-            statement.setFloat(6, request.getNecessaryRecovery());
+            statement.setString(2, request.getDate().format(DateTimeFormatter.ISO_DATE));
+            statement.setString(3, request.getState().toString());;
+            statement.setDouble(4, request.getEstimatedImpact());
+            statement.setDouble(5, request.getNecessaryRecovery());
+            statement.setString(6, request.getNombreRecurso());
+            statement.setString(7, request.getMunicipio());
+            statement.setString(8, request.getDepartamento());
             statement.executeUpdate();
             statement.close();
 

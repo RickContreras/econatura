@@ -92,7 +92,7 @@ public class UsuarioSolicitudesCtrl {
             }
         }
         catch (Exception e){
-            System.out.println("Este es un error");
+            System.out.println("Error cargando tabla");
             System.out.println(e.getMessage());
         }
 
