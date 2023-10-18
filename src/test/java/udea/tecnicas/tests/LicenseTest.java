@@ -20,4 +20,9 @@ public class LicenseTest {
         license.setEnd(LocalDate.of(2024, 12, 31));
         new LicenseDAO().insert(license);
     }
+
+    @Test
+    public void testListLicense() {
+        System.out.println(new LicenseDAO().findAll());
+    }
 }

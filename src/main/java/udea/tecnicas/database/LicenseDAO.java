@@ -1,11 +1,10 @@
 package udea.tecnicas.database;
 
 import udea.tecnicas.Constants;
-import udea.tecnicas.model.Client;
-import udea.tecnicas.model.License;
-import udea.tecnicas.model.Type;
+import udea.tecnicas.model.*;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,30 +44,41 @@ public class LicenseDAO {
         }
     }
 
-    public List<Client> findAll() {
+    public List<License> findAll() {
         try {
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
             PreparedStatement statement = connection.prepareStatement(
-                    "select * from Client"
+                    "select l.id license_id, l.\"start\", l.\"end\", l.state license_state, " +
+                            "r.id request_id, r.estimated_impact, r.necessary_recovery, r.nombre_recurso, " +
+                            "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
+                            "from License l " +
+                            "inner join Request r " +
+                            "on r.id = l.id_request "
             );
             ResultSet rs = statement.executeQuery();
-            List<Client> clients = serialize(rs);
+            List<License> licenses = serialize(rs);
             statement.close();
-            return clients;
+            return licenses;
         } catch(SQLException e){
             throw new DatabaseException("Failed getting information about clients", e);
         }
     }
 
-    public List<Client> findByDocument(String document) {
+    public List<License> findByDocument(String document) {
         try {
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
             PreparedStatement statement = connection.prepareStatement(
-                    "select * from Client where document = ?"
+                    "select l.id license_id, l.\"start\", l.\"end\", l.state license_state, " +
+                            "r.id request_id, r.estimated_impact, r.necessary_recovery, r.nombre_recurso, " +
+                            "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
+                            "from License l " +
+                            "inner join Request r " +
+                            "on r.id = l.id_request" +
+                            "where r.id_cliente = ? "
             );
             statement.setString(1, document);
             ResultSet rs = statement.executeQuery();
-            List<Client> clients = serialize(rs);
+            List<License> clients = serialize(rs);
             statement.close();
             return clients;
         } catch(SQLException e){
@@ -76,16 +86,42 @@ public class LicenseDAO {
         }
     }
 
-    private List<Client> serialize(ResultSet rs) throws SQLException {
-        List<Client> clients = new ArrayList<>();
+    private List<License> serialize(ResultSet rs) throws SQLException {
+        List<License> licenses = new ArrayList<>();
         while(rs.next())
         {
-            Client client = new Client();
-            client.setFullName(rs.getString("fullname"));
-            client.setCC(rs.getString("document"));
-            client.setType(Type.PersonType.valueOf(rs.getString("type")));
-            clients.add(client);
+            License license = new License();
+            Request request = new Request();
+            request.setNombreRecurso(rs.getString("nombre_recurso"));
+            request.setMunicipio(rs.getString("municipio"));
+            request.setDepartamento(rs.getString("departamento"));
+            request.setEstimatedImpact(rs.getDouble("estimated_impact"));
+            request.setNecessaryRecovery(rs.getDouble("necessary_recovery"));
+            String dateString = rs.getString("request_date");
+            if (dateString != null) {
+                request.setDate(LocalDate.parse(dateString, DateTimeFormatter.ISO_DATE));
+            }
+            String startString = rs.getString("start");
+            if (startString != null) {
+                request.setDate(LocalDate.parse(startString, DateTimeFormatter.ISO_DATE));
+            }
+            String endString = rs.getString("end");
+            if (endString != null) {
+                request.setDate(LocalDate.parse(endString, DateTimeFormatter.ISO_DATE));
+            }
+            String stateString = rs.getString("request_state");
+            if (stateString != null) {
+                request.setState(State.stateRequest.valueOf(stateString));
+            }
+            String licenseStateString = rs.getString("license_state");
+            if (licenseStateString != null) {
+                license.setState(State.stateLicense.valueOf(licenseStateString));
+            }
+            request.setId(rs.getString("request_id"));
+            license.setRequest(request);
+
+            licenses.add(license);
         }
-        return clients;
+        return licenses;
     }
 }
