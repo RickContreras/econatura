@@ -13,6 +13,7 @@ import udea.tecnicas.database.RequestDAO;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class UsuarioSolicitudesCtrl {
@@ -74,7 +75,7 @@ public class UsuarioSolicitudesCtrl {
     }
     private void loadtable(){
         try {
-            ArrayList<RequestString> data = Util.convertRequestToRequestString(LicenceProcess.ListRequestbyDocumentClient(Econatura.getDocumentoCliente()));
+            List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
             data.forEach((n)->{
                 System.out.println("test");
                 RequestTable.getItems().add(n);

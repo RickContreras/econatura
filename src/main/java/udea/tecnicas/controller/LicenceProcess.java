@@ -17,20 +17,20 @@ public class LicenceProcess {
         return true;
     }
 
-    public static Boolean GenerateRequest(String id,String clientId,String ResourceId,String state,Float stimated_impact,Float necessary_recovery){
-        try {
-            Database.add_Request(new Request(id, Database.GetClientByDocument(clientId), Database.GetResourceById(ResourceId), LocalDateTime.now(), State.stateRequest.valueOf(state), stimated_impact, necessary_recovery));
-        }
-        catch (Exception e){
-            return false;
-        }
-        return true;
-    }
-    public static ArrayList<Request> ListRequestbyDocumentClient(String Document){
-        ArrayList<Request> lr = new ArrayList<>();
-        Database.GetRequests().forEach((document,request)->{
-            if (request.getIdClient().equals(Document)){lr.add(request);}
-        });
-        return lr;
-    }
+   // public static Boolean GenerateRequest(String id,String clientId,String ResourceId,String state,Float stimated_impact,Float necessary_recovery){
+   //     try {
+    //        Database.add_Request(new Request(id, Database.GetClientByDocument(clientId), Database.GetResourceById(ResourceId), LocalDateTime.now(), State.stateRequest.valueOf(state), stimated_impact, necessary_recovery));
+     //   }
+    //    catch (Exception e){
+    //        return false;
+    //    }
+    //    return true;
+   // }
+    //public static ArrayList<Request> ListRequestbyDocumentClient(String Document){
+    //    ArrayList<Request> lr = new ArrayList<>();
+    //    Database.GetRequests().forEach((document,request)->{
+    //        if (request.getIdClient().equals(Document)){lr.add(request);}
+    //    });
+    //    return lr;
+   // }
 }

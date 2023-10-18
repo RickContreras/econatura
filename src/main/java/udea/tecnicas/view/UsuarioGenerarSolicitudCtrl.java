@@ -58,6 +58,7 @@ public class UsuarioGenerarSolicitudCtrl {
         recuperacion.setValueFactory(valueFactoryRecuperacion);
         TipoDocumento.setItems(tipoDocumento);
         TipoDocumento.setValue("CC");
+        Documento.setText(Econatura.getDocumentoCliente());
         requestDAO = new RequestDAO();
 
     }
@@ -76,9 +77,8 @@ public class UsuarioGenerarSolicitudCtrl {
         try {
             Request request = new Request();
 
-            //request.setIdClient(Integer.parseInt(Econatura.getDocumentoCliente()));
             Client client=new Client();
-            client.setCC(Econatura.getDocumentoCliente());
+            client.setCC(String.valueOf(Documento));
             request.setClient(client);
             request.setEstimatedImpact(Float.parseFloat(impacto.getValue().toString()));
             request.setNecessaryRecovery(Float.parseFloat(recuperacion.getValue().toString()));
