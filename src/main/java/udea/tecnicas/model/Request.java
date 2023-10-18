@@ -1,13 +1,17 @@
 package udea.tecnicas.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Request {
     public String nombreRecurso;
     public String municipio;
     public String departamento;
+    private LocalDate date;
+    private State.stateRequest state;
+    private double estimatedImpact;
+    private double necessaryRecovery;
 
-    public void setNombreRecurso(){
+    public void setNombreRecurso(String nombreRecurso){
         this.nombreRecurso = nombreRecurso;
     }
 
@@ -15,11 +19,11 @@ public class Request {
         return nombreRecurso;
     }
 
-    public void setMunicipio(){
+    public void setMunicipio(String municipio){
         this.municipio = municipio;
     }
 
-    public void setDepartamento(){
+    public void setDepartamento(String departamento){
         this.departamento = departamento;
     }
 
@@ -50,11 +54,11 @@ public class Request {
     }
 
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -66,19 +70,19 @@ public class Request {
         this.state = state;
     }
 
-    public float getEstimatedImpact() {
+    public double getEstimatedImpact() {
         return estimatedImpact;
     }
 
-    public void setEstimatedImpact(float estimatedImpact) {
+    public void setEstimatedImpact(double estimatedImpact) {
         this.estimatedImpact = estimatedImpact;
     }
 
-    public float getNecessaryRecovery() {
+    public double getNecessaryRecovery() {
         return necessaryRecovery;
     }
 
-    public void setNecessaryRecovery(float necessaryRecovery) {
+    public void setNecessaryRecovery(double necessaryRecovery) {
         this.necessaryRecovery = necessaryRecovery;
     }
 
@@ -92,7 +96,7 @@ public class Request {
     public Request() {
     }
 
-    public Request(String id, Client client, LocalDateTime date, State.stateRequest state, String nombreRecurso, String municipio, String departamento, float estimatedImpact, float necessaryRecovery) {
+    public Request(String id, Client client, LocalDate date, State.stateRequest state, String nombreRecurso, String municipio, String departamento, float estimatedImpact, float necessaryRecovery) {
         this.id = id;
         this.client = client;
         this.date = date;
@@ -103,9 +107,4 @@ public class Request {
         this.estimatedImpact = estimatedImpact;
         this.necessaryRecovery = necessaryRecovery;
     }
-
-    private LocalDateTime date;
-    private State.stateRequest state;
-    private float estimatedImpact;
-    private float necessaryRecovery;
 }

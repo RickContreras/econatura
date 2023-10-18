@@ -3,6 +3,7 @@ package udea.tecnicas.view;
 import udea.tecnicas.model.Resource;
 import udea.tecnicas.model.State;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class RequestString {
@@ -12,8 +13,12 @@ public class RequestString {
     private String id;
     private String id_Cliente;
 
+    private String state;
+    private Double estimated_impact;
+    private Double necessary_recovery;
+    private LocalDate date;
 
-    public RequestString(String id, String id_Cliente, LocalDateTime date, String state, String nombreRecurso, String municipio, String departamento, Float estimated_impact, Float necessary_recovery) {
+    public RequestString(String id, String id_Cliente, LocalDate date, String state, String nombreRecurso, String municipio, String departamento, Double estimated_impact, Double necessary_recovery) {
         this.id = id;
         this.id_Cliente = id_Cliente;
         this.date = date;
@@ -24,8 +29,6 @@ public class RequestString {
         this.estimated_impact = estimated_impact;
         this.necessary_recovery = necessary_recovery;
     }
-
-    private LocalDateTime date;
 
     public String getId() {
         return id;
@@ -67,11 +70,11 @@ public class RequestString {
         return municipio;
     }
 
-    public LocalDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -83,23 +86,20 @@ public class RequestString {
         this.state = state;
     }
 
-    public Float getEstimated_impact() {
+    public Double getEstimated_impact() {
         return estimated_impact;
     }
 
-    public void setEstimated_impact(Float estimated_impact) {
+    public void setEstimated_impact(Double estimated_impact) {
         this.estimated_impact = estimated_impact;
     }
 
-    public Float getNecessary_recovery() {
+    public Double getNecessary_recovery() {
         return necessary_recovery;
     }
 
-    public void setNecessary_recovery(Float necessary_recovery) {
+    public void setNecessary_recovery(Double necessary_recovery) {
         this.necessary_recovery = necessary_recovery;
     }
 
-    private String state;
-    private Float estimated_impact;
-    private Float necessary_recovery;
 }

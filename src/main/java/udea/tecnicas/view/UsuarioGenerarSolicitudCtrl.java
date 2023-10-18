@@ -15,12 +15,15 @@ import udea.tecnicas.database.ClientDAO;
 import udea.tecnicas.database.RequestDAO;
 import udea.tecnicas.model.Client;
 import udea.tecnicas.model.Request;
+import udea.tecnicas.model.State;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class UsuarioGenerarSolicitudCtrl {
-    SpinnerValueFactory<Integer> valueFactoryImpacto = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
-    SpinnerValueFactory<Integer> valueFactoryRecuperacion = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
+    SpinnerValueFactory<Double> valueFactoryImpacto = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0);
+    SpinnerValueFactory<Double> valueFactoryRecuperacion = new SpinnerValueFactory.DoubleSpinnerValueFactory(0, 100, 0);
     ObservableList<String> tipoRecurso = FXCollections.observableArrayList("Causes", "SuperficialWater", "UnderWater", "AliveFence", "ScientificResearch", "Woodland");
     ObservableList<String> tipoDocumento = FXCollections.observableArrayList("NIT", "CC");
 
@@ -28,10 +31,10 @@ public class UsuarioGenerarSolicitudCtrl {
     private ChoiceBox Recurso;
 
     @FXML
-    private Spinner impacto;
+    private Spinner<Double> impacto;
 
     @FXML
-    private Spinner recuperacion;
+    private Spinner<Double> recuperacion;
     @FXML
     private TextField Documento;
 
@@ -51,7 +54,8 @@ public class UsuarioGenerarSolicitudCtrl {
 
     @FXML
     private void initialize() {
-
+        impacto.setEditable(true);
+        recuperacion.setEditable(true);
         Recurso.setItems(tipoRecurso);
         Recurso.setValue("Causes");
         impacto.setValueFactory(valueFactoryImpacto);
@@ -74,21 +78,23 @@ public class UsuarioGenerarSolicitudCtrl {
 
     @FXML
     private void sendRequest(){
+        Request request = new Request();
+        Client client=new Client();
+        client.setCC(Documento.getText());
+        request.setClient(client);
+        request.setDate(LocalDate.now());
+        request.setEstimatedImpact(impacto.getValue());
+        request.setNecessaryRecovery(recuperacion.getValue());
+        request.setNombreRecurso(nombreRecurso.getText());
+        request.setMunicipio(municipio.getText());
+        request.setDepartamento(departamento.getText());
+        request.setState(State.stateRequest.RECEIVED);
+        requestDAO.insert(request);
         try {
-            Request request = new Request();
-
-            Client client=new Client();
-            client.setCC(String.valueOf(Documento));
-            request.setClient(client);
-            request.setEstimatedImpact(Float.parseFloat(impacto.getValue().toString()));
-            request.setNecessaryRecovery(Float.parseFloat(recuperacion.getValue().toString()));
-            requestDAO.insert(request);
-            System.out.println(impacto.getValue());
             switchToGenerarSolicitud();
         }catch (IOException ioException){
-            System.out.println(ioException);
+            System.out.println("Excepción al cambiar de pantalla");
+            ioException.printStackTrace();
         }
     }
-
-
 }

@@ -7,13 +7,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import udea.tecnicas.controller.LicenceProcess;
 import udea.tecnicas.database.RequestDAO;
+import udea.tecnicas.model.Client;
+import udea.tecnicas.model.Request;
+import udea.tecnicas.model.State;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class UsuarioSolicitudesCtrl {
@@ -27,7 +30,8 @@ public class UsuarioSolicitudesCtrl {
 
     @FXML
     Spinner<Integer> recuperacion;
-
+    @FXML
+    private TableView<Request> RequestTable;
 
 
     @FXML
@@ -40,34 +44,22 @@ public class UsuarioSolicitudesCtrl {
     }
     @FXML
     public void initialize() {
-        ColId= new TableColumn<>("id");
-        ColId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        TableColumn<Request, String> colId = new TableColumn<>("id");
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        ColId_cliente= new TableColumn<>("id_Cliente");
-        ColId_cliente.setCellValueFactory(new PropertyValueFactory<>("id_Cliente"));
+        TableColumn<Request, LocalDate> colDate = new TableColumn<>("Date");
+        colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        ColResource= new TableColumn<>("resource");
-        ColResource.setCellValueFactory(new PropertyValueFactory<>("resource"));
+        TableColumn<Request, State.stateRequest> colState = new TableColumn<>("State");
+        colState.setCellValueFactory(new PropertyValueFactory<>("state"));
 
-        ColDate= new TableColumn<>("date");
-        ColDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        TableColumn<Request, Double> colEstimated = new TableColumn<>("Estimated Impact");
+        colEstimated.setCellValueFactory(new PropertyValueFactory<>("estimatedImpact"));
 
-        ColEstimated= new TableColumn<>("state");
-        ColEstimated.setCellValueFactory(new PropertyValueFactory<>("state"));
+        TableColumn<Request, Double> colRecovery = new TableColumn<>("Necessary Recovery");
+        colRecovery.setCellValueFactory(new PropertyValueFactory<>("necessaryRecovery"));
 
-        ColRecovery = new TableColumn<>("estimated_impact");
-        ColRecovery.setCellValueFactory(new PropertyValueFactory<>("estimated_impact"));
-
-        ColState = new TableColumn<>("necessary_recovery");
-        ColState.setCellValueFactory(new PropertyValueFactory<>("necessary_recovery"));
-
-        RequestTable.getColumns().add(ColId);
-        RequestTable.getColumns().add(ColId_cliente);
-        RequestTable.getColumns().add(ColResource);
-        RequestTable.getColumns().add(ColDate);
-        RequestTable.getColumns().add(ColEstimated);
-        RequestTable.getColumns().add(ColRecovery);
-        RequestTable.getColumns().add(ColState);
+        RequestTable.getColumns().addAll(colId, colDate,colEstimated, colRecovery, colState);
 
         loadtable();
 
@@ -75,9 +67,9 @@ public class UsuarioSolicitudesCtrl {
     }
     private void loadtable(){
         try {
-            List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
+            //List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
+            List< Request> data = new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente());
             data.forEach((n)->{
-                System.out.println("test");
                 RequestTable.getItems().add(n);
             });
             if(data.stream().count()==0){
@@ -92,29 +84,9 @@ public class UsuarioSolicitudesCtrl {
             }
         }
         catch (Exception e){
-            System.out.println("Este es un error");
-            System.out.println(e.getMessage());
+            System.out.println("Error cargando tabla");
+            e.printStackTrace();
         }
 
     }
-
-    @FXML
-    private TableView RequestTable;
-
-    private TableColumn<RequestString,String> ColId;
-
-    private TableColumn<RequestString,String> ColId_cliente;
-
-    private TableColumn<RequestString,String> ColResource;
-
-    private TableColumn<RequestString, LocalDateTime> ColDate;
-
-    private TableColumn<RequestString,String> ColEstimated;
-
-    private TableColumn<RequestString,Float> ColRecovery;
-
-    private TableColumn<RequestString, Float> ColState;
-
-
-
 }
