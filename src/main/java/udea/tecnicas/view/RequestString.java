@@ -6,16 +6,21 @@ import udea.tecnicas.model.State;
 import java.time.LocalDateTime;
 
 public class RequestString {
+    public String nombreRecurso;
+    public String municipio;
+    public String departamento;
     private String id;
     private String id_Cliente;
-    private String resource;
 
-    public RequestString(String id, String id_Cliente, String resource, LocalDateTime date, String state, Float estimated_impact, Float necessary_recovery) {
+
+    public RequestString(String id, String id_Cliente, LocalDateTime date, String state, String nombreRecurso, String municipio, String departamento, Float estimated_impact, Float necessary_recovery) {
         this.id = id;
         this.id_Cliente = id_Cliente;
-        this.resource = resource;
         this.date = date;
         this.state = state;
+        this.nombreRecurso = nombreRecurso;
+        this.municipio = municipio;
+        this.departamento = departamento;
         this.estimated_impact = estimated_impact;
         this.necessary_recovery = necessary_recovery;
     }
@@ -38,12 +43,28 @@ public class RequestString {
         this.id_Cliente = id_Cliente;
     }
 
-    public String getResource() {
-        return resource;
+    public void setNombreRecurso(){
+        this.nombreRecurso = nombreRecurso;
     }
 
-    public void setResource(String resource) {
-        this.resource = resource;
+    public String getNombreRecurso(){
+        return nombreRecurso;
+    }
+
+    public void setMunicipio(){
+        this.municipio = municipio;
+    }
+
+    public void setDepartamento(){
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento(){
+        return departamento;
+    }
+
+    public String getMunicipio(){
+        return municipio;
     }
 
     public LocalDateTime getDate() {

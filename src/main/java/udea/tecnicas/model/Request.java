@@ -3,6 +3,33 @@ package udea.tecnicas.model;
 import java.time.LocalDateTime;
 
 public class Request {
+    public String nombreRecurso;
+    public String municipio;
+    public String departamento;
+
+    public void setNombreRecurso(){
+        this.nombreRecurso = nombreRecurso;
+    }
+
+    public String getNombreRecurso(){
+        return nombreRecurso;
+    }
+
+    public void setMunicipio(){
+        this.municipio = municipio;
+    }
+
+    public void setDepartamento(){
+        this.departamento = departamento;
+    }
+
+    public String getDepartamento(){
+        return departamento;
+    }
+
+    public String getMunicipio(){
+        return municipio;
+    }
     public String getId() {
         return id;
     }
@@ -11,24 +38,17 @@ public class Request {
         this.id = id;
     }
 
-    public String getId_Cliente() {
+    public String getIdClient() {
         return client.getCC();
     }
-    public Client getCliente() {
+    public Client getClient() {
         return client;
     }
 
-    public void setId_Cliente(Client client) {
+    public void setIdClient(Client client) {
         this.client = client;
     }
 
-    public Resource getResource() {
-        return resource;
-    }
-
-    public void setResource(Resource resource) {
-        this.resource = resource;
-    }
 
     public LocalDateTime getDate() {
         return date;
@@ -46,20 +66,24 @@ public class Request {
         this.state = state;
     }
 
-    public float getEstimated_impact() {
-        return estimated_impact;
+    public float getEstimatedImpact() {
+        return estimatedImpact;
     }
 
-    public void setEstimated_impact(float estimated_impact) {
-        this.estimated_impact = estimated_impact;
+    public void setEstimatedImpact(float estimatedImpact) {
+        this.estimatedImpact = estimatedImpact;
     }
 
-    public float getNecessary_recovery() {
-        return necessary_recovery;
+    public float getNecessaryRecovery() {
+        return necessaryRecovery;
     }
 
-    public void setNecessary_recovery(float necessary_recovery) {
-        this.necessary_recovery = necessary_recovery;
+    public void setNecessaryRecovery(float necessaryRecovery) {
+        this.necessaryRecovery = necessaryRecovery;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     private String id;
@@ -68,19 +92,20 @@ public class Request {
     public Request() {
     }
 
-    public Request(String id, Client client, Resource resource, LocalDateTime date, State.stateRequest state, float estimated_impact, float necessary_recovery) {
+    public Request(String id, Client client, LocalDateTime date, State.stateRequest state, String nombreRecurso, String municipio, String departamento, float estimatedImpact, float necessaryRecovery) {
         this.id = id;
         this.client = client;
-        this.resource = resource;
         this.date = date;
+        this.nombreRecurso = nombreRecurso;
         this.state = state;
-        this.estimated_impact = estimated_impact;
-        this.necessary_recovery = necessary_recovery;
+        this.municipio = municipio;
+        this.departamento = departamento;
+        this.estimatedImpact = estimatedImpact;
+        this.necessaryRecovery = necessaryRecovery;
     }
 
-    private Resource resource;
     private LocalDateTime date;
     private State.stateRequest state;
-    private float estimated_impact;
-    private float necessary_recovery;
+    private float estimatedImpact;
+    private float necessaryRecovery;
 }

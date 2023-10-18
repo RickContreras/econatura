@@ -65,37 +65,37 @@ public class Database {
     protected static Resource GetResourceById(String Id){
         return new Resource();
     }
-    protected static void add_Request(Request r){
-        Connection connection = null;
-        try
-        {
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getId_Cliente()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimated_impact()+"','"+r.getNecessary_recovery()+"')");
-        }
-        catch(SQLException e){
-            System.out.println(e.toString());
-        }
-    }
-    protected static HashMap<String,Request> GetRequests(){
-        Connection connection = null;
-        HashMap<String,Request> r = new HashMap<>();
-        try
-        {
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from Request");
+   // protected static void add_Request(Request r){
+   //     Connection connection = null;
+   //     try
+   //     {
+   //         connection = DriverManager.getConnection(Constants.DATABASE_URL);
+   //         Statement statement = connection.createStatement();
+   //         statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getIdClient()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimatedImpact()+"','"+r.getNecessaryRecovery()+"')");
+   //     }
+   //     catch(SQLException e){
+   //         System.out.println(e.toString());
+   //     }
+   // }
+   // protected static HashMap<String,Request> GetRequests(){
+   //     Connection connection = null;
+   //     HashMap<String,Request> r = new HashMap<>();
+   //     try
+   //     {
+    //        connection = DriverManager.getConnection(Constants.DATABASE_URL);
+   //         Statement statement = connection.createStatement();
+   //         ResultSet rs = statement.executeQuery("select * from Request");
 
-            while(rs.next())
-            {
-                r.put(rs.getString("id"),new Request(rs.getString("id"),Database.GetClientByDocument(rs.getString("id_cliente")), Database.GetResourceById(rs.getString("id")),LocalDateTime.parse(rs.getString("date")), State.stateRequest.valueOf(rs.getString("state")),Float.parseFloat(rs.getString("estimated_impact")),Float.parseFloat(rs.getString("necessary_recovery"))));
-            }
-        }
-        catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return r;
-    }
+   //         while(rs.next())
+   //         {
+   //             r.put(rs.getString("id"),Database.GetClientByDocument(rs.getString("id_cliente")), LocalDateTime.parse(rs.getString("date")), State.stateRequest.valueOf(rs.getString("state")),Float.parseFloat(rs.getString("estimated_impact")),Float.parseFloat(rs.getString("necessary_recovery"))));
+   //         }
+   //     }
+   //     catch(SQLException e){
+   //         System.out.println(e.getMessage());
+    //    }
+   //     return r;
+   // }
     protected static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
     }
@@ -120,9 +120,9 @@ public class Database {
     protected static HashMap<String,Person> GetRequestbyId(){
         return new HashMap<String,Person>();
     }
-    protected static HashMap<String,Resource> GetResourcebyId(){
-        return new HashMap<String,Resource>();
-    }
+    //protected static HashMap<String,Resource> GetResourcebyId(){
+    //    return new HashMap<String,Resource>();
+    //}
 
     protected static void updateClient(Client nc){
         Connection connection = null;

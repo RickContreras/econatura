@@ -23,10 +23,10 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ChoiceBox>
-            <Label layoutX="43.0" layoutY="18.0" text="Tipo Recurco" />
+            <Label layoutX="43.0" layoutY="18.0" text="Tipo Recurso" />
             <Label layoutX="42.0" layoutY="154.0" text="Recuperación" />
-            <Spinner fx:id="Impacto" layoutX="44.0" layoutY="109.0" />
-            <Spinner fx:id="Recuperacion" layoutX="44.0" layoutY="171.0" prefHeight="25.0" prefWidth="149.0" />
+            <Spinner fx:id="impacto" layoutX="44.0" layoutY="109.0" />
+            <Spinner fx:id="recuperacion" layoutX="44.0" layoutY="171.0" prefHeight="25.0" prefWidth="149.0" />
             <TextField fx:id="Documento" layoutX="217.0" layoutY="109.0" promptText="123456789" />
             <Label layoutX="217.0" layoutY="84.0" text="Documento" />
             <ChoiceBox fx:id="TipoDocumento" layoutX="217.0" layoutY="45.0" prefWidth="150.0" />
@@ -40,7 +40,7 @@
          </children></AnchorPane>
       <AnchorPane layoutX="594.0" layoutY="237.0" prefHeight="59.0" prefWidth="161.0">
          <children>
-            <Button fx:id="solicitud" layoutX="72.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchToSolicitud" prefHeight="37.0" prefWidth="89.0" text="Solicitar">
+            <Button layoutX="72.0" layoutY="33.0" mnemonicParsing="false" onAction="#sendRequest" prefHeight="37.0" prefWidth="89.0" text="Solicitar">
                <padding>
                   <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
                </padding>

@@ -21,6 +21,8 @@ public class Econatura extends Application {
     private static Scene scene;
 
     private static String DocumentoCliente;
+
+
     public static String getDocumentoCliente(){return DocumentoCliente;}
     public static void SetDocumentoCliente(String documento){ DocumentoCliente = documento;}
 
@@ -32,7 +34,7 @@ public class Econatura extends Application {
     public void start(Stage stage) throws IOException {
         this.stage=stage;
         scene = new Scene(loadFXML("login"), 800, 400);
-        stage.setTitle("CorAntioquia!");
+        stage.setTitle("CorAntioquia");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
