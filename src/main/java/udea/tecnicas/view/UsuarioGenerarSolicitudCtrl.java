@@ -37,8 +37,17 @@ public class UsuarioGenerarSolicitudCtrl {
 
     @FXML
     private ChoiceBox TipoDocumento;
-    RequestDAO requestDAO;
 
+    @FXML
+    private TextField nombreRecurso;
+
+    @FXML
+    private TextField municipio;
+
+    @FXML
+    private TextField departamento;
+
+    RequestDAO requestDAO;
 
     @FXML
     private void initialize() {
