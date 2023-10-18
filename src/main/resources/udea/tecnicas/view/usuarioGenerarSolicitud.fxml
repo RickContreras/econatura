@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import org.kordamp.ikonli.javafx.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <?import udea.tecnicas.view.MenuUsuarios?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.UsuarioGenerarSolicitudCtrl">
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.UsuarioGenerarSolicitudCtrl">
     <MenuUsuarios Inicial_option="Request" layoutX="0" layoutY="0" minHeight="800"/>
     <children>
-      <AnchorPane fx:id="Formulario" layoutX="412.0" layoutY="22.0" prefHeight="231.0" prefWidth="440.0">
+      <AnchorPane fx:id="Formulario" layoutX="412.0" layoutY="22.0" prefHeight="231.0" prefWidth="580.0">
          <children>
             <Label layoutX="43.0" layoutY="92.0" text="Impacto" />
             <ChoiceBox fx:id="Recurso" layoutX="43.0" layoutY="45.0" prefWidth="150.0">
@@ -27,8 +31,14 @@
             <Label layoutX="217.0" layoutY="84.0" text="Documento" />
             <ChoiceBox fx:id="TipoDocumento" layoutX="217.0" layoutY="45.0" prefWidth="150.0" />
             <Label layoutX="216.0" layoutY="18.0" text="Tipo Documento" />
+            <Label layoutX="383.0" layoutY="18.0" text="Nombre Recurso" />
+            <TextField fx:id="nombreRecurso" layoutX="383.0" layoutY="45.0" promptText="Bosque Cerro Volador" />
+            <Label layoutX="383.0" layoutY="84.0" text="Municipio" />
+            <TextField fx:id="municipio" layoutX="383.0" layoutY="109.0" promptText="Medellin" />
+            <Label layoutX="383.0" layoutY="154.0" text="Departamento" />
+            <TextField fx:id="departamento" layoutX="383.0" layoutY="171.0" promptText="Antioquia" />
          </children></AnchorPane>
-      <AnchorPane layoutX="511.0" layoutY="230.0" prefHeight="59.0" prefWidth="161.0">
+      <AnchorPane layoutX="594.0" layoutY="237.0" prefHeight="59.0" prefWidth="161.0">
          <children>
             <Button fx:id="solicitud" layoutX="72.0" layoutY="33.0" mnemonicParsing="false" onAction="#switchToSolicitud" prefHeight="37.0" prefWidth="89.0" text="Solicitar">
                <padding>

@@ -35,7 +35,14 @@ public class UsuarioGenerarSolicitudCtrl {
     @FXML
     private ChoiceBox TipoDocumento;
 
+    @FXML
+    private TextField nombreRecurso;
 
+    @FXML
+    private TextField municipio;
+
+    @FXML
+    private TextField departamento;
 
     @FXML
     private void initialize() {
