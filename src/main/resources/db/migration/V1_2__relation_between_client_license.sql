@@ -5,7 +5,7 @@ FROM License;
 DROP TABLE License;
 
 create table License (
-	id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     id_client integer,
     id_auditor string,
     start string,
@@ -13,7 +13,7 @@ create table License (
     state string,
     estimated_impact string,
     necessary_recovery string,
-    CONSTRAINT License_FK_Client FOREIGN KEY (id_cliente) REFERENCES Client(id)
+    CONSTRAINT License_FK_Client FOREIGN KEY (id_client) REFERENCES Client(id)
 );
 
 INSERT INTO License

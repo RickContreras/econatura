@@ -18,7 +18,7 @@ create table Client (
 
 CREATE TABLE Request (
 	id INTEGER PRIMARY KEY AUTOINCREMENT,
-	id_cliente STRING,
+	id_cliente integer,
 	resource_id STRING,
 	date STRING,
 	state STRING,
