@@ -21,7 +21,7 @@ public class ClientDAO {
             statement.executeUpdate();
             statement.close();
         } catch(SQLException e) {
-            if(e.getErrorCode() == 19){
+            if(e.getErrorCode() == Constants.SQLITE_CONSTRAIN_ERROR){
                 throw new DatabaseException("El usuario ya existe", e);
             }
             throw new DatabaseException("Fallo al intentar registrar usuario", e);
