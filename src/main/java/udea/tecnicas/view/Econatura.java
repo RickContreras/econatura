@@ -36,9 +36,6 @@ public class Econatura extends Application {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-        Database.createTablesIfNotExist();
-
-
     }
 
     static void setRoot(String fxml) throws IOException {

@@ -44,3 +44,19 @@ gitGraph:
    commit
    commit
 ```
+
+# Migraciones
+
+Ejecutar las migraciones localizadas en `src/main/resources/db/migration`
+
+```shell
+mvn clean flyway:migrate
+```
+
+Para crear una nueva migración el estandar de nombre es el Siguiente
+
+`<Prefix><Version>__<Description>.sql`
+
+Prefix es `V` para las migraciones hacia adelante
+Version es el numero de versión a aplicar
+Description: es la descripción del cambio, se separa de la versión por 2 `_`
