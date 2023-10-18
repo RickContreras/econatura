@@ -1,6 +1,6 @@
 package udea.tecnicas.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.HashMap;
 
 public class License {
@@ -12,12 +12,11 @@ public class License {
         this.id = id;
     }
 
-    public String getId_client() {
-        return id_client;
+    public void setRequest(Request request) {
+        this.request = request;
     }
-
-    public void setId_client(String id_client) {
-        this.id_client = id_client;
+    public Request getRequest() {
+        return request;
     }
 
     public String getId_Auditor() {
@@ -28,29 +27,22 @@ public class License {
         this.id_Auditor = id_Auditor;
     }
 
-    public LocalDateTime getStart() {
+    public LocalDate getStart() {
         return start;
     }
 
-    public void setStart(LocalDateTime start) {
+    public void setStart(LocalDate start) {
         this.start = start;
     }
 
-    public LocalDateTime getEnd() {
+    public LocalDate getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDateTime end) {
+    public void setEnd(LocalDate end) {
         this.end = end;
     }
 
-    public HashMap<String, PenaltyFee> getPenaltyFees() {
-        return PenaltyFees;
-    }
-
-    public void setPenaltyFees(HashMap<String, PenaltyFee> penaltyFees) {
-        PenaltyFees = penaltyFees;
-    }
 
     public State.stateLicense getState() {
         return state;
@@ -77,10 +69,10 @@ public class License {
     }
 
     private String id;
-    private String id_client;
+    private Request request;
     private String id_Auditor;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private LocalDate start;
+    private LocalDate end;
     private HashMap<String,PenaltyFee> PenaltyFees;
     private State.stateLicense state;
     private float estimated_impact;
