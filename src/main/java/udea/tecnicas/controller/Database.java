@@ -11,19 +11,6 @@ import udea.tecnicas.Constants;
 import udea.tecnicas.model.*;
 
 public class Database {
-    protected static void add_License(License l,Client c){
-        Connection connection = null;
-        try
-        {
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            String query = "INSERT INTO License (id,id_client ,id_auditor,start,end,state,estimated_impact,necessary_recovery) values ('"+l.getId()+"','"+l.getId_Auditor()+"','"+l.getStart()+"','"+l.getEnd()+"','"+l.getState()+"','"+l.getEstimated_impact()+"','"+l.getNecessary_recovery()+"')";
-
-        }
-        catch(SQLException e){
-            System.out.println(e.toString());
-        }
-    }
     protected static HashMap<String,Client> GetClients(){
         Connection connection = null;
         HashMap<String,Client> Client_list = new HashMap<>();

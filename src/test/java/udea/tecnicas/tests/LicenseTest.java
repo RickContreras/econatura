@@ -1,0 +1,23 @@
+package udea.tecnicas.tests;
+
+import org.junit.jupiter.api.Test;
+import udea.tecnicas.database.LicenseDAO;
+import udea.tecnicas.model.License;
+import udea.tecnicas.model.Request;
+import udea.tecnicas.model.State;
+
+import java.time.LocalDate;
+
+public class LicenseTest {
+    @Test
+    public void testLicense() {
+        License license = new License();
+        Request request = new Request();
+        request.setId("1");
+        license.setRequest(request);
+        license.setState(State.stateLicense.ACTIVE);
+        license.setStart(LocalDate.of(2020, 10, 15));
+        license.setEnd(LocalDate.of(2024, 12, 31));
+        new LicenseDAO().insert(license);
+    }
+}
