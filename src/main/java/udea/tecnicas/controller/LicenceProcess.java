@@ -29,7 +29,7 @@ public class LicenceProcess {
     public static ArrayList<Request> ListRequestbyDocumentClient(String Document){
         ArrayList<Request> lr = new ArrayList<>();
         Database.GetRequests().forEach((document,request)->{
-            if (request.getId_Cliente().equals(Document)){lr.add(request);}
+            if (request.getIdClient().equals(Document)){lr.add(request);}
         });
         return lr;
     }

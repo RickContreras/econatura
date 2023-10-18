@@ -11,14 +11,14 @@ public class Request {
         this.id = id;
     }
 
-    public String getId_Cliente() {
+    public String getIdClient() {
         return client.getCC();
     }
-    public Client getCliente() {
+    public Client getClient() {
         return client;
     }
 
-    public void setId_Cliente(Client client) {
+    public void setIdClient(Client client) {
         this.client = client;
     }
 

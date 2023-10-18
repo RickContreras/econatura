@@ -27,7 +27,7 @@ public class Person {
     public Person(String fullName, String document) {
         this.fullName = fullName;
         this.document = document;
-        this.type = Type.PersonType.UNDEFINED;
+        this.type = Type.PersonType.NATURAL;
     }
 
     public Person( String fullName, String CC, Type.PersonType type) {

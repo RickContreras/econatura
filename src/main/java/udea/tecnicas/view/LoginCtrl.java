@@ -56,7 +56,7 @@ public class LoginCtrl {
         LabelErrorSignin.setVisible(false);
         try {
             Client client = new Client();
-            client.setType(Type.PersonType.UNDEFINED);
+            client.setType(Type.PersonType.NATURAL);
             client.setCC(TextFieldUsuariosNuevoDocumento.getText());
             client.setFullName(TextFieldUsuariosNuevoNombre.getText());
             clientDAO.insert(client);
