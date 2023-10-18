@@ -71,7 +71,7 @@ public class Database {
         {
             connection = DriverManager.getConnection(Constants.DATABASE_URL);
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getIdClient()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimated_impact()+"','"+r.getNecessary_recovery()+"')");
+            statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getIdClient()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimatedImpact()+"','"+r.getNecessaryRecovery()+"')");
         }
         catch(SQLException e){
             System.out.println(e.toString());

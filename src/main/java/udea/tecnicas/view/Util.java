@@ -8,7 +8,7 @@ public class Util {
     public static ArrayList<RequestString> convertRequestToRequestString(ArrayList<Request> lr){
         ArrayList<RequestString> nlr= new ArrayList<>();
         lr.forEach((r)->{
-            nlr.add(new RequestString(r.getId(),r.getClient().getCC(),r.getResource().getName(),r.getDate(),r.getState().toString(),r.getEstimated_impact(),r.getNecessary_recovery()));
+            nlr.add(new RequestString(r.getId(),r.getClient().getCC(),r.getResource().getName(),r.getDate(),r.getState().toString(),r.getEstimatedImpact(),r.getNecessaryRecovery()));
         });
         return nlr;
     }

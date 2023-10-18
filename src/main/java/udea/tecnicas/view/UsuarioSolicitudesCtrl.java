@@ -2,23 +2,36 @@ package udea.tecnicas.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import udea.tecnicas.controller.LicenceProcess;
+import udea.tecnicas.database.RequestDAO;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 
 public class UsuarioSolicitudesCtrl {
     @FXML
     ImageView arrowImage;
     @FXML
     Label LabelMessage;
+
     @FXML
-    private void switchToGenerarSolicitud() throws IOException {
+    Spinner<Integer> impacto;
+
+    @FXML
+    Spinner<Integer> recuperacion;
+
+
+
+    @FXML
+    private void switchToSolicitud() throws IOException {
+
         Econatura.setRoot("usuarioGenerarSolicitud");
         Econatura.getStage().setHeight(600);
         Econatura.getStage().setWidth(1200);
@@ -56,6 +69,7 @@ public class UsuarioSolicitudesCtrl {
         RequestTable.getColumns().add(ColState);
 
         loadtable();
+
         //tableView.getItems().addAll(getDataFromSource()); // Perfectly Ok here, as FXMLLoader already populated all @FXML annotated members.
     }
     private void loadtable(){
@@ -77,6 +91,7 @@ public class UsuarioSolicitudesCtrl {
             }
         }
         catch (Exception e){
+            System.out.println("Este es un error");
             System.out.println(e.getMessage());
         }
 
@@ -100,12 +115,5 @@ public class UsuarioSolicitudesCtrl {
     private TableColumn<RequestString, Float> ColState;
 
 
-
-    public UsuarioSolicitudesCtrl(){
-
-
-
-
-    }
 
 }

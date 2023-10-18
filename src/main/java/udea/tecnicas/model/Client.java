@@ -15,24 +15,20 @@ public class Client extends Person{
     }
     public List<License> licenses;
     public List<Request> requests;
-    public List<License> getLicenses(List<License> licenses) {
-         this.licenses = licenses;
+    public List<License> getLicenses() {
          return licenses;
     }
 
-    public void setLicenses(HashMap<String, License> licenses) {
-        Licenses = licenses;
+    public void setLicenses(List<License> licenses) {
+        this.licenses = licenses;
     }
 
-    public List<Request> getRequests(List<Request> requests) {
-        this.requests = requests;
+    public List<Request> getRequests() {
         return requests;
     }
 
-    public void setRequests(HashMap<String, Request> requests) {
-        Requests = requests;
+    public void setRequests(List<Request> requests) {
+        this.requests = requests;
     }
 
-    private HashMap<String,License> Licenses;
-    private HashMap<String,Request> Requests;
 }

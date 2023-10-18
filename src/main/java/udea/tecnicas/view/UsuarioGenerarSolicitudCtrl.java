@@ -11,11 +11,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import udea.tecnicas.database.ClientDAO;
+import udea.tecnicas.database.RequestDAO;
+import udea.tecnicas.model.Client;
+import udea.tecnicas.model.Request;
 
 import java.io.IOException;
 
 public class UsuarioGenerarSolicitudCtrl {
-
     SpinnerValueFactory<Integer> valueFactoryImpacto = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
     SpinnerValueFactory<Integer> valueFactoryRecuperacion = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100, 0);
     ObservableList<String> tipoRecurso = FXCollections.observableArrayList("Causes", "SuperficialWater", "UnderWater", "AliveFence", "ScientificResearch", "Woodland");
@@ -25,37 +28,58 @@ public class UsuarioGenerarSolicitudCtrl {
     private ChoiceBox Recurso;
 
     @FXML
-    private Spinner Impacto;
+    private Spinner impacto;
 
     @FXML
-    private Spinner Recuperacion;
+    private Spinner recuperacion;
     @FXML
     private TextField Documento;
 
     @FXML
     private ChoiceBox TipoDocumento;
-
+    RequestDAO requestDAO;
 
 
     @FXML
     private void initialize() {
+
         Recurso.setItems(tipoRecurso);
         Recurso.setValue("Causes");
-        Impacto.setValueFactory(valueFactoryImpacto);
-        Recuperacion.setValueFactory(valueFactoryRecuperacion);
+        impacto.setValueFactory(valueFactoryImpacto);
+        recuperacion.setValueFactory(valueFactoryRecuperacion);
         TipoDocumento.setItems(tipoDocumento);
         TipoDocumento.setValue("CC");
+        requestDAO = new RequestDAO();
+
     }
     @FXML
-    private void switchToSolicitud() throws IOException {
+    private void switchToGenerarSolicitud() throws IOException {
         Econatura.setRoot("usuarioSolicitudes");
 
         //Todo lo que se hace en el switchToSolicitud
         Econatura.getStage().setHeight(600);
         Econatura.getStage().setWidth(1200);
+
     }
 
+    @FXML
+    private void sendRequest(){
+        try {
+            Request request = new Request();
 
+            //request.setIdClient(Integer.parseInt(Econatura.getDocumentoCliente()));
+            Client client=new Client();
+            client.setCC(Econatura.getDocumentoCliente());
+            request.setClient(client);
+            request.setEstimatedImpact(Float.parseFloat(impacto.getValue().toString()));
+            request.setNecessaryRecovery(Float.parseFloat(recuperacion.getValue().toString()));
+            requestDAO.insert(request);
+            System.out.println(impacto.getValue());
+            switchToGenerarSolicitud();
+        }catch (IOException ioException){
+            System.out.println(ioException);
+        }
+    }
 
 
 }

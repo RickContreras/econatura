@@ -24,9 +24,7 @@ public class LoginCtrl {
 
     ClientDAO clientDAO;
 
-    public void initialize() {
-        clientDAO = new ClientDAO();
-    }
+    public void initialize() { clientDAO = new ClientDAO();}
 
     @FXML
     private void switchToFuncionario() throws IOException {
@@ -59,6 +57,7 @@ public class LoginCtrl {
             client.setType(Type.PersonType.NATURAL);
             client.setCC(TextFieldUsuariosNuevoDocumento.getText());
             client.setFullName(TextFieldUsuariosNuevoNombre.getText());
+            System.out.println(client);
             clientDAO.insert(client);
             switchToUsuario();
             Econatura.SetDocumentoCliente(TextFieldUsuariosNuevoDocumento.getText());

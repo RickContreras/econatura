@@ -46,20 +46,24 @@ public class Request {
         this.state = state;
     }
 
-    public float getEstimated_impact() {
-        return estimated_impact;
+    public float getEstimatedImpact() {
+        return estimatedImpact;
     }
 
-    public void setEstimated_impact(float estimated_impact) {
-        this.estimated_impact = estimated_impact;
+    public void setEstimatedImpact(float estimatedImpact) {
+        this.estimatedImpact = estimatedImpact;
     }
 
-    public float getNecessary_recovery() {
-        return necessary_recovery;
+    public float getNecessaryRecovery() {
+        return necessaryRecovery;
     }
 
-    public void setNecessary_recovery(float necessary_recovery) {
-        this.necessary_recovery = necessary_recovery;
+    public void setNecessaryRecovery(float necessaryRecovery) {
+        this.necessaryRecovery = necessaryRecovery;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     private String id;
@@ -68,19 +72,19 @@ public class Request {
     public Request() {
     }
 
-    public Request(String id, Client client, Resource resource, LocalDateTime date, State.stateRequest state, float estimated_impact, float necessary_recovery) {
+    public Request(String id, Client client, Resource resource, LocalDateTime date, State.stateRequest state, float estimatedImpact, float necessaryRecovery) {
         this.id = id;
         this.client = client;
         this.resource = resource;
         this.date = date;
         this.state = state;
-        this.estimated_impact = estimated_impact;
-        this.necessary_recovery = necessary_recovery;
+        this.estimatedImpact = estimatedImpact;
+        this.necessaryRecovery = necessaryRecovery;
     }
 
     private Resource resource;
     private LocalDateTime date;
     private State.stateRequest state;
-    private float estimated_impact;
-    private float necessary_recovery;
+    private float estimatedImpact;
+    private float necessaryRecovery;
 }
