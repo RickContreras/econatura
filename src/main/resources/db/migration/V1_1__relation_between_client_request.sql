@@ -24,7 +24,7 @@ CREATE TABLE Request (
 	state STRING,
 	estimated_impact STRING,
 	necessary_recovery STRING,
-	CONSTRAINT Request_FK_Client FOREIGN KEY (id) REFERENCES Client(id)
+	CONSTRAINT Request_FK_Client FOREIGN KEY (id_cliente) REFERENCES Client(id)
 );
 
 INSERT INTO Client
