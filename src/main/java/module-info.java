@@ -11,5 +11,6 @@ module udea.tecnicas.view {
     requires java.sql;
 
     opens udea.tecnicas.view to javafx.fxml;
+    opens udea.tecnicas.model to javafx.base;
     exports udea.tecnicas.view;
 }
