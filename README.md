@@ -53,6 +53,14 @@ Ejecutar las migraciones localizadas en `src/main/resources/db/migration`
 mvn clean flyway:migrate
 ```
 
+En ocaciones, es necesario borrar la base de datos antes de ejecutar las migraciones para realizar esta acción,
+ejecute el siguiente comando:
+
+```shell
+mvn clean flyway:clean
+```
+
+
 Para crear una nueva migración el estandar de nombre es el Siguiente
 
 `<Prefix><Version>__<Description>.sql`
