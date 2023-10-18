@@ -28,6 +28,6 @@ public class LicenseTest {
 
     @Test
     public void testListByDocumentLicense() {
-        System.out.println(new LicenseDAO().findByDocument("1"));
+        System.out.println(new LicenseDAO().findByDocument("3"));
     }
 }

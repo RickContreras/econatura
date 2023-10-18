@@ -12,19 +12,14 @@
     <MenuUsuarios Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>
     <children>
         <TableView  fx:id="licenseTable" layoutX="389.0" layoutY="73.0" prefHeight="191.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
-            <columns>
-                <TableColumn prefWidth="200.0" style="-fx-border-radius: 20px;" text="Fecha" />
-                <TableColumn prefWidth="200.0" style="-fx-border-radius: 20;" text="Estado" />
-                <TableColumn prefWidth="200.0" text="Recurso" />
-            </columns>
         </TableView>
-      <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false"  text="Generar Solicitud">
-         <padding>
+        <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false"  text="Generar Solicitud">
+        <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-         </padding>
-      </Button>
-      <FontIcon iconLiteral="bi-plus-circle" layoutX="1041.0" layoutY="47.0" text="" />
-      <FontIcon iconLiteral="bi-plus-circle" layoutX="1147.0" layoutY="47.0" text="" />
+        </padding>
+        </Button>
+        <FontIcon iconLiteral="bi-plus-circle" layoutX="1041.0" layoutY="47.0" text="" />
+        <FontIcon iconLiteral="bi-plus-circle" layoutX="1147.0" layoutY="47.0" text="" />
 
         <TableView layoutX="389.0" layoutY="323.0" prefHeight="200.0" prefWidth="671.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
             <columns>
@@ -33,8 +28,10 @@
                 <TableColumn prefWidth="200.0" text="Recurso" />
             </columns>
         </TableView>
-      <Label layoutX="407.0" layoutY="39.0" text="Licencias" />
-      <Label layoutX="407.0" layoutY="292.0" text="Multas" />
-      <Button layoutX="1083.0" layoutY="352.0" mnemonicParsing="false" text="Button" />
+        <Label layoutX="407.0" layoutY="39.0" text="Licencias" />
+        <Label layoutX="407.0" layoutY="292.0" text="Multas" />
+        <Button layoutX="1083.0" layoutY="352.0" mnemonicParsing="false" text="Button" />
+
+        <Label fx:id="labelMessage"  layoutX="600.0" layoutY="219.0" text="Este usuario no tiene licencias registradas"  />
     </children>
 </AnchorPane>

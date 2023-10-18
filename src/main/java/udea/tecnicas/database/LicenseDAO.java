@@ -73,7 +73,7 @@ public class LicenseDAO {
                             "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
                             "from License l " +
                             "inner join Request r " +
-                            "on r.id = l.id_request" +
+                            "on r.id = l.id_request " +
                             "where r.id_cliente = ? "
             );
             statement.setString(1, document);
@@ -92,6 +92,7 @@ public class LicenseDAO {
         {
             License license = new License();
             Request request = new Request();
+            request.setId(rs.getString("request_id"));
             request.setNombreRecurso(rs.getString("nombre_recurso"));
             request.setMunicipio(rs.getString("municipio"));
             request.setDepartamento(rs.getString("departamento"));
@@ -103,11 +104,11 @@ public class LicenseDAO {
             }
             String startString = rs.getString("start");
             if (startString != null) {
-                request.setDate(LocalDate.parse(startString, DateTimeFormatter.ISO_DATE));
+                license.setStart(LocalDate.parse(startString, DateTimeFormatter.ISO_DATE));
             }
             String endString = rs.getString("end");
             if (endString != null) {
-                request.setDate(LocalDate.parse(endString, DateTimeFormatter.ISO_DATE));
+                license.setEnd(LocalDate.parse(endString, DateTimeFormatter.ISO_DATE));
             }
             String stateString = rs.getString("request_state");
             if (stateString != null) {
@@ -117,9 +118,8 @@ public class LicenseDAO {
             if (licenseStateString != null) {
                 license.setState(State.stateLicense.valueOf(licenseStateString));
             }
-            request.setId(rs.getString("request_id"));
+            license.setId(rs.getString("license_id"));
             license.setRequest(request);
-
             licenses.add(license);
         }
         return licenses;

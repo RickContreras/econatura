@@ -1,23 +1,22 @@
 package udea.tecnicas.view;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import udea.tecnicas.database.LicenseDAO;
 import udea.tecnicas.model.License;
-import udea.tecnicas.model.Request;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UsuarioLicenciasCtrl {
     @FXML
     private TableView<License> licenseTable;
-    @FXML
-    ImageView arrowImage;
+
     @FXML
     Label labelMessage;
 
@@ -27,29 +26,36 @@ public class UsuarioLicenciasCtrl {
         TableColumn<License, String> colId = new TableColumn<>("id");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<License, Request> colRequest = new TableColumn<>("Request");
+        TableColumn<License, String> colRequest= new TableColumn<>("Request");
         colRequest.setCellValueFactory(new PropertyValueFactory<>("request"));
 
-        licenseTable.getColumns().addAll(colId, colRequest);
+        TableColumn<License, LocalDate> colRequestDate = new TableColumn<>("Request Date");
+        colRequestDate.setCellValueFactory(p-> new ReadOnlyObjectWrapper<>(p.getValue().getRequest().getDate()));
+
+
+        TableColumn<License, String> colStart= new TableColumn<>("Start");
+        colStart.setCellValueFactory(new PropertyValueFactory<>("start"));
+
+        TableColumn<License, String> colEnd= new TableColumn<>("End");
+        colEnd.setCellValueFactory(new PropertyValueFactory<>("end"));
+
+        TableColumn<License, Double> colEstimatedImpact = new TableColumn<>("Estimated impact");
+        colEstimatedImpact.setCellValueFactory(p-> new ReadOnlyObjectWrapper<>(p.getValue().getRequest().getEstimatedImpact()));
+
+        licenseTable.getColumns().addAll(colId, colRequest, colRequestDate, colStart, colEnd, colEstimatedImpact);
 
         loadtable();
-
-
-        //tableView.getItems().addAll(getDataFromSource()); // Perfectly Ok here, as FXMLLoader already populated all @FXML annotated members.
     }
 
     private void loadtable(){
         try {
-            //List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
             List< License> data = new LicenseDAO().findByDocument(Econatura.getDocumentoCliente());
             licenseTable.setItems(FXCollections.observableArrayList(data));
             if(data.isEmpty()){
-                arrowImage.setVisible(true);
                 licenseTable.setVisible(false);
                 labelMessage.setVisible(true);
             }
             else{
-                arrowImage.setVisible(false);
                 licenseTable.setVisible(true);
                 labelMessage.setVisible(false);
             }
