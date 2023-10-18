@@ -26,11 +26,10 @@
       </Button>
       <FontIcon iconLiteral="bi-plus-circle" layoutX="1041.0" layoutY="47.0" text="" />
       <FontIcon iconLiteral="bi-plus-circle" layoutX="1147.0" layoutY="47.0" text="" />
-      <ImageView fx:id="arrowImage" fitHeight="494.0" fitWidth="354.0" layoutX="739.0" layoutY="100" visible="false" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../asset/images/Arrow.png" />
-         </image>
-      </ImageView>
+        <ImageView fx:id="arrowImage" fitHeight="494.0" fitWidth="354.0" layoutX="739.0" layoutY="100" visible="false"
+                   pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../asset/images/Arrow.png"/>
+        </ImageView>
         <Label fx:id="LabelMessage"  layoutX="600.0" layoutY="219.0" text="No existen solicitudes"  />
     </children>
 </AnchorPane>
