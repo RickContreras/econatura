@@ -7,9 +7,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import udea.tecnicas.database.LicenseDAO;
 import udea.tecnicas.model.License;
+import udea.tecnicas.model.PenaltyFee;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -18,31 +21,42 @@ public class UsuarioLicenciasCtrl {
     private TableView<License> licenseTable;
 
     @FXML
+    private TableView<PenaltyFee> penaltyFeeTable;
+
+    @FXML
     Label labelMessage;
 
+    @FXML
+    ImageView arrowImage;
+
+    @FXML
+    private void switchToGenerarSolicitud() throws IOException {
+
+        Econatura.setRoot("usuarioGenerarSolicitud");
+        Econatura.getStage().setHeight(600);
+        Econatura.getStage().setWidth(1200);
+
+    }
 
     @FXML
     public void initialize() {
-        TableColumn<License, String> colId = new TableColumn<>("id");
+        TableColumn<License, String> colId = new TableColumn<>("ID");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<License, String> colRequest= new TableColumn<>("Request");
-        colRequest.setCellValueFactory(new PropertyValueFactory<>("request"));
-
-        TableColumn<License, LocalDate> colRequestDate = new TableColumn<>("Request Date");
-        colRequestDate.setCellValueFactory(p-> new ReadOnlyObjectWrapper<>(p.getValue().getRequest().getDate()));
+        TableColumn<License, String> colIDRequest= new TableColumn<>("ID Request");
+        colIDRequest.setCellValueFactory(new PropertyValueFactory<>("request"));
 
 
-        TableColumn<License, String> colStart= new TableColumn<>("Start");
+        TableColumn<License, String> colStart= new TableColumn<>("Inicio");
         colStart.setCellValueFactory(new PropertyValueFactory<>("start"));
 
-        TableColumn<License, String> colEnd= new TableColumn<>("End");
+        TableColumn<License, String> colEnd= new TableColumn<>("Final");
         colEnd.setCellValueFactory(new PropertyValueFactory<>("end"));
 
-        TableColumn<License, Double> colEstimatedImpact = new TableColumn<>("Estimated impact");
-        colEstimatedImpact.setCellValueFactory(p-> new ReadOnlyObjectWrapper<>(p.getValue().getRequest().getEstimatedImpact()));
+        TableColumn<License, Double> colState = new TableColumn<>("Estado");
+        colState.setCellValueFactory(new PropertyValueFactory<>("state"));
 
-        licenseTable.getColumns().addAll(colId, colRequest, colRequestDate, colStart, colEnd, colEstimatedImpact);
+        licenseTable.getColumns().addAll(colId, colIDRequest, colStart, colEnd, colState);
 
         loadtable();
     }
@@ -52,8 +66,10 @@ public class UsuarioLicenciasCtrl {
             List< License> data = new LicenseDAO().findByDocument(Econatura.getDocumentoCliente());
             licenseTable.setItems(FXCollections.observableArrayList(data));
             if(data.isEmpty()){
+                arrowImage.setVisible(true);
                 licenseTable.setVisible(false);
                 labelMessage.setVisible(true);
+                penaltyFeeTable.setVisible(false);
             }
             else{
                 licenseTable.setVisible(true);
@@ -65,4 +81,6 @@ public class UsuarioLicenciasCtrl {
             e.printStackTrace();
         }
     }
+
+
 }
