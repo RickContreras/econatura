@@ -15,7 +15,7 @@
 
         </columns>
       </TableView>
-      <TextField layoutX="447.0" layoutY="78.0" />
+      <TextField fx:id="documentFilter" promptText="Documento Cliente"  layoutX="447.0" layoutY="78.0" />
       <Label layoutX="453.0" layoutY="49.0" text="Busqueda por documento" />
       <AnchorPane layoutX="953.0" layoutY="18.0" prefHeight="121.0" prefWidth="216.0">
          <children>

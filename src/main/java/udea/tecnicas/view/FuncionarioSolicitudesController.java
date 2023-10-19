@@ -4,14 +4,14 @@ package udea.tecnicas.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.collections.ObservableMap;
 import javafx.scene.Node;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.PickResult;
 import org.w3c.dom.Text;
@@ -28,6 +28,8 @@ public class FuncionarioSolicitudesController {
 
     @FXML
     private Label LabelStatus;
+    @FXML
+    private TextField documentFilter;
 
     @FXML
     private ChoiceBox<State.stateRequest> ChoiceBoxStatus;
@@ -35,13 +37,51 @@ public class FuncionarioSolicitudesController {
     private TableView<Request> RequestTable;
 
     private void loadRequest(MouseEvent event){
+        if(!RequestTable.getSelectionModel().isEmpty()){
+            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).getFirst();
+            LabelStatus.setText(r.getId());
+            ChoiceBoxStatus.setValue(r.getState());
+        }
+    }
+    private void changeStateRequest(ActionEvent id){
+        if(!RequestTable.getSelectionModel().isEmpty()) {
+            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).getFirst();
+            if(!r.getState().equals(ChoiceBoxStatus.getValue())){
+            r.setState(ChoiceBoxStatus.getValue());
+            //changeStatusRequest(r) Funcion a implementar
+            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+            a.setContentText("Solicitud modificada");
+            a.show();}
+        }
+    }
+    private void searchRequest(KeyEvent e){
 
-        System.out.println(RequestTable.getSelectionModel().getSelectedItem().getId());
+        if(e.getCode().equals(KeyCode.ENTER)){
+            try {
+                RequestTable.getItems().removeAll(RequestTable.getItems());
+                List< Request> data;
+                if(documentFilter.getText().isEmpty()){
+                    data= new RequestDAO().findAll();
+                }
+                else{
+                    data= new RequestDAO().findByClientDocument(documentFilter.getText());
 
+                }
+                data.forEach((n)->{
+                    RequestTable.getItems().add(n);
+                });
+            }
+            catch (Exception ev){
+                System.out.println("Error cargando tabla");
+                ev.printStackTrace();
+            }
+        }
     }
     public void initialize() {
         ChoiceBoxStatus.setItems(status);
+        ChoiceBoxStatus.setOnAction(event -> changeStateRequest(event));
         RequestTable.onMouseClickedProperty().set(event->loadRequest(event) );
+        documentFilter.onKeyPressedProperty().set(keyEvent -> searchRequest(keyEvent));
 
         TableColumn<Request, String> colId = new TableColumn<>("id");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
