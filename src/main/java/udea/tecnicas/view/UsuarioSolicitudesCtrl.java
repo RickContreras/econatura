@@ -26,11 +26,6 @@ public class UsuarioSolicitudesCtrl {
     Label LabelMessage;
 
     @FXML
-    Spinner<Integer> impacto;
-
-    @FXML
-    Spinner<Integer> recuperacion;
-    @FXML
     private TableView<Request> RequestTable;
 
 
@@ -44,7 +39,7 @@ public class UsuarioSolicitudesCtrl {
     }
     @FXML
     public void initialize() {
-        TableColumn<Request, String> colId = new TableColumn<>("id");
+        TableColumn<Request, String> colId = new TableColumn<>("ID");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         TableColumn<Request, LocalDate> colDate = new TableColumn<>("Fecha");
