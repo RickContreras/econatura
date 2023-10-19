@@ -13,9 +13,7 @@
     <Button fx:id="boton_gargar" layoutX="412.0" layoutY="63.0" mnemonicParsing="false" onMouseClicked="#cargar_pagina" text="Button" />
     <TableView layoutX="400.0" layoutY="150.0" prefHeight="400.0" prefWidth="363.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
       <columns>
-          <TableColumn prefWidth="200.0" style="-fx-border-radius: 20px;" text="Fecha" />
-          <TableColumn prefWidth="200.0" style="-fx-border-radius: 20;" text="Estado" />
-          <TableColumn prefWidth="200.0" text="Recurso" />
+          
       </columns>
     </TableView>
 </AnchorPane>

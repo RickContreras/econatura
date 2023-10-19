@@ -31,4 +31,9 @@ public class Client extends Person{
         this.requests = requests;
     }
 
+    @Override
+    public String toString(){
+        return this.getCC();
+    }
+
 }
