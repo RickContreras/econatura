@@ -84,6 +84,7 @@ public class MenuUsuarios extends AnchorPane {
         }
         catch (Exception Ex){
             System.out.println(Ex.getMessage());
+            Ex.printStackTrace();
         }
     }
     protected void go_to_fxml(Menu_Option option) throws IOException {

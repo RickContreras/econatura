@@ -25,4 +25,9 @@ public class LicenseTest {
     public void testListLicense() {
         System.out.println(new LicenseDAO().findAll());
     }
+
+    @Test
+    public void testListByDocumentLicense() {
+        System.out.println(new LicenseDAO().findByDocument("3"));
+    }
 }

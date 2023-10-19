@@ -107,4 +107,8 @@ public class Request {
         this.estimatedImpact = estimatedImpact;
         this.necessaryRecovery = necessaryRecovery;
     }
+
+    public String toString() {
+        return this.id;
+    }
 }
