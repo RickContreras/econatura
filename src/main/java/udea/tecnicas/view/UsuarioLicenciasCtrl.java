@@ -40,6 +40,8 @@ public class UsuarioLicenciasCtrl {
 
     @FXML
     public void initialize() {
+
+        // Construcción de las columnas para la tabla de licencias
         TableColumn<License, String> colId = new TableColumn<>("ID");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -59,6 +61,22 @@ public class UsuarioLicenciasCtrl {
         licenseTable.getColumns().addAll(colId, colIDRequest, colStart, colEnd, colState);
 
         loadtable();
+
+        // Construcción de las columnas para la tabla de multas
+
+        TableColumn<PenaltyFee, String> colIdMulta = new TableColumn<>("ID");
+        colIdMulta.setCellValueFactory(new PropertyValueFactory<>("id"));
+
+        TableColumn<PenaltyFee, String> colReason = new TableColumn<>("Razón");
+        colReason.setCellValueFactory(new PropertyValueFactory<>("Reason"));
+
+        TableColumn<PenaltyFee, String> colValue = new TableColumn<>("Valor");
+        colValue.setCellValueFactory(new PropertyValueFactory<>("value"));
+
+        TableColumn<PenaltyFee, String> colPenaltyFeeState = new TableColumn<>("Estado");
+        colPenaltyFeeState.setCellValueFactory(new PropertyValueFactory<>("state"));
+        //To do
+        penaltyFeeTable.getColumns().addAll(colIdMulta, colValue, colPenaltyFeeState, colReason);
     }
 
     private void loadtable(){

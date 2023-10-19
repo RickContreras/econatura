@@ -67,10 +67,8 @@ public class UsuarioGenerarSolicitudCtrl {
 
     }
     @FXML
-    private void switchToGenerarSolicitud() throws IOException {
+    private void switchToSolicitud() throws IOException {
         Econatura.setRoot("usuarioSolicitudes");
-
-        //Todo lo que se hace en el switchToSolicitud
         Econatura.getStage().setHeight(600);
         Econatura.getStage().setWidth(1200);
 
@@ -91,7 +89,7 @@ public class UsuarioGenerarSolicitudCtrl {
         request.setState(State.stateRequest.RECEIVED);
         requestDAO.insert(request);
         try {
-            switchToGenerarSolicitud();
+            switchToSolicitud();
         }catch (IOException ioException){
             System.out.println("Excepción al cambiar de pantalla");
             ioException.printStackTrace();
