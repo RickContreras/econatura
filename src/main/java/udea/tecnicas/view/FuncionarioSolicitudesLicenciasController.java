@@ -29,7 +29,6 @@ public class FuncionarioSolicitudesLicenciasController {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-        System.out.println("Cargar Pagina");
     }
 
     @FXML

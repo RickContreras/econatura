@@ -111,7 +111,6 @@ public class Menu extends AnchorPane {
         try
         {
             Group GroupClicked = (Group)e.getSource();
-            System.out.println(GroupClicked.getId());
             go_to_fxml(Menu_Option.valueOf(GroupClicked.getId().substring(1)));
         }
         catch (Exception Ex){
