@@ -75,7 +75,7 @@ public class UsuarioLicenciasCtrl {
 
         TableColumn<PenaltyFee, String> colPenaltyFeeState = new TableColumn<>("Estado");
         colPenaltyFeeState.setCellValueFactory(new PropertyValueFactory<>("state"));
-        //To do
+        //Todo ¿Se implementara la columna idLicencia?
         penaltyFeeTable.getColumns().addAll(colIdMulta, colValue, colPenaltyFeeState, colReason);
     }
 
