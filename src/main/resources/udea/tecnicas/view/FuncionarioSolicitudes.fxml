@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <?import udea.tecnicas.view.Menu?>
 <!--<?import udea.tecnicas.view.Menu?>-->
 <!--<Menu Inicial_option="" layoutX="0" layoutY="0" minHeight="800"/>-->
 
-<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.FuncionarioSolicitudesController">
-    <Menu Inicial_option="Request_Request" layoutX="0" layoutY="0" minHeight="800"/>
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.FuncionarioSolicitudesController">
+   <Menu Inicial_option="Request_Request" layoutX="0" layoutY="0" minHeight="800"/>
    <children>
       <TableView fx:id="RequestTable" layoutX="400.0" layoutY="150.0" prefHeight="400.0" prefWidth="770.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
         <columns>
@@ -18,6 +16,14 @@
         </columns>
       </TableView>
       <TextField layoutX="447.0" layoutY="78.0" />
-      <Label layoutX="456.0" layoutY="50.0" text="Busqueda por documentp" />
+      <Label layoutX="453.0" layoutY="49.0" text="Busqueda por documento" />
+      <AnchorPane layoutX="953.0" layoutY="18.0" prefHeight="121.0" prefWidth="216.0">
+         <children>
+            <Label layoutX="25.0" layoutY="21.0" text="Solicitud Nr" />
+            <Label fx:id="LabelStatus" layoutX="94.0" layoutY="21.0" text="xxxxx" />
+            <ChoiceBox fx:id="ChoiceBoxStatus" layoutX="25.0" layoutY="69.0" prefWidth="150.0" />
+            <Label layoutX="25.0" layoutY="52.0" text="Estado" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

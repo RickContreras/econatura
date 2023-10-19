@@ -41,6 +41,9 @@ public class UsuarioLicenciasCtrl {
     @FXML
     public void initialize() {
 
+        penaltyFeeTable.setPlaceholder(new Label("No hay multas asociadas"));
+
+
         // Construcción de las columnas para la tabla de licencias
         TableColumn<License, String> colId = new TableColumn<>("ID");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));

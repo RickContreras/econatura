@@ -1,8 +1,13 @@
 package udea.tecnicas.view;
 
 
-import javafx.collections.ObservableMap;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.collections.ObservableMap;
 import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,11 +19,18 @@ import udea.tecnicas.database.RequestDAO;
 import udea.tecnicas.model.Client;
 import udea.tecnicas.model.Request;
 import udea.tecnicas.model.State;
-
 import java.time.LocalDate;
 import java.util.List;
 
 public class FuncionarioSolicitudesController {
+
+    ObservableList<State.stateRequest> status = FXCollections.observableArrayList(State.stateRequest.APROVED, State.stateRequest.REFUSED, State.stateRequest.IN_REVIEW, State.stateRequest.RECEIVED);
+
+    @FXML
+    private Label LabelStatus;
+
+    @FXML
+    private ChoiceBox<State.stateRequest> ChoiceBoxStatus;
     @FXML
     private TableView<Request> RequestTable;
 
@@ -28,7 +40,9 @@ public class FuncionarioSolicitudesController {
 
     }
     public void initialize() {
+        ChoiceBoxStatus.setItems(status);
         RequestTable.onMouseClickedProperty().set(event->loadRequest(event) );
+
         TableColumn<Request, String> colId = new TableColumn<>("id");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 

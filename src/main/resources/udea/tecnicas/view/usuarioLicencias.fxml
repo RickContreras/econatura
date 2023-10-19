@@ -16,7 +16,7 @@
 
             </columns>
         </TableView>
-        <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToGenerarSolicitud" text="Generar Solicitud">
+        <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToGenerarSolicitud" style="-fx-background-color: #545F71; -fx-background-radius: 20px;" text="Generar Solicitud" textFill="WHITE">
         <padding>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
         </padding>
