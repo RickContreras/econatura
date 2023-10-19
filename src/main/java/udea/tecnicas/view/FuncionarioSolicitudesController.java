@@ -23,11 +23,8 @@ public class FuncionarioSolicitudesController {
     private TableView<Request> RequestTable;
 
     private void loadRequest(MouseEvent event){
-        Node rs = event.getPickResult().getIntersectedNode();
-        ObservableMap<Object,Object> data = rs.getProperties();
-        System.out.println(rs.getProperties().get("text"));
 
-        System.out.println(rs.toString());
+        System.out.println(RequestTable.getSelectionModel().getSelectedItem().getId());
 
     }
     public void initialize() {

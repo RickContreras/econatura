@@ -57,6 +57,21 @@ public class RequestDAO {
             throw new DatabaseException("Fallo al cargar información de solicitudes para el cliente '"+document+"'" , e);
         }
     }
+    public List<Request> findById(String id){
+        try {
+            Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
+            PreparedStatement statement = connection.prepareStatement(
+                    "select * from Request where id = ?"
+            );
+            statement.setString(1, id);
+            ResultSet rs = statement.executeQuery();
+            List<Request> requests = serialize(rs);
+            statement.close();
+            return requests;
+        }catch (SQLException e){
+            throw new DatabaseException("Fallo al cargar información de solicitud nro '"+id+"'" , e);
+        }
+    }
     public List<Request>  findAll() {
         try {
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
