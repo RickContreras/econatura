@@ -7,14 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.collections.ObservableMap;
-import javafx.scene.Node;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.PickResult;
-import org.w3c.dom.Text;
 import udea.tecnicas.database.RequestDAO;
 import udea.tecnicas.model.Client;
 import udea.tecnicas.model.Request;
@@ -38,20 +34,22 @@ public class FuncionarioSolicitudesController {
 
     private void loadRequest(MouseEvent event){
         if(!RequestTable.getSelectionModel().isEmpty()){
-            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).getFirst();
+            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
             LabelStatus.setText(r.getId());
             ChoiceBoxStatus.setValue(r.getState());
         }
     }
     private void changeStateRequest(ActionEvent id){
         if(!RequestTable.getSelectionModel().isEmpty()) {
-            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).getFirst();
-            if(!r.getState().equals(ChoiceBoxStatus.getValue())){
-            r.setState(ChoiceBoxStatus.getValue());
-            //changeStatusRequest(r) Funcion a implementar
-            Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-            a.setContentText("Solicitud modificada");
-            a.show();}
+            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
+            if(!r.getState().equals(ChoiceBoxStatus.getValue()))
+            {
+                r.setState(ChoiceBoxStatus.getValue());
+                //changeStatusRequest(r) Funcion a implementar
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setContentText("Solicitud modificada");
+                a.show();
+            }
         }
     }
     private void searchRequest(KeyEvent e){
