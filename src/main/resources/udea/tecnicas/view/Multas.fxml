@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MultasCtrl">
-     <Button layoutX="179.0" layoutY="338.0" onAction="#cerrarModal" text="Enviar"  style="-fx-background-color: #545F71;"  textFill="WHITE"/>
-   <Label layoutX="41.0" layoutY="31.0" text="Asigne una Multa a una Licencia" textFill="#545f71">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MultasCtrl">
+     <Button layoutX="162.0" layoutY="330.0" onAction="#cerrarModal" prefHeight="25.0" prefWidth="67.0" style="-fx-background-color: #545F71;" text="Enviar" textFill="WHITE">
+      <padding>
+         <Insets right="10.0" />
+      </padding></Button>
+   <Label layoutX="51.0" layoutY="28.0" text="Asigne una Multa a una Licencia" textAlignment="CENTER" textFill="#545f71">
       <font>
          <Font name="Inter Italic" size="21.0" />
       </font></Label>
@@ -31,4 +42,5 @@
          <TextArea fx:id="Reason" prefHeight="90.0" prefWidth="255.0" />
       </children>
    </VBox>
+   <FontIcon iconColor="WHITE" iconLiteral="bi-megaphone" layoutX="210.0" layoutY="349.0" />
 </AnchorPane>
