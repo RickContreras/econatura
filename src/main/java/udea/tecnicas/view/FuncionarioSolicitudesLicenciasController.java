@@ -92,7 +92,7 @@ public class FuncionarioSolicitudesLicenciasController {
             modalController.setStage(EscenarioModal);
 
             // Establecer el contenido en el escenario y mostrar la ventana modal
-            EscenarioModal.setScene(new Scene(root, 600, 400));
+            EscenarioModal.setScene(new Scene(root));
             EscenarioModal.showAndWait(); // Mostrar y esperar hasta que se cierre
         } catch (Exception e) {
             e.printStackTrace();

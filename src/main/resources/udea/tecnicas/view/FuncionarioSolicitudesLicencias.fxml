@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import udea.tecnicas.view.Menu?>
 
-<!--<?import udea.tecnicas.view.Menu?>-->
 <!--<?import udea.tecnicas.view.Menu?>-->
 <!--<Menu Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>-->
 
 <AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: F1F1F1;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.FuncionarioSolicitudesLicenciasController">
-    <!--<Menu Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>-->
+    <Menu Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>
 
     <TextField fx:id="licenseFilter" layoutX="408.0" layoutY="77.0" promptText="ID Licencia" />
     <Label layoutX="409.0" layoutY="50.0" text="Busqueda por ID de licencia" />

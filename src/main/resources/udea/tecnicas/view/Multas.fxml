@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="udea.tecnicas.view.MultasCtrl">
-    <VBox alignment="CENTER" spacing="10">
-        <Label text="Ventana Modal" />
-        <Button text="Cerrar" onAction="#cerrarModal" />
-    </VBox>
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MultasCtrl">
+     <Button layoutX="179.0" layoutY="338.0" onAction="#cerrarModal" text="Enviar" />
+   <Label layoutX="41.0" layoutY="31.0" text="Asigne una Multa a una Licencia">
+      <font>
+         <Font name="Inter Italic" size="21.0" />
+      </font></Label>
+   <VBox alignment="TOP_CENTER" layoutX="66.0" layoutY="88.0" prefHeight="225.0" prefWidth="273.0">
+      <children>
+         <Label contentDisplay="CENTER" text="ID Licencia">
+            <font>
+               <Font name="System Bold" size="17.0" />
+            </font></Label>
+         <Spinner fx:id="IDLicense" />
+         <Separator prefHeight="21.0" prefWidth="100.0" />
+         <Label prefHeight="20.0" prefWidth="142.0" text="Valor de la multa">
+            <font>
+               <Font name="Inter Italic" size="16.0" />
+            </font></Label>
+         <TextField fx:id="Value" prefHeight="25.0" prefWidth="157.0" promptText="10000" />
+         <Separator prefHeight="31.0" prefWidth="273.0" />
+         <Label text="Razon">
+            <font>
+               <Font name="Inter Regular" size="16.0" />
+            </font></Label>
+         <TextArea fx:id="Reason" prefHeight="90.0" prefWidth="255.0" />
+      </children>
+   </VBox>
 </AnchorPane>
