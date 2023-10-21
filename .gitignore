@@ -302,3 +302,6 @@ target/
 .history/
 .name
 logs/
+
+# Sqlite database
+*.db

@@ -4,9 +4,14 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.stage.Stage;
+import udea.tecnicas.controller.Database;
+import udea.tecnicas.model.*;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 
 /**
  * JavaFX App
@@ -14,6 +19,12 @@ import java.io.IOException;
 public class Econatura extends Application {
     private static Stage stage;
     private static Scene scene;
+
+    private static String DocumentoCliente;
+
+
+    public static String getDocumentoCliente(){return DocumentoCliente;}
+    public static void SetDocumentoCliente(String documento){ DocumentoCliente = documento;}
 
     public static Stage getStage() {
         return stage;
@@ -23,7 +34,7 @@ public class Econatura extends Application {
     public void start(Stage stage) throws IOException {
         this.stage=stage;
         scene = new Scene(loadFXML("login"), 800, 400);
-        stage.setTitle("CorAntioquia!");
+        stage.setTitle("CorAntioquia");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

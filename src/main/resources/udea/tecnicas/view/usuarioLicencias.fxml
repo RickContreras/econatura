@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import org.kordamp.ikonli.javafx.*?>
+
+<?import udea.tecnicas.view.MenuUsuarios?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" style="-fx-background-color: fff;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.UsuarioLicenciasCtrl">
+    <MenuUsuarios Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>
+    <children>
+        <TableView fx:id="licenseTable" layoutX="389.0" layoutY="73.0" prefHeight="191.0" prefWidth="671.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
+            <columns>
+
+            </columns>
+        </TableView>
+        <Button fx:id="solicitud" layoutX="1035.0" layoutY="23.0" mnemonicParsing="false" onAction="#switchToGenerarSolicitud" style="-fx-background-color: #545F71; -fx-background-radius: 20px;" text="Generar Solicitud" textFill="WHITE">
+        <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+        </padding>
+        </Button>
+        <FontIcon iconLiteral="bi-plus-circle" layoutX="1041.0" layoutY="47.0" text="" />
+        <FontIcon iconLiteral="bi-plus-circle" layoutX="1147.0" layoutY="47.0" text="" />
+
+        <TableView fx:id="penaltyFeeTable" layoutX="389.0" layoutY="323.0" prefHeight="200.0" prefWidth="671.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
+            <columns>
+
+            </columns>
+        </TableView>
+
+        <ImageView fx:id="arrowImage" fitHeight="494.0" fitWidth="354.0" layoutX="739.0" layoutY="100" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../../../asset/images/Arrow.png" />
+        </ImageView>
+
+        <Label layoutX="407.0" layoutY="39.0" text="Licencias" />
+        <Label layoutX="407.0" layoutY="292.0" text="Multas" />
+
+        <Label fx:id="labelMessage" layoutX="600.0" layoutY="219.0" text="Este usuario no tiene licencias registradas" />
+    </children>
+</AnchorPane>

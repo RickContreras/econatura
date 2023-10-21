@@ -1,28 +1,54 @@
 package udea.tecnicas.model;
 
 public class Person {
-    private static int id = 0;
-    private String fullName;
-    private int CC;
 
-    public Person(String fullName, int CC) {
+    private String fullName;
+    private String document;
+    private Type.PersonType type;
+
+    public Type.PersonType getType() {
+        return type;
+    }
+
+    public void setType(Type.PersonType type) {
+        this.type = type;
+    }
+
+    public Person( String fullName, String CC,String type) {
         this.fullName = fullName;
-        this.CC = CC;
+        this.document = CC;
+        this.type = Type.PersonType.valueOf(type);
+
+    }
+
+    public Person() {
+    }
+
+    public Person(String fullName, String document) {
+        this.fullName = fullName;
+        this.document = document;
+        this.type = Type.PersonType.NATURAL;
+    }
+
+    public Person( String fullName, String CC, Type.PersonType type) {
+        this.fullName = fullName;
+        this.document = CC;
+        this.type = type;
     }
 
     public String getFullName() {
         return fullName;
     }
 
-    public int getCC() {
-        return CC;
+    public String getCC() {
+        return document;
     }
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
 
-    protected void setCC(int CC) {
-        this.CC = CC;
+    public void setCC(String CC) {
+        this.document = CC;
     }
 }
