@@ -5,8 +5,8 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="udea.tecnicas.view.MultasCtrl">
-     <Button layoutX="179.0" layoutY="338.0" onAction="#cerrarModal" text="Enviar" />
-   <Label layoutX="41.0" layoutY="31.0" text="Asigne una Multa a una Licencia">
+     <Button layoutX="179.0" layoutY="338.0" onAction="#cerrarModal" text="Enviar"  style="-fx-background-color: #545F71;"  textFill="WHITE"/>
+   <Label layoutX="41.0" layoutY="31.0" text="Asigne una Multa a una Licencia" textFill="#545f71">
       <font>
          <Font name="Inter Italic" size="21.0" />
       </font></Label>

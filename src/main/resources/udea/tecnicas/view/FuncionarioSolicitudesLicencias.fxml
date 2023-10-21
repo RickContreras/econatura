@@ -12,7 +12,7 @@
 
     <TextField fx:id="licenseFilter" layoutX="408.0" layoutY="77.0" promptText="ID Licencia" />
     <Label layoutX="409.0" layoutY="50.0" text="Busqueda por ID de licencia" />
-    <Button fx:id="botonMultas" layoutX="707.0" layoutY="521.0" mnemonicParsing="false" onAction="#abrirVentanaModal" text="Generar Multa" />
+    <Button fx:id="botonMultas" layoutX="707.0" layoutY="521.0" mnemonicParsing="false" onAction="#abrirVentanaModal" text="Generar Multa"  style="-fx-background-color: #545F71;"  textFill="WHITE" />
     <TableView fx:id="licenseTable" layoutX="400.0" layoutY="150.0" prefHeight="354.0" prefWidth="706.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
       <columns>
           
