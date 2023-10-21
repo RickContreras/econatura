@@ -2,8 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import udea.tecnicas.view.Menu?>
+
 <!--<?import udea.tecnicas.view.Menu?>-->
 <!--<Menu Inicial_option="" layoutX="0" layoutY="0" minHeight="800"/>-->
 
