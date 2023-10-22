@@ -11,13 +11,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import udea.tecnicas.database.DatabaseException;
+import udea.tecnicas.database.LicenseDAO;
 import udea.tecnicas.database.RequestDAO;
 import udea.tecnicas.model.Client;
+import udea.tecnicas.model.License;
 import udea.tecnicas.model.Request;
 import udea.tecnicas.model.State;
 import java.time.LocalDate;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
 
 public class FuncionarioSolicitudesController {
 
@@ -63,7 +68,20 @@ public class FuncionarioSolicitudesController {
             a.show();
         } else {
             System.out.println("Aprobando solicitud..." +  request.getId());
-            
+            LocalDate today = LocalDate.now();
+            License license = new License();
+            license.setRequest(request);
+            license.setState(State.stateLicense.ACTIVE);
+            license.setStart(today);
+            license.setEnd(today.plus(3, ChronoUnit.YEARS));
+            try{
+                new LicenseDAO().insert(license);
+            }catch (DatabaseException exception){
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(exception.getMessage());
+                a.show();
+            }
+
         }
 
     }
