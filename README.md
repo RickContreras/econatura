@@ -52,11 +52,6 @@ Ejecutar las migraciones localizadas en `src/main/resources/db/migration`
 ```shell
 mvn clean flyway:migrate
 ```
-En el caso que los comandos anteriores no le funcionen también puede intentar con estas versiones.
-
-Para eliminar la base de datos 
-
-Para crear una nueva migración el estandar de nombre es el siguiente
 En ocaciones, es necesario borrar la base de datos antes de ejecutar las migraciones para realizar esta acción,
 ejecute el siguiente comando:
 
@@ -64,6 +59,19 @@ ejecute el siguiente comando:
 mvn clean flyway:clean
 ```
 
+En el caso que los comandos anteriores no le funcionen también puede intentar con estas versiones.
+
+Para eliminar la base de datos 
+
+```shell
+./mvnw clean flyway:clean
+```
+
+Para ejecutar las migraciones
+
+```shell
+./mvnw clean flyway:migrate
+```
 
 Para crear una nueva migración el estandar de nombre es el Siguiente
 
