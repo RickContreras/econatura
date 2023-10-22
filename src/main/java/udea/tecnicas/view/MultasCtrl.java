@@ -38,6 +38,7 @@ public class MultasCtrl {
 
     @FXML
     private void cerrarModal() {
+
         stage.close();
     }
 
