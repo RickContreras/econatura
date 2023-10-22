@@ -57,6 +57,15 @@ En el caso que los comandos anteriores no le funcionen también puede intentar c
 Para eliminar la base de datos 
 
 Para crear una nueva migración el estandar de nombre es el siguiente
+En ocaciones, es necesario borrar la base de datos antes de ejecutar las migraciones para realizar esta acción,
+ejecute el siguiente comando:
+
+```shell
+mvn clean flyway:clean
+```
+
+
+Para crear una nueva migración el estandar de nombre es el Siguiente
 
 `<Prefix><Version>__<Description>.sql`
 

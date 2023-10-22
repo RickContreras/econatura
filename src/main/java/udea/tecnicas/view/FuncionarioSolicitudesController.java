@@ -11,13 +11,18 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import udea.tecnicas.database.DatabaseException;
+import udea.tecnicas.database.LicenseDAO;
 import udea.tecnicas.database.RequestDAO;
 import udea.tecnicas.model.Client;
+import udea.tecnicas.model.License;
 import udea.tecnicas.model.Request;
 import udea.tecnicas.model.State;
 import java.time.LocalDate;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.temporal.ChronoUnit;
 
 public class FuncionarioSolicitudesController {
 
@@ -32,12 +37,12 @@ public class FuncionarioSolicitudesController {
     private ChoiceBox<State.stateRequest> ChoiceBoxStatus;
     @FXML
     private TableView<Request> RequestTable;
+    Request request;
 
     private void loadRequest(MouseEvent event){
         if(!RequestTable.getSelectionModel().isEmpty()){
-            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
-            LabelStatus.setText(r.getId());
-            ChoiceBoxStatus.setValue(r.getState());
+            request = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
+            LabelStatus.setText(request.getId());
         }
     }
     private void changeStateRequest(ActionEvent id){
@@ -47,11 +52,38 @@ public class FuncionarioSolicitudesController {
             {
                 r.setState(ChoiceBoxStatus.getValue());
                 //changeStatusRequest(r) Funcion a implementar
+
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Solicitud modificada");
                 a.show();
             }
         }
+    }
+
+    @FXML
+    private void approveRequest(){
+        if(request == null){
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Seleccione una solicitud");
+            a.show();
+        } else {
+            System.out.println("Aprobando solicitud..." +  request.getId());
+            LocalDate today = LocalDate.now();
+            License license = new License();
+            license.setRequest(request);
+            license.setState(State.stateLicense.ACTIVE);
+            license.setStart(today);
+            license.setEnd(today.plus(3, ChronoUnit.YEARS));
+            try{
+                new LicenseDAO().insert(license);
+            }catch (DatabaseException exception){
+                Alert a = new Alert(Alert.AlertType.ERROR);
+                a.setContentText(exception.getMessage());
+                a.show();
+            }
+
+        }
+
     }
     private void searchRequest(KeyEvent e){
 
@@ -77,10 +109,10 @@ public class FuncionarioSolicitudesController {
         }
     }
     public void initialize() {
-        ChoiceBoxStatus.setItems(status);
-        ChoiceBoxStatus.setOnAction(event -> changeStateRequest(event));
-        RequestTable.onMouseClickedProperty().set(event->loadRequest(event) );
-        documentFilter.onKeyPressedProperty().set(keyEvent -> searchRequest(keyEvent));
+        //ChoiceBoxStatus.setItems(status);
+        //ChoiceBoxStatus.setOnAction(event -> changeStateRequest(event));
+        RequestTable.onMouseClickedProperty().set(this::loadRequest);
+        documentFilter.onKeyPressedProperty().set(this::searchRequest);
 
         TableColumn<Request, String> colId = new TableColumn<>("id");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -117,7 +149,7 @@ public class FuncionarioSolicitudesController {
     }
     private void loadtable(){
         try {
-            //List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
+
             List< Request> data = new RequestDAO().findAll();
             data.forEach((n)->{
                 RequestTable.getItems().add(n);
