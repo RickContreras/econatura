@@ -70,12 +70,16 @@ public class FuncionarioSolicitudesController {
             System.out.println("Aprobando solicitud..." +  request.getId());
             LocalDate today = LocalDate.now();
             License license = new License();
+            license.setId_Auditor("1");
             license.setRequest(request);
             license.setState(State.stateLicense.ACTIVE);
             license.setStart(today);
             license.setEnd(today.plus(3, ChronoUnit.YEARS));
             try{
                 new LicenseDAO().insert(license);
+                Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                a.setContentText("Se ha creado la licencia");
+                a.show();
             }catch (DatabaseException exception){
                 Alert a = new Alert(Alert.AlertType.ERROR);
                 a.setContentText(exception.getMessage());

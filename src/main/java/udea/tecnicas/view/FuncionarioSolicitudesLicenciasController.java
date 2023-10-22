@@ -79,7 +79,7 @@ public class FuncionarioSolicitudesLicenciasController {
         }
     }
 
-    
+
     public void abrirVentanaModal(){
         try {
             FXMLLoader loader = new FXMLLoader(Econatura.class.getResource("Multas.fxml"));
