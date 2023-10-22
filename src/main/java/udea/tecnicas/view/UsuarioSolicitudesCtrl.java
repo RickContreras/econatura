@@ -26,11 +26,6 @@ public class UsuarioSolicitudesCtrl {
     Label LabelMessage;
 
     @FXML
-    Spinner<Integer> impacto;
-
-    @FXML
-    Spinner<Integer> recuperacion;
-    @FXML
     private TableView<Request> RequestTable;
 
 
@@ -44,22 +39,31 @@ public class UsuarioSolicitudesCtrl {
     }
     @FXML
     public void initialize() {
-        TableColumn<Request, String> colId = new TableColumn<>("id");
+        TableColumn<Request, String> colId = new TableColumn<>("ID");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        TableColumn<Request, LocalDate> colDate = new TableColumn<>("Date");
+        TableColumn<Request, LocalDate> colDate = new TableColumn<>("Fecha");
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
 
-        TableColumn<Request, State.stateRequest> colState = new TableColumn<>("State");
+        TableColumn<Request, State.stateRequest> colState = new TableColumn<>("Estado");
         colState.setCellValueFactory(new PropertyValueFactory<>("state"));
 
-        TableColumn<Request, Double> colEstimated = new TableColumn<>("Estimated Impact");
+        TableColumn<Request, Double> colEstimated = new TableColumn<>("Impacto Estimado");
         colEstimated.setCellValueFactory(new PropertyValueFactory<>("estimatedImpact"));
 
-        TableColumn<Request, Double> colRecovery = new TableColumn<>("Necessary Recovery");
+        TableColumn<Request, Double> colRecovery = new TableColumn<>("Recuperacion necesaria");
         colRecovery.setCellValueFactory(new PropertyValueFactory<>("necessaryRecovery"));
 
-        RequestTable.getColumns().addAll(colId, colDate,colEstimated, colRecovery, colState);
+        TableColumn<Request, State.stateRequest> colMunicipio = new TableColumn<>("Municipio");
+        colMunicipio.setCellValueFactory(new PropertyValueFactory<>("municipio"));
+
+        TableColumn<Request, Double> colDepartamento = new TableColumn<>("Departamento");
+        colDepartamento.setCellValueFactory(new PropertyValueFactory<>("departamento"));
+
+        TableColumn<Request, Double> colRecurso = new TableColumn<>("Recurso");
+        colRecurso.setCellValueFactory(new PropertyValueFactory<>("nombreRecurso"));
+
+        RequestTable.getColumns().addAll(colId, colDate,colEstimated, colRecovery, colState,colRecurso,colMunicipio,colDepartamento);
 
         loadtable();
 

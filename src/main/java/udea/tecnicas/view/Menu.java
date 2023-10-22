@@ -100,7 +100,7 @@ public class Menu extends AnchorPane {
     protected void logout(MouseEvent ev){
         try {
             Econatura.getStage().setResizable(false);
-            Econatura.getStage().setHeight(400);
+            Econatura.getStage().setHeight(420);
             Econatura.getStage().setWidth(800);
             Econatura.setRoot("login");
         } catch (IOException e) {
@@ -111,7 +111,6 @@ public class Menu extends AnchorPane {
         try
         {
             Group GroupClicked = (Group)e.getSource();
-            System.out.println(GroupClicked.getId());
             go_to_fxml(Menu_Option.valueOf(GroupClicked.getId().substring(1)));
         }
         catch (Exception Ex){

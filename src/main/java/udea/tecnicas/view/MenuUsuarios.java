@@ -68,7 +68,7 @@ public class MenuUsuarios extends AnchorPane {
     protected void logout(MouseEvent ev){
         try {
             Econatura.getStage().setResizable(false);
-            Econatura.getStage().setHeight(400);
+            Econatura.getStage().setHeight(420);
             Econatura.getStage().setWidth(800);
             Econatura.setRoot("login");
         } catch (IOException e) {
@@ -84,6 +84,7 @@ public class MenuUsuarios extends AnchorPane {
         }
         catch (Exception Ex){
             System.out.println(Ex.getMessage());
+            Ex.printStackTrace();
         }
     }
     protected void go_to_fxml(Menu_Option option) throws IOException {
