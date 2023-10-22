@@ -47,7 +47,7 @@ public class FuncionarioSolicitudesController {
             {
                 r.setState(ChoiceBoxStatus.getValue());
                 //changeStatusRequest(r) Funcion a implementar
-                
+
                 Alert a = new Alert(Alert.AlertType.INFORMATION);
                 a.setContentText("Solicitud modificada");
                 a.show();
