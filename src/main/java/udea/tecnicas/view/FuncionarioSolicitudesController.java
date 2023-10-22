@@ -32,12 +32,12 @@ public class FuncionarioSolicitudesController {
     private ChoiceBox<State.stateRequest> ChoiceBoxStatus;
     @FXML
     private TableView<Request> RequestTable;
+    Request request;
 
     private void loadRequest(MouseEvent event){
         if(!RequestTable.getSelectionModel().isEmpty()){
-            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
-            LabelStatus.setText(r.getId());
-            ChoiceBoxStatus.setValue(r.getState());
+            request = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
+            LabelStatus.setText(request.getId());
         }
     }
     private void changeStateRequest(ActionEvent id){
@@ -53,6 +53,19 @@ public class FuncionarioSolicitudesController {
                 a.show();
             }
         }
+    }
+
+    @FXML
+    private void approveRequest(){
+        if(request == null){
+            Alert a = new Alert(Alert.AlertType.WARNING);
+            a.setContentText("Seleccione una solicitud");
+            a.show();
+        } else {
+            System.out.println("Aprobando solicitud..." +  request.getId());
+            
+        }
+
     }
     private void searchRequest(KeyEvent e){
 
@@ -78,10 +91,10 @@ public class FuncionarioSolicitudesController {
         }
     }
     public void initialize() {
-        ChoiceBoxStatus.setItems(status);
-        ChoiceBoxStatus.setOnAction(event -> changeStateRequest(event));
-        RequestTable.onMouseClickedProperty().set(event->loadRequest(event) );
-        documentFilter.onKeyPressedProperty().set(keyEvent -> searchRequest(keyEvent));
+        //ChoiceBoxStatus.setItems(status);
+        //ChoiceBoxStatus.setOnAction(event -> changeStateRequest(event));
+        RequestTable.onMouseClickedProperty().set(this::loadRequest);
+        documentFilter.onKeyPressedProperty().set(this::searchRequest);
 
         TableColumn<Request, String> colId = new TableColumn<>("id");
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -118,7 +131,7 @@ public class FuncionarioSolicitudesController {
     }
     private void loadtable(){
         try {
-            //List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
+
             List< Request> data = new RequestDAO().findAll();
             data.forEach((n)->{
                 RequestTable.getItems().add(n);
