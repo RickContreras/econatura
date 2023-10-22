@@ -8,7 +8,8 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import udea.tecnicas.database.RequestDAO;
+import udea.tecnicas.database.PenaltyFeeDAO;
+import udea.tecnicas.model.PenaltyFee;
 
 public class MultasCtrl {
 
@@ -24,12 +25,12 @@ public class MultasCtrl {
     @FXML
     private TextArea Reason;
 
+    PenaltyFeeDAO penaltyFeeDAO;
     @FXML
     private void initialize() {
-
+        IDLicense.setEditable(true);
         IDLicense.setValueFactory(idsLincense);
-
-
+        penaltyFeeDAO = new PenaltyFeeDAO();
     }
 
     public void setStage(Stage stage) {
@@ -38,7 +39,16 @@ public class MultasCtrl {
 
     @FXML
     private void cerrarModal() {
-
+        try {
+            PenaltyFee fee = new PenaltyFee();
+            fee.setReason(Reason.getText());
+            fee.setValue(Float.parseFloat(Value.getText()));
+            fee.setIdLicense(String.valueOf(IDLicense.getValue()));
+            System.out.println(fee);
+            penaltyFeeDAO.insert(fee);
+        } catch (Exception exception){
+            exception.printStackTrace();
+        }
         stage.close();
     }
 

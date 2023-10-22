@@ -5,8 +5,8 @@ public class PenaltyFee {
         return id;
     }
 
-    public String getId_license() {
-        return id_license;
+    public String getIdLicense() {
+        return idLicense;
     }
 
     public String getReason() {
@@ -17,16 +17,9 @@ public class PenaltyFee {
         return value;
     }
 
-    public boolean isState() {
-        return state;
-    }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setId_license(String id_license) {
-        this.id_license = id_license;
+    public void setIdLicense(String idLicense) {
+        this.idLicense = idLicense;
     }
 
     public void setReason(String reason) {
@@ -37,24 +30,18 @@ public class PenaltyFee {
         this.value = value;
     }
 
-    public void setState(boolean state) {
-        this.state = state;
-    }
 
     public PenaltyFee(){
 
     }
-    public PenaltyFee(String id, String id_license, String reason, float value, boolean state) {
-        this.id = id;
-        this.id_license = id_license;
+    public PenaltyFee(String id, String idLicense, String reason, float value) {
+        this.idLicense = idLicense;
         Reason = reason;
         this.value = value;
-        this.state = state;
     }
-
     private String id;
-    private String id_license;
+    private String idLicense;
     private String Reason;
     private float value;
-    private boolean state;
+
 }

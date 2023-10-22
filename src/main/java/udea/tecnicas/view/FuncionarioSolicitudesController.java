@@ -45,20 +45,6 @@ public class FuncionarioSolicitudesController {
             LabelStatus.setText(request.getId());
         }
     }
-    private void changeStateRequest(ActionEvent id){
-        if(!RequestTable.getSelectionModel().isEmpty()) {
-            Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).get(0);
-            if(!r.getState().equals(ChoiceBoxStatus.getValue()))
-            {
-                r.setState(ChoiceBoxStatus.getValue());
-                //changeStatusRequest(r) Funcion a implementar
-
-                Alert a = new Alert(Alert.AlertType.INFORMATION);
-                a.setContentText("Solicitud modificada");
-                a.show();
-            }
-        }
-    }
 
     @FXML
     private void approveRequest(){
@@ -113,8 +99,6 @@ public class FuncionarioSolicitudesController {
         }
     }
     public void initialize() {
-        //ChoiceBoxStatus.setItems(status);
-        //ChoiceBoxStatus.setOnAction(event -> changeStateRequest(event));
         RequestTable.onMouseClickedProperty().set(this::loadRequest);
         documentFilter.onKeyPressedProperty().set(this::searchRequest);
 
