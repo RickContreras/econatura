@@ -20,6 +20,7 @@ import udea.tecnicas.model.Client;
 import udea.tecnicas.model.Request;
 import udea.tecnicas.model.State;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FuncionarioSolicitudesController {
@@ -38,6 +39,7 @@ public class FuncionarioSolicitudesController {
 
     private void loadRequest(MouseEvent event){
         if(!RequestTable.getSelectionModel().isEmpty()){
+            List<String> list =new ArrayList<>();
             Request r = new RequestDAO().findById(RequestTable.getSelectionModel().getSelectedItem().getId()).getFirst();
             LabelStatus.setText(r.getId());
             ChoiceBoxStatus.setValue(r.getState());
