@@ -19,6 +19,7 @@
       <Label layoutX="453.0" layoutY="49.0" text="Busqueda por documento" />
       <AnchorPane layoutX="953.0" layoutY="18.0" prefHeight="121.0" prefWidth="216.0" style="-fx-background-color: D9D9D9;">
          <children>
+            <Label layoutX="25.0" layoutY="21.0" text="Solicitud Nr" />
             <Label layoutX="25.0" layoutY="52.0" text="Estado" />
             <Label fx:id="LabelStatus" layoutX="94.0" layoutY="21.0" text="xxxxx" />
 
