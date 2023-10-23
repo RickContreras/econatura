@@ -2,6 +2,7 @@ package udea.tecnicas.tests;
 
 import org.junit.jupiter.api.Test;
 import udea.tecnicas.database.LicenseDAO;
+import udea.tecnicas.database.PenaltyFeeDAO;
 import udea.tecnicas.model.License;
 import udea.tecnicas.model.Request;
 import udea.tecnicas.model.State;
@@ -29,5 +30,10 @@ public class LicenseTest {
     @Test
     public void testListByDocumentLicense() {
         System.out.println(new LicenseDAO().findByDocument("3"));
+    }
+
+    @Test
+    public void testListPaymentFee() {
+        System.out.println(new PenaltyFeeDAO().findByDocument("1"));
     }
 }

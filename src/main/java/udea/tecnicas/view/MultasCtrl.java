@@ -44,7 +44,6 @@ public class MultasCtrl {
             fee.setReason(Reason.getText());
             fee.setValue(Float.parseFloat(Value.getText()));
             fee.setIdLicense(String.valueOf(IDLicense.getValue()));
-            System.out.println(fee);
             penaltyFeeDAO.insert(fee);
         } catch (Exception exception){
             exception.printStackTrace();

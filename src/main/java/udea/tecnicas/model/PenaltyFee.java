@@ -1,8 +1,18 @@
 package udea.tecnicas.model;
 
 public class PenaltyFee {
-    public String getId() {
+
+    private int id;
+    private String idLicense;
+    private String Reason;
+    private float value;
+
+    public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getIdLicense() {
@@ -39,9 +49,6 @@ public class PenaltyFee {
         Reason = reason;
         this.value = value;
     }
-    private String id;
-    private String idLicense;
-    private String Reason;
-    private float value;
+
 
 }
