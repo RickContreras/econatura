@@ -19,7 +19,7 @@
             <TableColumn prefWidth="200.0" text="Recurso" />
         </columns>
       </TableView>
-      <Button layoutX="700.0" layoutY="47.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #545F71; -fx-background-radius: 20px;" text="Generar y Expotar" textFill="WHITE" />
-      <ProgressBar layoutX="690.0" layoutY="105.0" prefWidth="200.0" progress="0.0" />
+      <Button fx:id="boton_generar" layoutX="700.0" layoutY="47.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="173.0" style="-fx-background-color: #545F71; -fx-background-radius: 20px;" text="Generar y Expotar" textFill="WHITE" />
+      <ProgressBar fx:id="progreso" layoutX="690.0" layoutY="105.0" prefWidth="200.0" progress="0.0" />
    </children>
 </AnchorPane>
