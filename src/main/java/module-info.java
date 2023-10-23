@@ -9,6 +9,7 @@ module udea.tecnicas.view {
     requires org.kordamp.bootstrapfx.core;
     requires javafx.web;
     requires java.sql;
+    requires itextpdf;
 
     opens udea.tecnicas.view to javafx.fxml;
     opens udea.tecnicas.model to javafx.base;
