@@ -11,78 +11,9 @@ import udea.tecnicas.Constants;
 import udea.tecnicas.model.*;
 
 public class Database {
-    protected static HashMap<String,Client> GetClients(){
-        Connection connection = null;
-        HashMap<String,Client> Client_list = new HashMap<>();
-        try
-        {
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from Client");
 
-            while(rs.next())
-            {
-                Client_list.put(rs.getString("document"),new Client(rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type"))));
-            }
-        }
-        catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return Client_list;
-    }
-    protected static Client GetClientByDocument(String Id){
-        Connection connection = null;
-        Client c = new Client();
-        try
-        {
-            connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from Client where Document='"+Id+"'");
 
-            while(rs.next())
-            {
-                c = new Client(rs.getString("fullname"),rs.getString("document"),Type.PersonType.valueOf(rs.getString("type")));
-            }
-        }
-        catch(SQLException e){
-            System.out.println(e.getMessage());
-        }
-        return c;
-    }
-    protected static Resource GetResourceById(String Id){
-        return new Resource();
-    }
-   // protected static void add_Request(Request r){
-   //     Connection connection = null;
-   //     try
-   //     {
-   //         connection = DriverManager.getConnection(Constants.DATABASE_URL);
-   //         Statement statement = connection.createStatement();
-   //         statement.executeUpdate("insert into Request (id,id_cliente,resource_id,date,state,estimated_impact,necessary_recovery) values('"+r.getId()+"','"+r.getIdClient()+"','"+r.getResource().getId()+"','"+ LocalDateTime.now().toString()+"','"+r.getState().toString()+"','"+r.getEstimatedImpact()+"','"+r.getNecessaryRecovery()+"')");
-   //     }
-   //     catch(SQLException e){
-   //         System.out.println(e.toString());
-   //     }
-   // }
-   // protected static HashMap<String,Request> GetRequests(){
-   //     Connection connection = null;
-   //     HashMap<String,Request> r = new HashMap<>();
-   //     try
-   //     {
-    //        connection = DriverManager.getConnection(Constants.DATABASE_URL);
-   //         Statement statement = connection.createStatement();
-   //         ResultSet rs = statement.executeQuery("select * from Request");
-
-   //         while(rs.next())
-   //         {
-   //             r.put(rs.getString("id"),Database.GetClientByDocument(rs.getString("id_cliente")), LocalDateTime.parse(rs.getString("date")), State.stateRequest.valueOf(rs.getString("state")),Float.parseFloat(rs.getString("estimated_impact")),Float.parseFloat(rs.getString("necessary_recovery"))));
-   //         }
-   //     }
-   //     catch(SQLException e){
-   //         System.out.println(e.getMessage());
-    //    }
-   //     return r;
-   // }
+    
     protected static HashMap<String,License> GetLicences(){
         return new HashMap<String,License>();
     }
