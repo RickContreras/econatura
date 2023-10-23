@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
-
+<?import javafx.scene.image.*?>
 <?import udea.tecnicas.view.Menu?>
 <!--<?import udea.tecnicas.view.Menu?>-->
 <!--<Menu Inicial_option="Request_License" layoutX="0" layoutY="0" minHeight="800"/>-->
@@ -26,5 +26,7 @@
           
       </columns>
     </TableView>
+
+    <Label fx:id="labelMessage" layoutX="600.0" layoutY="219.0" text="Aún no hay licencias registradas" />
    <FontIcon iconColor="WHITE" iconLiteral="bi-journal-plus" layoutX="791.0" layoutY="537.0" />
 </AnchorPane>

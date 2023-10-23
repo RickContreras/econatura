@@ -9,6 +9,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import udea.tecnicas.database.LicenseDAO;
+import udea.tecnicas.database.PenaltyFeeDAO;
 import udea.tecnicas.model.License;
 import udea.tecnicas.model.PenaltyFee;
 
@@ -63,7 +64,7 @@ public class UsuarioLicenciasCtrl {
 
         licenseTable.getColumns().addAll(colId, colIDRequest, colStart, colEnd, colState);
 
-        loadtable();
+        loadLicenseTable();
 
         // Construcción de las columnas para la tabla de multas
 
@@ -76,15 +77,17 @@ public class UsuarioLicenciasCtrl {
         TableColumn<PenaltyFee, String> colValue = new TableColumn<>("Valor");
         colValue.setCellValueFactory(new PropertyValueFactory<>("value"));
 
-        TableColumn<PenaltyFee, String> colPenaltyFeeState = new TableColumn<>("Estado");
-        colPenaltyFeeState.setCellValueFactory(new PropertyValueFactory<>("state"));
-        //Todo ¿Se implementara la columna idLicencia?
-        penaltyFeeTable.getColumns().addAll(colIdMulta, colValue, colPenaltyFeeState, colReason);
+        TableColumn<PenaltyFee, String> colPenaltyFeeIdLicense = new TableColumn<>("Id Licensia");
+        colPenaltyFeeIdLicense.setCellValueFactory(new PropertyValueFactory<>("idLicense"));
+
+        penaltyFeeTable.getColumns().addAll(colIdMulta, colReason,  colValue, colPenaltyFeeIdLicense);
+
+        loadPenaltyFeeTable();
     }
 
-    private void loadtable(){
+    private void loadLicenseTable(){
         try {
-            List< License> data = new LicenseDAO().findByDocument(Econatura.getDocumentoCliente());
+            List<License> data = new LicenseDAO().findByDocument(Econatura.getDocumentoCliente());
             licenseTable.setItems(FXCollections.observableArrayList(data));
             if(data.isEmpty()){
                 arrowImage.setVisible(true);
@@ -98,6 +101,25 @@ public class UsuarioLicenciasCtrl {
             }
         }
         catch (Exception e){
+            System.out.println("Error cargando tabla");
+            e.printStackTrace();
+        }
+    }
+
+    private void loadPenaltyFeeTable(){
+        try{
+            List<PenaltyFee> data = new PenaltyFeeDAO().findByDocument(Econatura.getDocumentoCliente());
+            penaltyFeeTable.setItems(FXCollections.observableArrayList(data));
+            if(data.isEmpty()){
+                labelMessage.setVisible(true);
+                penaltyFeeTable.setVisible(false);
+            }
+            else {
+                penaltyFeeTable.setVisible(true);
+                labelMessage.setVisible(false);
+
+            }
+        }catch (Exception e){
             System.out.println("Error cargando tabla");
             e.printStackTrace();
         }
