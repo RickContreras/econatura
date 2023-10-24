@@ -71,7 +71,6 @@ public class UsuarioSolicitudesCtrl {
     }
     private void loadtable(){
         try {
-            //List<RequestString> data = Util.convertRequestToRequestString(new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente()));
             List< Request> data = new RequestDAO().findByClientDocument(Econatura.getDocumentoCliente());
             data.forEach((n)->{
                 RequestTable.getItems().add(n);

@@ -21,8 +21,7 @@
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
         </padding>
         </Button>
-        <FontIcon iconLiteral="bi-plus-circle" layoutX="1041.0" layoutY="47.0" text="" />
-        <FontIcon iconLiteral="bi-plus-circle" layoutX="1147.0" layoutY="47.0" text="" />
+        <FontIcon iconColor="#f7f7f7" iconLiteral="bi-plus-circle" layoutX="1041.0" layoutY="47.0" text="" />
 
         <TableView fx:id="penaltyFeeTable" layoutX="389.0" layoutY="323.0" prefHeight="200.0" prefWidth="671.0" style="-fx-background-color: #fff; -fx-hgap: 20px; -fx-background-radius: 20px; -fx-border-radius: 20px; -fx-border-width: 5px;" styleClass="TableRequest_Request" stylesheets="@../../../asset/css/Table.css">
             <columns>

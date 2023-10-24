@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
 import javafx.scene.web.WebEngine;
 import javafx.stage.Modality;
@@ -20,9 +21,6 @@ import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
 public class FuncionarioSolicitudesLicenciasController {
-    @FXML
-    public WebView ViewMap;
-    public WebEngine MapEngine;
 
     @FXML
     private TextField licenseFilter;
@@ -32,6 +30,9 @@ public class FuncionarioSolicitudesLicenciasController {
     @FXML
     public Button botonMultas;
 
+
+    @FXML
+    Label labelMessage;
 
     @FXML
     public void initialize() {
@@ -53,28 +54,31 @@ public class FuncionarioSolicitudesLicenciasController {
         colState.setCellValueFactory(new PropertyValueFactory<>("state"));
 
         licenseTable.getColumns().addAll(colId, colIDRequest, colStart, colEnd, colState);
+
+        loadtable();
     }
 
+    private void loadtable(){
+        try {
+            List<License> data = new LicenseDAO().findAll() ;
+            licenseTable.setItems(FXCollections.observableArrayList(data));
+            if(data.isEmpty()){
 
-    @FXML
-    public void cargar_pagina(){
-        MapEngine = ViewMap.getEngine();
-        //String url = getClass().getResource("map.html").toString();
+                licenseTable.setVisible(false);
+                labelMessage.setVisible(true);
 
-
-        String url =  "https://www.google.com/maps/@6.2502784,-75.5764463,16z?entry=ttu";
-        MapEngine.setJavaScriptEnabled(true);
-        try{
-            MapEngine.load(url);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
+            }
+            else{
+                licenseTable.setVisible(true);
+                labelMessage.setVisible(false);
+            }
+        }
+        catch (Exception e){
+            System.out.println("Error cargando tabla");
+            e.printStackTrace();
         }
     }
 
-    @FXML
-    public void CargarMapa(){
-        cargar_pagina();
-    }
 
     public void abrirVentanaModal(){
         try {

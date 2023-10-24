@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Client extends Person{
     public Client(String fullName, String CC, Type.PersonType type) {
+
         super( fullName, CC, type);
     }
     public Client(String doc,String name){

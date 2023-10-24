@@ -11,6 +11,9 @@ import java.util.List;
 
 public class LicenseDAO {
     public void insert(License license){
+        String queryInsert = "INSERT INTO License (id_request,id_auditor,\"start\",\"end\",state)" +
+                " VALUES (?,?,?,?,?);";
+        String queryUpdateRequest = "UPDATE Request set state = ? where id = ?";
         if (license.getRequest() == null || license.getRequest().getId() == null ) {
             throw new DatabaseException("Solicitud asociada no es valida");
         }
@@ -23,19 +26,22 @@ public class LicenseDAO {
         if (license.getEnd() == null ) {
             throw new DatabaseException("Fecha de fin no valida");
         }
-        try {
+        try(
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            PreparedStatement statement = connection.prepareStatement(
-                    "INSERT INTO License (id_request,id_auditor,\"start\",\"end\",state)" +
-                            " VALUES (?,?,?,?,?);"
-            );
-            statement.setString(1, license.getRequest().getId());
-            statement.setString(2, license.getId_Auditor());
-            statement.setString(3, license.getStart().format(DateTimeFormatter.ISO_DATE));
-            statement.setString(4, license.getEnd().format(DateTimeFormatter.ISO_DATE));
-            statement.setString(5, license.getState().name());
-            statement.executeUpdate();
-            statement.close();
+            PreparedStatement insertStatement = connection.prepareStatement(queryInsert);
+            PreparedStatement updateStatement = connection.prepareStatement(queryUpdateRequest);
+        ){
+            connection.setAutoCommit(false);
+            insertStatement.setString(1, license.getRequest().getId());
+            insertStatement.setString(2, license.getId_Auditor());
+            insertStatement.setString(3, license.getStart().format(DateTimeFormatter.ISO_DATE));
+            insertStatement.setString(4, license.getEnd().format(DateTimeFormatter.ISO_DATE));
+            insertStatement.setString(5, license.getState().name());
+            insertStatement.executeUpdate();
+            updateStatement.setString(1, State.stateRequest.APROVED.name());
+            updateStatement.setString(2, license.getRequest().getId());
+            updateStatement.executeUpdate();
+            connection.commit();
         } catch(SQLException e) {
             if(e.getErrorCode() == Constants.SQLITE_CONSTRAIN_ERROR){
                 throw new DatabaseException("La licencia ya existe o la solicitud no es valida", e);
@@ -45,45 +51,45 @@ public class LicenseDAO {
     }
 
     public List<License> findAll() {
-        try {
+        String query = "select l.id license_id, l.\"start\", l.\"end\", l.state license_state, " +
+                "r.id request_id, r.estimated_impact, r.necessary_recovery, r.nombre_recurso, " +
+                "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
+                "from License l " +
+                "inner join Request r " +
+                "on r.id = l.id_request ";
+        List<License> licenses;
+        try (
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            PreparedStatement statement = connection.prepareStatement(
-                    "select l.id license_id, l.\"start\", l.\"end\", l.state license_state, " +
-                            "r.id request_id, r.estimated_impact, r.necessary_recovery, r.nombre_recurso, " +
-                            "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
-                            "from License l " +
-                            "inner join Request r " +
-                            "on r.id = l.id_request "
-            );
+            PreparedStatement statement = connection.prepareStatement(query)
+        ){
             ResultSet rs = statement.executeQuery();
-            List<License> licenses = serialize(rs);
-            statement.close();
-            return licenses;
+            licenses = serialize(rs);
         } catch(SQLException e){
             throw new DatabaseException("Failed getting information about clients", e);
         }
+        return licenses;
     }
 
     public List<License> findByDocument(String document) {
-        try {
+        String query = "select l.id license_id, l.\"start\", l.\"end\", l.state license_state, " +
+                "r.id request_id, r.estimated_impact, r.necessary_recovery, r.nombre_recurso, " +
+                "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
+                "from License l " +
+                "inner join Request r " +
+                "on r.id = l.id_request " +
+                "where r.id_cliente = ? ";
+        List<License> licenses;
+        try (
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
-            PreparedStatement statement = connection.prepareStatement(
-                    "select l.id license_id, l.\"start\", l.\"end\", l.state license_state, " +
-                            "r.id request_id, r.estimated_impact, r.necessary_recovery, r.nombre_recurso, " +
-                            "r.municipio, r.departamento, r.id_cliente, r.date request_date, r.state request_state " +
-                            "from License l " +
-                            "inner join Request r " +
-                            "on r.id = l.id_request " +
-                            "where r.id_cliente = ? "
-            );
+            PreparedStatement statement = connection.prepareStatement(query)
+        ){
             statement.setString(1, document);
             ResultSet rs = statement.executeQuery();
-            List<License> clients = serialize(rs);
-            statement.close();
-            return clients;
+            licenses = serialize(rs);
         } catch(SQLException e){
             throw new DatabaseException("Failed getting information about clients", e);
         }
+        return licenses;
     }
 
     private List<License> serialize(ResultSet rs) throws SQLException {

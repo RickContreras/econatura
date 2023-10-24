@@ -17,12 +17,14 @@
       </TableView>
       <TextField fx:id="documentFilter" promptText="Documento Cliente"  layoutX="447.0" layoutY="78.0" />
       <Label layoutX="453.0" layoutY="49.0" text="Busqueda por documento" />
-      <AnchorPane layoutX="953.0" layoutY="18.0" prefHeight="121.0" prefWidth="216.0">
+      <AnchorPane layoutX="953.0" layoutY="18.0" prefHeight="121.0" prefWidth="216.0" style="-fx-background-color: D9D9D9;">
          <children>
             <Label layoutX="25.0" layoutY="21.0" text="Solicitud Nr" />
-            <Label fx:id="LabelStatus" layoutX="94.0" layoutY="21.0" text="xxxxx" />
-            <ChoiceBox fx:id="ChoiceBoxStatus" layoutX="25.0" layoutY="69.0" prefWidth="150.0" />
             <Label layoutX="25.0" layoutY="52.0" text="Estado" />
+            <Label fx:id="LabelStatus" layoutX="94.0" layoutY="21.0" text="xxxxx" />
+
+            <Button layoutX="25.0" layoutY="69.0" mnemonicParsing="false" onAction="#approveRequest" prefHeight="25.0" prefWidth="97.0" style="-fx-background-color: #545F71;" text="APROBAR" textFill="WHITE">
+            </Button>
          </children>
       </AnchorPane>
    </children>

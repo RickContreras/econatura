@@ -42,6 +42,18 @@ public class RequestDAO {
         }
     }
 
+    public void update(Request request){
+        try {
+            Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
+            PreparedStatement statement = connection.prepareStatement(
+                "update Request set state = (state) where (id) values (?, ?)"
+            );
+            statement.setString(1, request.getState().toString());
+            statement.setString(2, request.getIdClient());
+        } catch (SQLException e){
+            throw new DatabaseException("Fallo actualizando la solicitud", e);
+        }
+    }
     public List<Request> findByClientDocument(String document){
         try {
             Connection connection = DriverManager.getConnection(Constants.DATABASE_URL);
